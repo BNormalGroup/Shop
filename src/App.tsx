@@ -2,7 +2,8 @@ import './App.css'
 import {Route, Routes} from "react-router-dom";
 import {DefaultLayout} from "./layouts/DefaultLayout.tsx";
 import {AdminLayout} from "./layouts/AdminLayout.tsx";
-
+import React from "react";
+const AddCategory = React.lazy(() => import('./pages/admin/category/add/AddCategory'));
 function App() {
 
   return (
@@ -12,7 +13,9 @@ function App() {
 
             </Route>
             <Route path='/admin' element={<AdminLayout/>}>
-
+                <Route path='category'>
+                    <Route path='addCategory' element={<AddCategory></AddCategory>}></Route>
+                </Route>
             </Route>
         </Routes>
     </>
