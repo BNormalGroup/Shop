@@ -79,7 +79,7 @@ const AddCategory =()=>{
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formCategoryName" >
                     <Form.Label style={{
-                        color: 'white',
+                        color: 'black',
                         fontSize: "30px"
                     }}>Name</Form.Label>
                     <Form.Control
@@ -96,7 +96,7 @@ const AddCategory =()=>{
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formCategoryDescription">
                     <Form.Label style={{
-                        color: 'white',
+                        color: 'black',
                         fontSize: "30px"
                     }}>Description</Form.Label>
                     <Form.Control
@@ -114,7 +114,7 @@ const AddCategory =()=>{
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="ParentId">
                     <Form.Label style={{
-                        color: 'white',
+                        color: 'black',
                         fontSize: "30px"
                     }}>Parent id</Form.Label>
                     <Form.Control
@@ -129,6 +129,7 @@ const AddCategory =()=>{
                         Please enter a parent id.
                     </Form.Control.Feedback>
                 </Form.Group>
+                <button className="btn btn-primary" type="submit">Add category</button>
             </Form>
         </>
     )
