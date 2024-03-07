@@ -27,7 +27,7 @@ const NavBarSideAdmin = () => {
                             <li>
                                 <Link to={"#"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#brandDropDown">
                                     <i className="fs-4 bi-bar-chart-steps"></i>
-                                    <span className="ms-1 d-none d-sm-inline">Бренди</span>
+                                    <span className="ms-1 d-none d-sm-inline">Brands</span>
                                 </Link>
                                 <div className="collapse ps-3" id="brandDropDown">
                                     <Link to={"/admin/category/addCategory"} className="nav-link px-0 align-middle">

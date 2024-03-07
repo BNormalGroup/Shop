@@ -3,10 +3,12 @@ import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
 import {IBrandItem} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
+import {useNavigate} from "react-router-dom";
 
 const ListBrand = ()=>{
     const [allBrands , setAllBrands] = useState<IBrandItem[]>([]);
     const [error, setError] = useState<string>('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         http.get<IBrandItem[]>('/brands/')
@@ -52,7 +54,7 @@ const ListBrand = ()=>{
                                 </table>
                             </div>
                             <div className="d-flex flex-row justify-content-between">
-                                <button
+                                <button onClick={()=>{navigate('/admin/brand/addBrand')}}
                                     className="btn btn-dark btn-block text-uppercase">Add new product</button>
                                 <button className="btn btn-dark btn-block text-uppercase">
                                     Delete selected products
