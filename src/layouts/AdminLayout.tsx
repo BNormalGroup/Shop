@@ -11,7 +11,7 @@ export const AdminLayout = () => {
                 {/* NavBar зліва */}
                 <NavBarSideAdmin></NavBarSideAdmin>
 
-                <div className="container px-5 my-5">
+                <div className="tm-bg-primary-dark w-100">
                     <Outlet></Outlet>
                 </div>
             </div>

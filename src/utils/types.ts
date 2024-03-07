@@ -5,3 +5,9 @@ export interface ICategoryItem {
     description: string;
     parentId: number|null;
 }
+
+export interface IBrandItem {
+    id: number;
+    name: string;
+    description: string;
+}
