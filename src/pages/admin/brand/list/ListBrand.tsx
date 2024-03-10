@@ -56,9 +56,6 @@ const ListBrand = ()=>{
                             <div className="d-flex flex-row justify-content-between">
                                 <button onClick={()=>{navigate('/admin/brand/addBrand')}}
                                     className="btn btn-dark btn-block text-uppercase">Add new product</button>
-                                <button className="btn btn-dark btn-block text-uppercase">
-                                    Delete selected products
-                                </button>
                             </div>
                             <p className="text-danger">{error}</p>
                         </div>

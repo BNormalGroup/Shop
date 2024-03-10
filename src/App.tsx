@@ -22,7 +22,7 @@ function App() {
                 <Route path='category'>
                     <Route path='addCategory' element={<AddCategory></AddCategory>}></Route>
                 </Route>
-                <Route path='/brand'>
+                <Route path='brand'>
                     <Route path='listBrand' element={<ListBrand></ListBrand>}></Route>
                     <Route path='addBrand' element={<AddBrand></AddBrand>}></Route>
                 </Route>
