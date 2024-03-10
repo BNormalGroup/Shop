@@ -1,137 +1,120 @@
-import {useEffect, useState} from "react";
+import React, {useState} from "react";
+import '../../css/templatemo-style.css';
+import  '../../css/fontawesome.min.css';
 import {ICategoryItem} from "../../../../utils/types.ts";
-import {Form} from "react-bootstrap";
 import http from "../../../../http.ts";
 
-const AddCategory =()=>{
-    const [category, setCategory]  = useState<ICategoryItem>({
-        id: 0,
+const AddCategory = ()=> {
+    const [category, setCategory] = useState<ICategoryItem>({
+        id: undefined,
         name: "",
-        description: "",
         slug: "",
-        parentId: null
+        description: "",
+        parent_id: undefined,
     });
-    const [allCategory, setAllCategory]  = useState<ICategoryItem[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [validated, setValidated] = useState(false);
-    const [ErrorServer, setErrorServer] = useState("");
-
-    function handleChange(event:  React.ChangeEvent<HTMLInputElement>) {
+    const [error, setError] = useState<string>('');
+    async function handleSumbit(event: React.FormEvent) {
+        event.preventDefault();
+        console.log('sa',category);
+        try {
+            await http
+                .post<ICategoryItem>("/categories/", category, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+        } catch (error: any) {
+            setError(error);
+        }
+    }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
         setCategory((prevState) => ({
             ...prevState,
             [name]: value,
         }));
-    }
-
-    useEffect(() => {
-
-    }, []);
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        const form = event.currentTarget;
-        event.preventDefault();
-        event.stopPropagation();
-        if (form.checkValidity() === false) {
-            setValidated(true);
-            return;
-        }
-        await PostDataAsync();
-        setCategory({
-            id: 0,
-            name: "",
-            description: "",
-            slug: "",
-            parentId: null
-        });
-        form.reset();
-        setValidated(false);
     };
-    const PostDataAsync = async () => {
-        const formData = new FormData();
-        formData.append('name', category.name);
-        formData.append('description', category.description);
-        let slugNew = category.slug
-        if (category.parentId != null) {
-            formData.append('parent_id', category.parentId.toString());
-            const foundCategory = allCategory.find((c) => c.id === category.parentId);
-            slugNew = foundCategory?.slug +"&"+ category.slug
-            console.log("parent",slugNew);
-            setCategory((prevState) => ({
-                ...prevState,
-                slug: slugNew,
-            }));
-        }
-        formData.append('slug', slugNew);
-        try {
-            await http
-                .post<ICategoryItem>("/AddCategory", formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data"
-                    }
-                });
-        }
-        catch (error: any) {
-            setErrorServer(error);
-        }
-    }
+
     return(
         <>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formCategoryName" >
-                    <Form.Label style={{
-                        color: 'black',
-                        fontSize: "30px"
-                    }}>Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Enter category name"
-                        name="name"
-                        value={category.name}
-                        required
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        Please enter a category name.
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formCategoryDescription">
-                    <Form.Label style={{
-                        color: 'black',
-                        fontSize: "30px"
-                    }}>Description</Form.Label>
-                    <Form.Control
-                        as="textarea"
-                        type="text"
-                        placeholder="Enter category description"
-                        name="description"
-                        value={category.description}
-                        required
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        Please enter a description.
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="ParentId">
-                    <Form.Label style={{
-                        color: 'black',
-                        fontSize: "30px"
-                    }}>Parent id</Form.Label>
-                    <Form.Control
-                        type="number"
-                        placeholder="Enter category parent id"
-                        name="parentId"
-                        value={category.parentId !== null ? category.parentId.toString() : ""}
-                        required
-                        onChange={handleChange}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                        Please enter a parent id.
-                    </Form.Control.Feedback>
-                </Form.Group>
-                <button className="btn btn-primary" type="submit">Add category</button>
-            </Form>
+            <div className="container tm-mt-big tm-mb-big">
+                <div className="row">
+                    <div className="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                        <div className="tm-bg-primary-dark tm-block tm-block-h-auto">
+                            <div className="row">
+                                <div className="col-12">
+                                    <h2 className="tm-block-title d-inline-block">Add Category</h2>
+                                </div>
+                            </div>
+                            <div className="row tm-edit-product-row">
+                                <div className="col-xl-6 col-lg-6 col-md-12">
+                                    <form action="" className="tm-edit-product-form" onSubmit={handleSumbit}>
+                                        <div className="form-group mb-3">
+                                            <label
+                                                htmlFor="name"
+                                            >Name
+                                            </label>
+                                            <input
+                                                onChange={handleChange}
+                                                id="name"
+                                                name="name"
+                                                type="text"
+                                                className="form-control validate"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-group mb-3">
+                                            <label
+                                                htmlFor="description"
+                                            >Description</label
+                                            >
+                                            <textarea
+                                                onChange={handleChange}
+                                                className="form-control validate"
+                                                required
+                                                name='description'
+                                            ></textarea>
+                                        </div>
+                                        <div className="form-group mb-3">
+                                            <label
+                                                htmlFor="parent"
+                                            >Parent Id
+                                            </label>
+                                            <input
+                                                onChange={handleChange}
+                                                id="parent"
+                                                name="parent"
+                                                type="number"
+                                                className="form-control validate"
+                                            />
+                                        </div>
+                                        <div className="form-group mb-3">
+                                            <label
+                                                htmlFor="slug"
+                                            >Slug
+                                            </label>
+                                            <input
+                                                onChange={handleChange}
+                                                id="slug"
+                                                name="slug"
+                                                type="text"
+                                                className="form-control validate"
+                                                required
+                                            />
+                                        </div>
+                                        <div className="col-12">
+                                            <button type="submit"  className="btn btn-dark btn-block text-uppercase">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <p>{error}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
+
 export default AddCategory;

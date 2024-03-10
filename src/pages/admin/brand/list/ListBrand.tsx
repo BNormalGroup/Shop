@@ -18,9 +18,14 @@ const ListBrand = ()=>{
             .catch((error) => {
                 setError(error);
             });
-
     }, []);
 
+   async function handleDeleteClick (id: number|undefined) {
+       if (id !== undefined) {
+           await http.delete('/brands/' + id);
+           setAllBrands(allBrands.filter(a => a.id !== id));
+       }
+    }
 
     return(
         <>
@@ -30,7 +35,7 @@ const ListBrand = ()=>{
                                     <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">BRAND NAME</th>
+                                        <th scope="col">NAME</th>
                                         <th scope="col">DESCRIPTION</th>
                                         <th scope="col">&nbsp;</th>
                                     </tr>
@@ -44,9 +49,9 @@ const ListBrand = ()=>{
                                                 item.description.slice(0,270)+'...'
                                             ):(item.description)}</td>
                                             <td>
-                                                <a href="#" className="tm-product tm-product-delete-link">
+                                                <button onClick={() => handleDeleteClick(item.id)}>
                                                     <i className="bi bi-trash"></i>
-                                                </a>
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
@@ -55,7 +60,7 @@ const ListBrand = ()=>{
                             </div>
                             <div className="d-flex flex-row justify-content-between">
                                 <button onClick={()=>{navigate('/admin/brand/addBrand')}}
-                                    className="btn btn-dark btn-block text-uppercase">Add new product</button>
+                                    className="btn btn-dark btn-block text-uppercase">Add new</button>
                             </div>
                             <p className="text-danger">{error}</p>
                         </div>

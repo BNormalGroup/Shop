@@ -1,8 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
+import {IBrandItem} from "../../../../utils/types.ts";
+import http from "../../../../http.ts";
 
 const AddBrand = ()=> {
+    const [brand, setBrand] = useState<IBrandItem>({
+        id: undefined,
+        name: "",
+        description: "",
+    });
+    const [error, setError] = useState<string>('');
+   async function handleSumbit(event: React.FormEvent) {
+       event.preventDefault();
+       try {
+           await http
+               .post<IBrandItem>("/brands/", brand, {
+                   headers: {
+                       "Content-Type": "multipart/form-data"
+                   }
+               });
+       } catch (error: any) {
+           setError(error);
+       }
+   }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
+        const { name, value } = event.target;
+        setBrand((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
+
     return(
         <>
         <div className="container tm-mt-big tm-mb-big">
@@ -11,18 +40,19 @@ const AddBrand = ()=> {
                     <div className="tm-bg-primary-dark tm-block tm-block-h-auto">
                         <div className="row">
                             <div className="col-12">
-                                <h2 className="tm-block-title d-inline-block">Add Product</h2>
+                                <h2 className="tm-block-title d-inline-block">Add Brand</h2>
                             </div>
                         </div>
                         <div className="row tm-edit-product-row">
                             <div className="col-xl-6 col-lg-6 col-md-12">
-                                <form action="" className="tm-edit-product-form">
+                                <form action="" className="tm-edit-product-form" onSubmit={handleSumbit}>
                                     <div className="form-group mb-3">
                                         <label
                                             htmlFor="name"
-                                        >Product Name
+                                        >Name
                                         </label>
                                         <input
+                                            onChange={handleChange}
                                             id="name"
                                             name="name"
                                             type="text"
@@ -36,73 +66,20 @@ const AddBrand = ()=> {
                                         >Description</label
                                         >
                                         <textarea
+                                            onChange={handleChange}
                                             className="form-control validate"
                                             required
+                                            name='description'
                                         ></textarea>
                                     </div>
-                                    <div className="form-group mb-3">
-                                        <label
-                                            htmlFor="category"
-                                        >Category</label>
-                                        <select
-                                            className="custom-select tm-select-accounts"
-                                            id="category"
-                                        >
-                                            <option selected>Select category</option>
-                                            <option value="1">New Arrival</option>
-                                            <option value="2">Most Popular</option>
-                                            <option value="3">Trending</option>
-                                        </select>
-                                    </div>
-                                    <div className="row">
-                                        <div className="form-group mb-3 col-xs-12 col-sm-6">
-                                            <label
-                                                htmlFor="expire_date"
-                                            >Expire Date
-                                            </label>
-                                            <input
-                                                id="expire_date"
-                                                name="expire_date"
-                                                type="text"
-                                                className="form-control validate"
-                                                data-large-mode="true"
-                                            />
-                                        </div>
-                                        <div className="form-group mb-3 col-xs-12 col-sm-6">
-                                            <label
-                                                htmlFor="stock"
-                                            >Units In Stock
-                                            </label>
-                                            <input
-                                                id="stock"
-                                                name="stock"
-                                                type="text"
-                                                className="form-control validate"
-                                                required
-                                            />
-                                        </div>
+                                    <div className="col-12">
+                                        <button type="submit"  className="btn btn-dark btn-block text-uppercase">Add</button>
                                     </div>
                                 </form>
                             </div>
-                            <div className="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                                <div className="tm-product-img-dummy mx-auto">
-                                    <i
-                                        className="fas fa-cloud-upload-alt tm-upload-icon"
-                                    ></i>
-                                </div>
-                                <div className="custom-file mt-3 mb-3">
-                                    <input id="fileInput" type="file" style={{display: 'none'}} />
-                                    <input
-                                        type="button"
-                                        className="btn btn-primary btn-block mx-auto"
-                                        value="UPLOAD PRODUCT IMAGE"
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <button type="submit" className="btn btn-primary btn-block text-uppercase">Add Product Now</button>
-                            </div>
+
                     </div>
+                        <p>{error}</p>
                 </div>
             </div>
         </div>

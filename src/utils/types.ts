@@ -1,13 +1,13 @@
 export interface ICategoryItem {
-    id: number;
+    id?: number;
     name: string;
     slug: string;
     description: string;
-    parentId: number|null;
+    parent_id?: number;
 }
 
 export interface IBrandItem {
-    id: number;
+    id?: number;
     name: string;
     description: string;
 }
