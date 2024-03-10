@@ -14,26 +14,16 @@ const NavBarSideAdmin = () => {
                             </li>
 
                             <li>
-                                <Link to={"#"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#categoryDropDown">
+                                <Link to={"/admin/category/listCategory"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#categoryDropDown">
                                     <i className="fs-4 bi-bar-chart-steps"></i>
-                                    <span className="ms-1 d-none d-sm-inline">Категорії</span>
+                                    <span className="ms-1 d-none d-sm-inline">Categories</span>
                                 </Link>
-                                <div className="collapse ps-3" id="categoryDropDown">
-                                    <Link to={"/admin/category/addCategory"} className="nav-link px-0 align-middle">
-                                        <i className="fs-6 bi-plus"></i> <span className="ms-1 d-none d-sm-inline">Добавити категорію</span>
-                                    </Link>
-                                </div>
                             </li>
                             <li>
-                                <Link to={"#"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#brandDropDown">
+                                <Link to={"/admin/brand/listBrand"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#brandDropDown">
                                     <i className="fs-4 bi-bar-chart-steps"></i>
                                     <span className="ms-1 d-none d-sm-inline">Brands</span>
                                 </Link>
-                                <div className="collapse ps-3" id="brandDropDown">
-                                    <Link to={"/admin/category/addCategory"} className="nav-link px-0 align-middle">
-                                        <i className="fs-6 bi-plus"></i> <span className="ms-1 d-none d-sm-inline">Добавити бренд</span>
-                                    </Link>
-                                </div>
                             </li>
                         </ul>
 
