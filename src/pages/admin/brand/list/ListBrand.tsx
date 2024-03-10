@@ -44,7 +44,7 @@ const ListBrand = ()=>{
                                     {allBrands.map((item: IBrandItem)=>(
                                         <tr key={item.id}>
                                             <th scope="row"><a>{item.id}</a></th>
-                                            <td className="tm-product-name">{item.name}</td>
+                                            <td className="tm-product-name" onClick={()=>{navigate('/admin/brand/editBrand/'+item.id)}}>{item.name}</td>
                                             <td>{item.description.length>100 ? (
                                                 item.description.slice(0,270)+'...'
                                             ):(item.description)}</td>

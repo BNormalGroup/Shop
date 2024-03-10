@@ -1,23 +1,34 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
-import {ICategoryItem} from "../../../../utils/types.ts";
+import {IBrandItem} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
+import {useParams} from "react-router-dom";
 
-const AddCategory = ()=> {
-    const [category, setCategory] = useState<ICategoryItem>({
+const EditBrand = ()=> {
+    const [brand, setBrand] = useState<IBrandItem>({
         id: undefined,
         name: "",
-        slug: "",
         description: "",
-        parent_id: undefined,
     });
+    const params= useParams();
     const [error, setError] = useState<string>('');
+
+    useEffect(() => {
+        http.get<IBrandItem>('/brands/show/'+params.id)
+            .then(resp => {
+                setBrand(resp.data);
+            })
+            .catch((error) => {
+                setError(error);
+            });
+    }, []);
+
     async function handleSumbit(event: React.FormEvent) {
         event.preventDefault();
         try {
             await http
-                .post<ICategoryItem>("/categories/", category, {
+                .post<IBrandItem>("/brands/"+params.id, brand, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     }
@@ -26,9 +37,9 @@ const AddCategory = ()=> {
             setError(error);
         }
     }
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
         const { name, value } = event.target;
-        setCategory((prevState) => ({
+        setBrand((prevState) => ({
             ...prevState,
             [name]: value,
         }));
@@ -42,7 +53,7 @@ const AddCategory = ()=> {
                         <div className="tm-bg-primary-dark tm-block tm-block-h-auto">
                             <div className="row">
                                 <div className="col-12">
-                                    <h2 className="tm-block-title d-inline-block">Add Category</h2>
+                                    <h2 className="tm-block-title d-inline-block">Edit Brand</h2>
                                 </div>
                             </div>
                             <div className="row tm-edit-product-row">
@@ -57,6 +68,7 @@ const AddCategory = ()=> {
                                                 onChange={handleChange}
                                                 id="name"
                                                 name="name"
+                                                value={brand.name}
                                                 type="text"
                                                 className="form-control validate"
                                                 required
@@ -69,43 +81,18 @@ const AddCategory = ()=> {
                                             >
                                             <textarea
                                                 onChange={handleChange}
+                                                value={brand.description}
                                                 className="form-control validate"
                                                 required
                                                 name='description'
                                             ></textarea>
                                         </div>
-                                        <div className="form-group mb-3">
-                                            <label
-                                                htmlFor="parent"
-                                            >Parent Id
-                                            </label>
-                                            <input
-                                                onChange={handleChange}
-                                                id="parent"
-                                                name="parent"
-                                                type="number"
-                                                className="form-control validate"
-                                            />
-                                        </div>
-                                        <div className="form-group mb-3">
-                                            <label
-                                                htmlFor="slug"
-                                            >Slug
-                                            </label>
-                                            <input
-                                                onChange={handleChange}
-                                                id="slug"
-                                                name="slug"
-                                                type="text"
-                                                className="form-control validate"
-                                                required
-                                            />
-                                        </div>
                                         <div className="col-12">
-                                            <button type="submit"  className="btn btn-dark btn-block text-uppercase">Add</button>
+                                            <button type="submit"  className="btn btn-dark btn-block text-uppercase">Edit</button>
                                         </div>
                                     </form>
                                 </div>
+
                             </div>
                             <p>{error}</p>
                         </div>
@@ -116,4 +103,4 @@ const AddCategory = ()=> {
     )
 }
 
-export default AddCategory;
+export default EditBrand;
