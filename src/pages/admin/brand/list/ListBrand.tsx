@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {startTransition, useEffect, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
 import {IBrandItem} from "../../../../utils/types.ts";
@@ -13,11 +13,18 @@ const ListBrand = ()=>{
     useEffect(() => {
         http.get<IBrandItem[]>('/brands/')
             .then(resp => {
-                setAllBrands(resp.data);
+                startTransition(() => {
+                    // setAllBrands(resp.data);
+                    console.log(resp.data);
+                });
             })
             .catch((error) => {
-                setError(error);
+
+                startTransition(() => {
+                    setError(error);
+                });
             });
+
     }, []);
 
    async function handleDeleteClick (id: number|undefined) {

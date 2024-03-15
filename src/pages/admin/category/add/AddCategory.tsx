@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {startTransition, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
 import {ICategoryItem} from "../../../../utils/types.ts";
@@ -23,15 +23,20 @@ const AddCategory = ()=> {
                     }
                 });
         } catch (error: any) {
-            setError(error);
+            startTransition(() => {
+                setError(error);
+            });
         }
     }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
-        setCategory((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        startTransition(() => {
+            setCategory((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        });
+
     };
 
     return(

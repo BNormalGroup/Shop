@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {startTransition, useEffect, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
 import {IBrandItem, ICategoryItem} from "../../../../utils/types.ts";
@@ -19,10 +19,14 @@ const EditCategory = ()=> {
     useEffect(() => {
         http.get<ICategoryItem>('/categories/show/'+params.id)
             .then(resp => {
-                setCategory(resp.data);
+                startTransition(() => {
+                    setCategory(resp.data);
+                });
             })
             .catch((error) => {
-                setError(error);
+                startTransition(() => {
+                    setError(error);
+                });
             });
     }, []);
 
@@ -36,15 +40,20 @@ const EditCategory = ()=> {
                     }
                 });
         } catch (error: any) {
-            setError(error);
+            startTransition(() => {
+                setError(error);
+            });
         }
     }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
         const { name, value } = event.target;
-        setCategory((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        startTransition(() => {
+            setCategory((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        });
+
     };
 
     return(

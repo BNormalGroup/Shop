@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {startTransition, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
 import {IBrandItem} from "../../../../utils/types.ts";
@@ -21,15 +21,20 @@ const AddBrand = ()=> {
                    }
                });
        } catch (error: any) {
-           setError(error);
+           startTransition(() => {
+               setError(error);
+           });
+
        }
    }
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
         const { name, value } = event.target;
-        setBrand((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
+        startTransition(() => {
+            setBrand((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        });
     };
 
     return(
