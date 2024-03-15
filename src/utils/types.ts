@@ -43,3 +43,21 @@ export interface IItemShow {
 }
 
 
+export interface IUser {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    isAdmin: boolean;
+    isBanned: boolean;
+}
+
+export interface IUserBanned extends IUser{
+    bans: IBan[]
+}
+export interface IBan {
+    id: number;
+    reason: string;
+    user_id: number;
+}
+
