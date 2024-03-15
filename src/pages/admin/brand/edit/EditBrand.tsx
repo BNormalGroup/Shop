@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {startTransition, useEffect, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
 import {IBrandItem} from "../../../../utils/types.ts";
@@ -17,7 +17,9 @@ const EditBrand = ()=> {
     useEffect(() => {
         http.get<IBrandItem>('/brands/show/'+params.id)
             .then(resp => {
-                setBrand(resp.data);
+                startTransition(() => {
+                    setBrand(resp.data);
+                });
             })
             .catch((error) => {
                 setError(error);

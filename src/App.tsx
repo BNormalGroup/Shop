@@ -6,6 +6,9 @@ import React from "react";
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import ListItem from "./pages/admin/item/list/ListItem.tsx";
+import AddItem from "./pages/admin/item/add/AddItem.tsx";
+import EditItem from "./pages/admin/item/edit/EditItem.tsx";
 const ListCategory = React.lazy(() => import('./pages/admin/category/list/ListCategory'));
 const AddCategory = React.lazy(() => import('./pages/admin/category/add/AddCategory'));
 const EditCategory= React.lazy(() => import('./pages/admin/category/edit/EditCategory'));
@@ -31,6 +34,11 @@ function App() {
                     <Route path='listBrand' element={<ListBrand></ListBrand>}></Route>
                     <Route path='addBrand' element={<AddBrand></AddBrand>}></Route>
                     <Route path='editBrand/:id' element={<EditBrand></EditBrand>}></Route>
+                </Route>
+                <Route path='item'>
+                    <Route path='list' element={<ListItem></ListItem>}></Route>
+                    <Route path='add' element={<AddItem></AddItem>}></Route>
+                    <Route path='edit/:id' element={<EditItem></EditItem>}></Route>
                 </Route>
             </Route>
         </Routes>

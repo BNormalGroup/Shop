@@ -14,15 +14,21 @@ const NavBarSideAdmin = () => {
                             </li>
 
                             <li>
-                                <Link to={"/admin/category/listCategory"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#categoryDropDown">
+                                <Link to={"/admin/category/listCategory"} className="nav-link px-0 align-middle w-100">
                                     <i className="fs-4 bi-bar-chart-steps"></i>
                                     <span className="ms-1 d-none d-sm-inline">Categories</span>
                                 </Link>
                             </li>
                             <li>
-                                <Link to={"/admin/brand/listBrand"} className="nav-link px-0 align-middle w-100" data-bs-toggle="collapse" data-bs-target="#brandDropDown">
+                                <Link to={"/admin/brand/listBrand"} className="nav-link px-0 align-middle w-100">
                                     <i className="fs-4 bi-bar-chart-steps"></i>
                                     <span className="ms-1 d-none d-sm-inline">Brands</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={"/admin/item/list"} className="nav-link px-0 align-middle w-100">
+                                    <i className="fs-4 bi-bar-chart-steps"></i>
+                                    <span className="ms-1 d-none d-sm-inline">Items</span>
                                 </Link>
                             </li>
                         </ul>

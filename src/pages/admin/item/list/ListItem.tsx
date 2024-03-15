@@ -1,20 +1,20 @@
 import React, {startTransition, useEffect, useState} from "react";
 import '../../css/templatemo-style.css';
 import  '../../css/fontawesome.min.css';
-import {ICategoryItem} from "../../../../utils/types.ts";
+import {IItem} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import {useNavigate} from "react-router-dom";
 
-const ListCategory = ()=>{
-    const [allCategories , setAllCategories] = useState<ICategoryItem[]>([]);
+const ListItem = ()=>{
+    const [Items , setItems] = useState<IItem[]>([]);
     const [error, setError] = useState<string>('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        http.get<ICategoryItem[]>('/categories/')
+        http.get<IItem[]>('/items/')
             .then(resp => {
                 startTransition(() => {
-                    // setAllCategories(resp.data);
+                    setItems(resp.data);
                     console.log(resp.data);
                 });
             })
@@ -29,9 +29,9 @@ const ListCategory = ()=>{
 
     async function handleDeleteClick (id: number|undefined) {
         if (id !== undefined) {
-            await http.delete('/categories/' + id);
+            await http.delete('/items/' + id);
             startTransition(() => {
-                setAllCategories(allCategories.filter(a => a.id !== id));
+                setItems(Items.filter(a => a.id !== id));
             });
         }
     }
@@ -46,25 +46,35 @@ const ListCategory = ()=>{
                             <th scope="col">ID</th>
                             <th scope="col">NAME</th>
                             <th scope="col">DESCRIPTION</th>
-                            <th scope="col">SLUG</th>
-                            <th scope="col">PARENT ID</th>
+                            <th scope="col">COLOR</th>
+                            <th scope="col">BRAND ID</th>
+                            <th scope="col">CATEGORY ID</th>
+                            <th scope="col">SEX</th>
+                            <th scope="col">&nbsp;</th>
                             <th scope="col">&nbsp;</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {allCategories.map((item: ICategoryItem)=>(
+                        {Items.map((item: IItem)=>(
                             <tr key={item.id}>
                                 <th scope="row"><a>{item.id}</a></th>
                                 <td className="tm-product-name">{item.name}</td>
                                 <td>{item.description.length>100 ? (
                                     item.description.slice(0,270)+'...'
                                 ):(item.description)}</td>
-                                <td className="tm-product-name">{item.slug}</td>
-                                <td className="tm-product-name">{item.parent_id}</td>
+                                <td className="tm-product-name">{item.color}</td>
+                                <td className="tm-product-name">{item.brand_id}</td>
+                                <td className="tm-product-name">{item.category_id}</td>
+                                <td className="tm-product-name">{item.sex}</td>
                                 <td>
-                                        <button onClick={() => handleDeleteClick(item.id)}>
-                                            <i className="bi bi-trash"></i>
-                                        </button>
+                                    <button className="btn p-0" onClick={() => handleDeleteClick(item.id)}>
+                                        <i className="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button className="btn p-0" onClick={()=>{navigate('/admin/item/edit/'+item.id)}}>
+                                        <i className="bi bi-pencil"></i>
+                                    </button>
                                 </td>
                             </tr>
                         ))}
@@ -72,8 +82,8 @@ const ListCategory = ()=>{
                     </table>
                 </div>
                 <div className="d-flex flex-row justify-content-between">
-                    <button onClick={()=>{navigate('/admin/category/addCategory')}}
-                            className="btn btn-dark btn-block text-uppercase">Add new category</button>
+                    <button onClick={()=>{navigate('/admin/item/add')}}
+                            className="btn btn-dark btn-block text-uppercase">Add new item</button>
                 </div>
                 <p className="text-danger">{error}</p>
             </div>
@@ -81,4 +91,4 @@ const ListCategory = ()=>{
     )
 }
 
-export default ListCategory;
+export default ListItem;
