@@ -1,3 +1,1 @@
-export const LoginPage = ()=>{
-
-}
+export const LoginPage = () => {};
