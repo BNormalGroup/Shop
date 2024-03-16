@@ -15,7 +15,7 @@ const ListBrand = () => {
       .get<IBrandItem[]>("/brands/")
       .then((resp) => {
         startTransition(() => {
-          // setAllBrands(resp.data);
+          setAllBrands(resp.data);
           console.log(resp.data);
         });
       })

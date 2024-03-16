@@ -15,7 +15,7 @@ const ListCategory = () => {
       .get<ICategoryItem[]>("/categories/")
       .then((resp) => {
         startTransition(() => {
-          // setAllCategories(resp.data);
+          setAllCategories(resp.data);
           console.log(resp.data);
         });
       })

@@ -36,56 +36,14 @@ function App() {
         <Route path="/" element={<DefaultLayout />}></Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">
-            <Route
-              path="listCategory"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <ListCategory />
-                </React.Suspense>
-              }
-            ></Route>
-            <Route
-              path="addCategory"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <AddCategory />
-                </React.Suspense>
-              }
-            ></Route>
-            <Route
-              path="editCategory/:id"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <EditCategory />
-                </React.Suspense>
-              }
-            ></Route>
+            <Route path="listCategory" element={<ListCategory />}></Route>
+            <Route path="addCategory" element={<AddCategory />}></Route>
+            <Route path="editCategory/:id" element={<EditCategory />}></Route>
           </Route>
           <Route path="brand">
-            <Route
-              path="listBrand"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <ListBrand />
-                </React.Suspense>
-              }
-            ></Route>
-            <Route
-              path="addBrand"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <AddBrand />
-                </React.Suspense>
-              }
-            ></Route>
-            <Route
-              path="editBrand/:id"
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <EditBrand />
-                </React.Suspense>
-              }
-            ></Route>
+            <Route path="listBrand" element={<ListBrand />}></Route>
+            <Route path="addBrand" element={<AddBrand />}></Route>
+            <Route path="editBrand/:id" element={<EditBrand />}></Route>
           </Route>
           <Route path="item">
             <Route path="list" element={<ListItem></ListItem>}></Route>
