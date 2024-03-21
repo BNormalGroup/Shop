@@ -10,6 +10,7 @@ import ListItem from "./pages/admin/item/list/ListItem.tsx";
 import AddItem from "./pages/admin/item/add/AddItem.tsx";
 import EditItem from "./pages/admin/item/edit/EditItem.tsx";
 import ListUser from "./pages/admin/user/list/ListUser.tsx";
+import MenuPage from "./pages/menu/MenuPage.tsx";
 const ListCategory = React.lazy(() => import('./pages/admin/category/list/ListCategory'));
 const AddCategory = React.lazy(() => import('./pages/admin/category/add/AddCategory'));
 const EditCategory= React.lazy(() => import('./pages/admin/category/edit/EditCategory'));
@@ -24,6 +25,7 @@ function App() {
     <>
         <Routes>
             <Route path='/' element={<DefaultLayout/>}>
+                <Route path='/' element={<MenuPage></MenuPage>}></Route>
             </Route>
             <Route path='/admin' element={<AdminLayout/>}>
                 <Route path='category'>
