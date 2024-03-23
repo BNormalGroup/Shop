@@ -1,12 +1,14 @@
 @font-face {
-    font-family: 'OswaldFont';
-    src: local('Oswald-VariableFont_wght'),
-    url("./assets/fonts/Oswald-VariableFont_wght.ttf") format('truetype');
+  font-family: "OswaldFont";
+  src:
+    local("Oswald-VariableFont_wght"),
+    url("./assets/fonts/Oswald-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
-    font-family: 'SourceSerifPro';
-    src: local('SourceSerifPro-Regular'),
-    url("./assets/fonts/SourceSerifPro-Regular.ttf") format('truetype');
+  font-family: "SourceSerifPro";
+  src:
+    local("SourceSerifPro-Regular"),
+    url("./assets/fonts/SourceSerifPro-Regular.ttf") format("truetype");
 }
 
 /*:root {*/

@@ -35,9 +35,9 @@ function App() {
   return (
     <>
       <Routes>
-          <Route path='/' element={<DefaultLayout/>}>
-              <Route path='/' element={<MenuPage></MenuPage>}></Route>
-          </Route>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<MenuPage></MenuPage>}></Route>
+        </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">
             <Route path="listCategory" element={<ListCategory />}></Route>
