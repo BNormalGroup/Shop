@@ -8,6 +8,8 @@ import { LanguageSwitcher } from "../languageSwitcher/LanguageSwitcher.tsx";
 import { AccountIcon } from "../../assets/icons/AccountIcon.tsx";
 import { LikeIcon } from "../../assets/icons/LikeIcon.tsx";
 import { BasketIcon } from "../../assets/icons/BasketIcon.tsx";
+import accountIcon  from '../../assets/account.png';
+import likeIcon  from '../../assets/likeIcon.png';
 
 export const Header = () => {
   const { t } = useTranslation();
@@ -25,8 +27,8 @@ export const Header = () => {
           <a className={classes.genderText}>{t("menHeader")}</a>
           <SearchHeader />
           <LanguageSwitcher />
-          <AccountIcon />
-          <LikeIcon />
+          <img src={accountIcon} className={classes.icon}/>
+          <img src={likeIcon} className={classes.icon}/>
           <BasketIcon />
         </Stack>
       </div>

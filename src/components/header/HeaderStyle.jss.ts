@@ -17,4 +17,8 @@ export const useStyles = createUseStyles({
     backgroundColor: "white",
     padding: "10px 63px",
   },
+  icon: {
+    width: '23px',
+    height: '23px'
+  }
 });
