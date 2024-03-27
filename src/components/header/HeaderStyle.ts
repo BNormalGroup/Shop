@@ -18,7 +18,7 @@ export const useStyles = createUseStyles({
     padding: "10px 63px",
   },
   icon: {
-    width: '23px',
-    height: '23px'
-  }
+    width: "23px",
+    height: "23px",
+  },
 });

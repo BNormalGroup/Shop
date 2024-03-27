@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout.tsx";
 import { AdminLayout } from "./layouts/AdminLayout.tsx";
-import React from "react";
+import React, { lazy } from "react";
 import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -12,24 +12,19 @@ import EditItem from "./pages/admin/item/edit/EditItem.tsx";
 import ListUser from "./pages/admin/user/list/ListUser.tsx";
 import MenuPage from "./pages/menu/MenuPage.tsx";
 
-const ListCategory = React.lazy(
+const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
 );
-const AddCategory = React.lazy(
+const AddCategory = lazy(
   () => import("./pages/admin/category/add/AddCategory"),
 );
-const EditCategory = React.lazy(
+const EditCategory = lazy(
   () => import("./pages/admin/category/edit/EditCategory"),
 );
-const ListBrand = React.lazy(
-  () => import("./pages/admin/brand/list/ListBrand.tsx"),
-);
-const AddBrand = React.lazy(
-  () => import("./pages/admin/brand/add/AddBrand.tsx"),
-);
-const EditBrand = React.lazy(
-  () => import("./pages/admin/brand/edit/EditBrand"),
-);
+const ListBrand = lazy(() => import("./pages/admin/brand/list/ListBrand.tsx"));
+const AddBrand = lazy(() => import("./pages/admin/brand/add/AddBrand.tsx"));
+const EditBrand = lazy(() => import("./pages/admin/brand/edit/EditBrand"));
+const WomanShop = lazy(() => import("./pages/default/womenShop/WomenShop.tsx"));
 
 function App() {
   return (
@@ -37,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/" element={<MenuPage></MenuPage>}></Route>
+          <Route path={"/woman"} element={<WomanShop />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">
