@@ -1,6 +1,7 @@
-import {createUseStyles} from 'react-jss';
+import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
+
     footer: {
         height: 220,
         backgroundColor: '#D4D2B4',
@@ -74,6 +75,7 @@ const useStyles = createUseStyles({
         height: 25,
         width: 29,
     }
+
 
 });
 export default useStyles;

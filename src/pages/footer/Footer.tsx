@@ -1,11 +1,12 @@
+
 import useStyles from './styles';
 import {Button} from "react-bootstrap";
 import xIcon from "../../assets/xIcon.png";
 import fIcon from "../../assets/fIcon.png";
 import iIcon from "../../assets/InstagramIcon.png";
-const Footer = () => {
-    const classes = useStyles();
 
+const Footer = () => {
+  const classes = useStyles();
     return (
         <footer className={classes.footer}>
             <h2 className={classes.title}>More to explore</h2>
@@ -42,7 +43,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-    )
+
 };
 
 export default Footer;

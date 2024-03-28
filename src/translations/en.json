@@ -1,1 +1,12 @@
-{}
+{
+  "menHeader": "MEN",
+  "womenHeader": "WOMEN",
+  "newIn": "NEW IN",
+  "shopNow": "SHOP NOW",
+  "Dresses": "DRESSES",
+  "Tops": "TOPS",
+  "Shoe": "SHOE",
+  "Handbags":"HANDBAGS",
+  "Swim": "SWIM",
+  "Accessories":"ACCESSORIES"
+}
