@@ -37,12 +37,13 @@ const Footer = () => {
                     <a href="#" className={classes.bottomLink}>FAQs</a>
                 </div>
                 <div className={classes.iconContainer}>
-                    <a  href="#"><img className={classes.iconSocial} src={fIcon}/></a>
-                    <a style={{marginLeft: 20, marginRight: 21}}  href="#"><img className={classes.iconSocial} src={xIcon}/></a>
-                    <a  href="#"><img className={classes.iconSocial} src={iIcon}/></a>
+                    <a  href="#"><img alt='' className={classes.iconSocial} src={fIcon}/></a>
+                    <a style={{marginLeft: 20, marginRight: 21}}  href="#"><img alt='' className={classes.iconSocial} src={xIcon}/></a>
+                    <a  href="#"><img alt='' className={classes.iconSocial} src={iIcon}/></a>
                 </div>
             </div>
         </footer>
+    )
 
 };
 
