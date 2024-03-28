@@ -1,5 +1,5 @@
-import womanImage from "../../../assets/woman1_menu.png";
-import manImage from "../../../assets/man1_menu.png";
+import womanImage from "../../../assets/menu/woman_menu.jfif";
+import manImage from "../../../assets/menu/man_menu.jfif";
 import useStyles from "./styles";
 const SexSelect = () => {
   const classes = useStyles();
