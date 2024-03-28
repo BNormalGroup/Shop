@@ -1,5 +1,8 @@
 import useStyles from './styles';
 import {Button} from "react-bootstrap";
+import xIcon from "../../assets/xIcon.png";
+import fIcon from "../../assets/fIcon.png";
+import iIcon from "../../assets/InstagramIcon.png";
 const Footer = () => {
     const classes = useStyles();
 
@@ -15,22 +18,27 @@ const Footer = () => {
             </div>
             <div className={`${classes.titleBottom}`}>
                 <div className={`row ${classes.bottomLinkContainer}`} style={{marginLeft: 65}}>
-                    <a className={classes.bottomLink}>Contact Us</a>
-                    <a className={classes.bottomLink}>Delivery Information</a>
-                    <a className={classes.bottomLink}>Returns & Refunds</a>
-                    <a className={classes.bottomLink}>Customer Service</a>
-                    <a className={classes.bottomLink}>Payment</a>
-                    <a className={classes.bottomLink}>Size Guide</a>
-                    <a className={classes.bottomLink}>FAQs</a>
+                    <a href="#" className={classes.bottomLink}>Contact Us</a>
+                    <a href="#" className={classes.bottomLink}>Delivery Information</a>
+                    <a href="#" className={classes.bottomLink}>Returns & Refunds</a>
+                    <a href="#" className={classes.bottomLink}>Customer Service</a>
+                    <a href="#" className={classes.bottomLink}>Payment</a>
+                    <a href="#" className={classes.bottomLink}>Size Guide</a>
+                    <a href="#" className={classes.bottomLink}>FAQs</a>
                 </div>
                 <div className={`row ${classes.bottomLinkContainer}`} style={{marginLeft: 170}}>
-                    <a className={classes.bottomLink}>Contact Us</a>
-                    <a className={classes.bottomLink}>Delivery Information</a>
-                    <a className={classes.bottomLink}>Returns & Refunds</a>
-                    <a className={classes.bottomLink}>Customer Service</a>
-                    <a className={classes.bottomLink}>Payment</a>
-                    <a className={classes.bottomLink}>Size Guide</a>
-                    <a className={classes.bottomLink}>FAQs</a>
+                    <a href="#" className={classes.bottomLink}>Contact Us</a>
+                    <a href="#" className={classes.bottomLink}>Delivery Information</a>
+                    <a href="#" className={classes.bottomLink}>Returns & Refunds</a>
+                    <a href="#" className={classes.bottomLink}>Customer Service</a>
+                    <a href="#" className={classes.bottomLink}>Payment</a>
+                    <a href="#" className={classes.bottomLink}>Size Guide</a>
+                    <a href="#" className={classes.bottomLink}>FAQs</a>
+                </div>
+                <div className={classes.iconContainer}>
+                    <a  href="#"><img className={classes.iconSocial} src={fIcon}/></a>
+                    <a style={{marginLeft: 20, marginRight: 21}}  href="#"><img className={classes.iconSocial} src={xIcon}/></a>
+                    <a  href="#"><img className={classes.iconSocial} src={iIcon}/></a>
                 </div>
             </div>
         </footer>

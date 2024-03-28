@@ -7,7 +7,6 @@ const useStyles = createUseStyles({
         textAlign: 'center', // Центруємо текст по горизонталі
         color: '#282826', // Змініть колір тексту за потребою
         fontSize: 16, // Змініть розмір шрифту за потребою
-        position: 'absolute',
         bottom: 0,
         width: '100%',
     },
@@ -66,6 +65,14 @@ const useStyles = createUseStyles({
         height: 170,
         width: 227,
         display: 'flex'
+    },
+    iconContainer:{
+        marginTop: 57,
+        marginLeft: 264,
+    },
+    iconSocial:{
+        height: 25,
+        width: 29,
     }
 
 });
