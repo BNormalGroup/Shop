@@ -12,7 +12,7 @@ export const useStyles = createUseStyles({
   headerWrapper: {
     height: "60px",
     width: "100%",
-    //position: "fixed",
+    position: "fixed",
     zIndex: 1000,
     backgroundColor: "white",
     padding: "10px 63px",

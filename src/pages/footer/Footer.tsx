@@ -41,6 +41,12 @@ const Footer = () => {
                     <a style={{marginLeft: 20, marginRight: 21}}  href="#"><img alt='' className={classes.iconSocial} src={xIcon}/></a>
                     <a  href="#"><img alt='' className={classes.iconSocial} src={iIcon}/></a>
                 </div>
+                <div className={classes.bottomEmailContainer}>
+                    <h3 className={classes.bottomEmailHeader}>Subscribe To Our Newsletters</h3>
+                    <h4 className={classes.bottomEmailDescription}>SUBSCRIBE TO GET 15% OFF YOUR FIRST ORDER</h4>
+                    <input className={classes.bottomEmailInput} type="text" placeholder="Enter email adress"/>
+                    <button className={classes.bottomEmailButton}>Sign up</button>
+                </div>
             </div>
         </footer>
     )
