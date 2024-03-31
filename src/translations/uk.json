@@ -8,5 +8,10 @@
   "Shoe": "ВЗУТТЯ",
   "Handbags":"СУМОЧКИ",
   "Swim": "КУПАЛЬНИКИ",
-  "Accessories":"АКСЕСУАРИ"
+  "Accessories":"АКСЕСУАРИ",
+  "collectionName": "ВЕСНА '24",
+  "collectionNameMen": "ЧОЛОВІКИ ВЕСНА '24",
+  "collectionNameWomen": "ЖІНКИ ВЕСНА '24",
+  "sexSelectMen": "ЧОЛОВІЧИЙ",
+  "sexSelectWomen": "ЖІНОЧИЙ"
 }

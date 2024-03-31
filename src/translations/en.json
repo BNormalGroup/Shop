@@ -8,5 +8,10 @@
   "Shoe": "SHOE",
   "Handbags":"HANDBAGS",
   "Swim": "SWIM",
-  "Accessories":"ACCESSORIES"
+  "Accessories":"ACCESSORIES",
+  "collectionName": "SPRING '24",
+  "collectionNameMan": "MAN SPRING '24",
+  "collectionNameWoman": "WOMAN SPRING '24",
+  "sexSelectMen": "SHOP MEN",
+  "sexSelectWomen": "SHOP WOMEN"
 }

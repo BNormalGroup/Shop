@@ -1,4 +1,4 @@
-import { createUseStyles } from "react-jss";
+import {createUseStyles} from "react-jss";
 
 const useStyles = createUseStyles({
 
@@ -12,16 +12,15 @@ const useStyles = createUseStyles({
         width: '100%',
     },
     title: {
-        fontFamily: 'OswaldFont, sans-serif',
+        fontFamily: 'OswaldFontLight, sans-serif',
         fontWeight: 300,
         fontSize: 35,
         textTransform: 'uppercase',
-        marginTop: 22,
+        paddingTop: 22,
         marginBottom: 41,
         height: 52
     },
-    titleNav:{
-    },
+    titleNav: {},
     titleButton: {
         height: 38,
         margin: '0px 36px',
@@ -47,7 +46,8 @@ const useStyles = createUseStyles({
         height: 365,
         backgroundColor: 'white',
         marginTop: 58,
-        display: 'flex'
+        display: 'flex',
+        justifyContent: 'center'
     },
     bottomLink: {
         height: 23,
@@ -61,21 +61,66 @@ const useStyles = createUseStyles({
         alignItems: 'start',
         justifyContent: 'start',
     },
-    bottomLinkContainer:{
+    bottomLinkContainer: {
         marginTop: 57,
         height: 170,
         width: 227,
         display: 'flex'
     },
-    iconContainer:{
+    iconContainer: {
         marginTop: 57,
         marginLeft: 264,
     },
-    iconSocial:{
+    iconSocial: {
         height: 25,
         width: 29,
+    },
+    bottomEmailContainer: {
+        display: "flex",
+        justifyContent: "left",
+        flexDirection: 'column',
+        marginLeft: 170,
+        marginTop: 57
+    },
+    bottomEmailHeader: {
+        color: '#000000',
+        fontSize: 21,
+        fontFamily: 'SourceSerifProSemiBold, sans-serif',
+        textAlign: "left",
+        marginBottom: 31
+    },
+    bottomEmailDescription: {
+        color: '#686747',
+        fontSize: 16,
+        fontFamily: 'SourceSerifProLight, sans-serif',
+        textAlign: "left",
+        marginBottom: 30
+    },
+    bottomEmailInput: {
+        fontSize: 14,
+        fontFamily: 'SourceSerifProLight, sans-serif',
+        textAlign: "left",
+        minHeight: 50,
+        border: '2px solid #282826',
+        paddingLeft: 17,
+        marginBottom: 20,
+        '&::placeholder': {
+            color: '#D4D2B4',
+            fontSize: 14,
+            fontFamily: 'SourceSerifProLight, sans-serif',
+        }
+    },
+    bottomEmailButton:{
+        backgroundColor: '#282826',
+        minHeight: 50,
+        color: "#F5F5F5",
+        fontFamily: 'OswaldFont, sans-serif',
+        fontSize: 18,
+        transition: 'background-color 0.3s, color 0.3s',
+        '&:hover': {
+            backgroundColor: '#F5F5F5',
+            color: '#282826',
+        },
     }
-
-
 });
 export default useStyles;

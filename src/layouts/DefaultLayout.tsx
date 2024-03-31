@@ -6,10 +6,11 @@ export const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <div className="container" style={{ maxWidth: 1440, padding: 0 }}>
+
+      <div className="container" style={{ maxWidth: 1440, padding: 0, paddingTop: 60 }}>
         <Outlet></Outlet>
       </div>
-      {/*<Footer></Footer>*/}
+      <Footer></Footer>
     </>
   );
 };
