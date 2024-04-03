@@ -51,10 +51,10 @@ export const RoundaboutClothing = ({ images }: { images: string[] }) => {
           </div>
         }
       >
-        {images.map((img: string) => {
+        {images.map((img: string, index) => {
           return (
-            <Link to={"/"}>
-              <img className={classes.image} src={img} />
+            <Link key={index} to={"/"}>
+              <img alt =''  className={classes.image} src={img} />
             </Link>
           );
         })}

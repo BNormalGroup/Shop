@@ -1,8 +1,9 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export const Logo = () => {
   return (
-    <>
+    <Link to='/'>
       <svg
         width="48"
         height="31"
@@ -32,6 +33,6 @@ export const Logo = () => {
           />
         </defs>
       </svg>
-    </>
+    </Link>
   );
 };

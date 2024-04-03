@@ -40,7 +40,7 @@ const useStyles = createUseStyles({
         color: '#686747',
         textAlign: 'center',
         marginTop: 16,
-        marginBottom: 56,
+        marginBottom: 0,
         padding: 0
     },
 });

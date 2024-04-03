@@ -33,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/" element={<MenuPage></MenuPage>}></Route>
-          <Route path={"/woman"} element={<WomanShop />} />
+          <Route path={"/women"} element={<WomanShop />} />
           <Route path={"/men"} element={<MenShop />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
