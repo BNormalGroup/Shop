@@ -8,6 +8,7 @@ import { LanguageSwitcher } from "../languageSwitcher/LanguageSwitcher.tsx";
 import { BasketIcon } from "../../assets/icons/BasketIcon.tsx";
 import accountIcon from "../../assets/account.png";
 import likeIcon from "../../assets/likeIcon.png";
+import {Link} from "react-router-dom";
 
 export const Header = () => {
   const { t } = useTranslation();
@@ -21,8 +22,8 @@ export const Header = () => {
           style={{ justifyContent: "center" }}
         >
           <Logo />
-          <a className={classes.genderText}>{t("womenHeader")}</a>
-          <a className={classes.genderText}>{t("menHeader")}</a>
+          <Link to='/women' className={classes.genderText}>{t("womenHeader")}</Link>
+          <Link to='/men' className={classes.genderText}>{t("menHeader")}</Link>
           <SearchHeader />
           <LanguageSwitcher />
           <img src={accountIcon} className={classes.icon} />
