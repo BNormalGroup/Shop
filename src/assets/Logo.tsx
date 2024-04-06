@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Logo = () => {
   return (
-    <Link to='/'>
+    <Link to="/">
       <svg
         width="48"
         height="31"

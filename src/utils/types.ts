@@ -59,3 +59,8 @@ export interface IBan {
   reason: string;
   user_id: number;
 }
+
+export type SexCategoryItems = {
+  image: string;
+  name: string;
+};

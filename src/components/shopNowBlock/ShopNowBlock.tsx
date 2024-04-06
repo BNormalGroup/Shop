@@ -9,8 +9,15 @@ import HandbagsImage from "../../assets/itemCategoryWoman/Handbags.png";
 import ShoeImage from "../../assets/itemCategoryWoman/Shoe.png";
 import SwimImage from "../../assets/itemCategoryWoman/Swim.png";
 import TopsImage from "../../assets/itemCategoryWoman/Tops.png";
+import { SexCategoryItems } from "../../utils/types.ts";
 
-export const ShopNowBlock = ({ images }: { images: string[] }) => {
+export const ShopNowBlock = ({
+  images,
+  categories,
+}: {
+  images: string[];
+  categories: SexCategoryItems[];
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -24,12 +31,9 @@ export const ShopNowBlock = ({ images }: { images: string[] }) => {
       </div>
       <div className={classes.categoryItemWrapper}>
         <div className={classes.gridContainer}>
-          <ItemCategory image={DressesImage} text={t("Dresses")} />
-          <ItemCategory image={TopsImage} text={t("Tops")} />
-          <ItemCategory image={ShoeImage} text={t("Shoe")} />
-          <ItemCategory image={HandbagsImage} text={t("Handbags")} />
-          <ItemCategory image={SwimImage} text={t("Swim")} />
-          <ItemCategory image={AccessoriesImage} text={t("Accessories")} />
+          {categories.map((item) => {
+            return <ItemCategory image={item.image} text={item.name} />;
+          })}
         </div>
       </div>
     </>

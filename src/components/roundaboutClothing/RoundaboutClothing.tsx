@@ -54,7 +54,7 @@ export const RoundaboutClothing = ({ images }: { images: string[] }) => {
         {images.map((img: string, index) => {
           return (
             <Link key={index} to={"/"}>
-              <img alt =''  className={classes.image} src={img} />
+              <img alt="" className={classes.image} src={img} />
             </Link>
           );
         })}

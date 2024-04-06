@@ -4,9 +4,9 @@ export const useStyles = createUseStyles({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    '&:hover': {
-      cursor: 'pointer'
-    }
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   image: {
     width: "423px",
@@ -20,6 +20,6 @@ export const useStyles = createUseStyles({
     textAlign: "center",
     textDecoration: "none",
     color: "#686747",
-    width: '423px'
+    width: "423px",
   },
 });

@@ -6,12 +6,18 @@
   "Dresses": "DRESSES",
   "Tops": "TOPS",
   "Shoe": "SHOE",
-  "Handbags":"HANDBAGS",
+  "Handbags": "HANDBAGS",
   "Swim": "SWIM",
-  "Accessories":"ACCESSORIES",
+  "Accessories": "ACCESSORIES",
   "collectionName": "SPRING '24",
   "collectionNameMen": "MAN SPRING '24",
   "collectionNameWomen": "WOMAN SPRING '24",
   "sexSelectMen": "SHOP MEN",
-  "sexSelectWomen": "SHOP WOMEN"
+  "sexSelectWomen": "SHOP WOMEN",
+  "JeansMen": "JEANS",
+  "t-shirtsMen": "T-SHIRTS",
+  "shoeMen": "SHOE",
+  "BagsMen": "BAGS",
+  "SocksMen": "SOCKS",
+  "AccessoriesMen": "ACCESSORIES"
 }

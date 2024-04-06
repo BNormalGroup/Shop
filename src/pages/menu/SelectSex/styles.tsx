@@ -33,10 +33,10 @@ const useStyles = createUseStyles({
     display: "flex", // Встановлюємо flex контейнер
     alignItems: "center", // Вертикальне центрування
     justifyContent: "center", // Горизонтальне центрування
-    transition: 'background-color 0.3s, color 0.3s',
-    '&:hover': {
-      backgroundColor: '#F5F5F5',
-      color: '#282826',
+    transition: "background-color 0.3s, color 0.3s",
+    "&:hover": {
+      backgroundColor: "#F5F5F5",
+      color: "#282826",
     },
   },
 });
