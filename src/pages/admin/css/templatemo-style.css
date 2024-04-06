@@ -504,13 +504,13 @@ input[type="checkbox"] {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #394f62;
+  background: #D4D2B4;
 }
 ::-webkit-scrollbar-thumb {
-  background: #6d8da6;
+  background: #282826;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8ab5d6;
+  background: #282826;
 }
 
 .tm-footer-link {
