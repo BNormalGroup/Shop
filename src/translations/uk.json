@@ -19,5 +19,14 @@
   "shoeMen": "ВЗУТТЯ",
   "BagsMen": "СУМКИ",
   "SocksMen": "НОСКИ",
-  "AccessoriesMen": "АКСЕСУАРИ"
+  "AccessoriesMen": "АКСЕСУАРИ",
+  "CreateAnAccount": "Створити обліковий запис",
+  "CreateName": "Ім'я",
+  "CreateEmail": "Електронна пошта",
+  "CreatePassword": "Пароль",
+  "CreateButton": "Створити",
+  "BackButton": "Назад",
+  "ValidationRegisterEmail": "Будь ласка, введіть дійсну адресу електронної пошти",
+  "ValidationLoginEmail": "Ой! Схоже, ви ввели неправильну електронну адресу",
+  "ValidationLoginPassword": "Ой! Схоже, ви ввели неправильний пароль"
 }

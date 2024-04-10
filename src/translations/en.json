@@ -19,5 +19,14 @@
   "shoeMen": "SHOE",
   "BagsMen": "BAGS",
   "SocksMen": "SOCKS",
-  "AccessoriesMen": "ACCESSORIES"
+  "AccessoriesMen": "ACCESSORIES",
+  "CreateAnAccount": "Create an Account",
+  "CreateName": "Name",
+  "CreateEmail": "Email",
+  "CreatePassword": "Password",
+  "CreateButton": "Create",
+  "BackButton": "Back",
+  "ValidationRegisterEmail": "Please enter valid email address",
+  "ValidationLoginEmail": "Oops! Looks like you put in the wrong email",
+  "ValidationLoginPassword": "Oops! Looks like you put in the wrong password"
 }

@@ -504,7 +504,7 @@ input[type="checkbox"] {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #D4D2B4;
+  background: #d4d2b4;
 }
 ::-webkit-scrollbar-thumb {
   background: #282826;

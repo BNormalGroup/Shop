@@ -21,4 +21,8 @@ export const useStyles = createUseStyles({
     width: "23px",
     height: "23px",
   },
+  buttonIcon: {
+    backgroundColor: "transparent",
+    border: 0,
+  },
 });
