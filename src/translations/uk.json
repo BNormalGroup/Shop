@@ -28,5 +28,9 @@
   "BackButton": "Назад",
   "ValidationRegisterEmail": "Будь ласка, введіть дійсну адресу електронної пошти",
   "ValidationLoginEmail": "Ой! Схоже, ви ввели неправильну електронну адресу",
-  "ValidationLoginPassword": "Ой! Схоже, ви ввели неправильний пароль"
+  "ValidationLoginPassword": "Ой! Схоже, ви ввели неправильний пароль",
+  "LoginAccount": "Увійти в свій обліковий запис",
+  "ForgotPassword": "Забули пароль?",
+  "LoginButton": "Увійти",
+  "Create an Account": "Створити обліковий запис"
 }

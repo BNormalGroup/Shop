@@ -92,4 +92,10 @@ export const useStyles = createUseStyles({
     lineHeight: "13.78px",
     fontFamily: "Source Serif Pro",
   },
+  forgotPasswordText: {
+    color: "black",
+    fontSize: "14px",
+    lineHeight: "17.54px",
+    fontFamily: "Source Serif Pro",
+  }
 });

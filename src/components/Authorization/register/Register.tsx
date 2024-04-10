@@ -1,4 +1,4 @@
-import { useStyles } from "./RegisterStyle.ts";
+import { useStyles } from "../AuthorizationStyle.ts";
 import { useTranslation } from "react-i18next";
 
 export const Register = ({ setClose }: { setClose: () => void }) => {
@@ -17,7 +17,9 @@ export const Register = ({ setClose }: { setClose: () => void }) => {
               placeholder={t("CreateName")}
             />
             <div className={classes.validationInput}>
-              <label className={classes.textValidation}>Please enter valid email address</label>
+              <label className={classes.textValidation}>
+                Please enter valid email address
+              </label>
               <input
                 className={classes.inputRegister}
                 placeholder={t("CreateEmail")}

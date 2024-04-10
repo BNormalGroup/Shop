@@ -28,5 +28,8 @@
   "BackButton": "Back",
   "ValidationRegisterEmail": "Please enter valid email address",
   "ValidationLoginEmail": "Oops! Looks like you put in the wrong email",
-  "ValidationLoginPassword": "Oops! Looks like you put in the wrong password"
+  "ValidationLoginPassword": "Oops! Looks like you put in the wrong password",
+  "LoginAccount": "Sing in to your Account",
+  "ForgotPassword": "Forgot your password?",
+  "LoginButton": "Sing in"
 }

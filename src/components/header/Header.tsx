@@ -9,12 +9,14 @@ import { BasketIcon } from "../../assets/icons/BasketIcon.tsx";
 import accountIcon from "../../assets/account.png";
 import likeIcon from "../../assets/likeIcon.png";
 import { Link } from "react-router-dom";
-import { Register } from "../register/Register.tsx";
+import { Register } from "../Authorization/register/Register.tsx";
+import { Login } from "../Authorization/login/Login.tsx";
 
 export const Header = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [registerOpen, setRegisterOpen] = useState<boolean>(false);
+  const [loginOpen, setLoginOpen] = useState<boolean>(false);
 
   return (
     <>
