@@ -1,25 +1,23 @@
 import { useTranslation } from "react-i18next";
-import React from "react";
+import React, { useState } from "react";
 import { useStyles } from "../AuthorizationStyle.ts";
+import { Register } from "../register/Register.tsx";
 
-export const Login = () => {
+export const Login = ({ setClose }: { setClose: () => void }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [isRegister, setIsRegister] = useState<boolean>(false);
 
-  return (
+ if (!isRegister) return (
     <>
-      <div className={classes.overlay} onClick={()=>{}} />
+      <div className={classes.overlay} onClick={setClose} />
       <div className={classes.content}>
         <div className={classes.contentContainer}>
           <p className={classes.contentText}>{t("LoginAccount")}</p>
           <div className={classes.inputsContainer}>
-            <input
-              className={classes.inputRegister}
-              placeholder={t("CreateName")}
-            />
             <div className={classes.validationInput}>
               <label className={classes.textValidation}>
-                Please enter valid email address
+                {t('ValidationRegisterEmail')}
               </label>
               <input
                 className={classes.inputRegister}
@@ -37,7 +35,7 @@ export const Login = () => {
             <button className={classes.buttonCreate}>
               {t("LoginButton")}
             </button>
-            <button className={classes.buttonBack} onClick={()=>{}}>
+            <button className={classes.buttonBack} onClick={()=>{setIsRegister(true)}}>
               {t("CreateAnAccount")}
             </button>
           </div>
@@ -45,4 +43,8 @@ export const Login = () => {
       </div>
     </>
   );
+ else
+   return (
+    <Register setClose={setClose} backLogin={()=>{setIsRegister(false)}}/>
+   );
 };

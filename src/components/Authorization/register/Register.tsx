@@ -1,7 +1,7 @@
 import { useStyles } from "../AuthorizationStyle.ts";
 import { useTranslation } from "react-i18next";
 
-export const Register = ({ setClose }: { setClose: () => void }) => {
+export const Register = ({ setClose, backLogin }: { setClose: () => void, backLogin: () => void }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -18,7 +18,7 @@ export const Register = ({ setClose }: { setClose: () => void }) => {
             />
             <div className={classes.validationInput}>
               <label className={classes.textValidation}>
-                Please enter valid email address
+                {t('ValidationRegisterEmail')}
               </label>
               <input
                 className={classes.inputRegister}
@@ -35,7 +35,7 @@ export const Register = ({ setClose }: { setClose: () => void }) => {
             <button className={classes.buttonCreate}>
               {t("CreateButton")}
             </button>
-            <button className={classes.buttonBack} onClick={setClose}>
+            <button className={classes.buttonBack} onClick={backLogin}>
               {t("BackButton")}
             </button>
           </div>

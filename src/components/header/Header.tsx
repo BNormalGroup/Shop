@@ -48,7 +48,7 @@ export const Header = () => {
         </Stack>
       </div>
       {registerOpen ? (
-        <Register
+        <Login
           setClose={() => {
             setRegisterOpen(false);
           }}
