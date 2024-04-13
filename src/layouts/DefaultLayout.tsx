@@ -6,12 +6,7 @@ export const DefaultLayout = () => {
   return (
     <>
       <Header />
-      <div
-        className="container"
-        style={{ maxWidth: 1440, padding: 0, paddingTop: 60, marginBottom: 56 }}
-      >
-        <Outlet></Outlet>
-      </div>
+      <Outlet></Outlet>
       <Footer></Footer>
     </>
   );

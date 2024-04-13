@@ -61,7 +61,7 @@ const MenuHeader = () => {
       <div
         id="panelMenuInformation"
         onMouseLeave={handleMouseLeave}
-        className={`${classes.panelMenuHeader} ${classes.overlay}`}
+        className={`${classes.panelMenuHeader} ${classes.overlay} container`}
         style={{ visibility: isElement ? "visible" : "hidden" }}
       >
         <p>blalbal</p>

@@ -34,7 +34,7 @@ const useStyles = createUseStyles({
   panelMenuHeader: {
     height: 200,
     width: "100%",
-    maxWidth: 1440,
+    padding: 0,
     backgroundColor: "#D4D2B4",
     visibility: "hidden",
   },
