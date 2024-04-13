@@ -9,6 +9,7 @@ const useStyles = createUseStyles({
     fontSize: 16, // Змініть розмір шрифту за потребою
     bottom: 0,
     width: "100%",
+    borderTop: "2px solid black",
   },
   title: {
     fontFamily: "OswaldFontLight, sans-serif",
@@ -44,7 +45,6 @@ const useStyles = createUseStyles({
   titleBottom: {
     height: 365,
     backgroundColor: "white",
-    marginTop: 58,
     display: "flex",
     justifyContent: "center",
   },
