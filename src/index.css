@@ -10,6 +10,13 @@ body{
 }
 
 @font-face {
+  font-family: "OswaldFontBold";
+  src:
+          local("Oswald-Bold"),
+          url("./assets/fonts/Oswald-Bold.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "OswaldFontLight";
   src:
     local("Oswald-Light"),

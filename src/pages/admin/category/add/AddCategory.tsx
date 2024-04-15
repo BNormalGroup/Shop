@@ -1,25 +1,31 @@
 import React, { startTransition, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { ICategoryItem } from "../../../../utils/types.ts";
+import {ICategoryPostItem} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
+import {useNavigate} from "react-router-dom";
 
 const AddCategory = () => {
-  const [category, setCategory] = useState<ICategoryItem>({
-    id: undefined,
+  const [category, setCategory] = useState<ICategoryPostItem>({
     name: "",
-    slug: "",
     description: "",
-    parent_id: undefined,
+    slug: "",
+    parent_id: "",
   });
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
+    console.log(category);
     try {
-      await http.post<ICategoryItem>("/categories/", category, {
+      await http.post<ICategoryPostItem>("/categories/", category, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+      }).then((r) => {
+        if (r.status == 200) {
+          navigate('/admin/category/listCategory');
+        }
       });
     } catch (error: any) {
       startTransition(() => {
@@ -83,8 +89,8 @@ const AddCategory = () => {
                       <label htmlFor="parent">Parent Id</label>
                       <input
                         onChange={handleChange}
-                        id="parent"
-                        name="parent"
+                        id="parent_id"
+                        name="parent_id"
                         type="number"
                         className="form-control validate"
                       />

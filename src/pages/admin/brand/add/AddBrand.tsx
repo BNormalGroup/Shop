@@ -3,6 +3,7 @@ import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import { IBrandItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
+import {useNavigate} from "react-router-dom";
 
 const AddBrand = () => {
   const [brand, setBrand] = useState<IBrandItem>({
@@ -11,6 +12,7 @@ const AddBrand = () => {
     description: "",
   });
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
     try {
@@ -18,6 +20,10 @@ const AddBrand = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+      }).then((r) => {
+        if (r.status == 200) {
+          navigate('/admin/brand/listBrand');
+        }
       });
     } catch (error: any) {
       startTransition(() => {

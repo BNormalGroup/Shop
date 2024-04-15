@@ -48,6 +48,7 @@ const ListCategory = () => {
                 <th scope="col">SLUG</th>
                 <th scope="col">PARENT ID</th>
                 <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
               </tr>
             </thead>
             <tbody>
@@ -63,10 +64,23 @@ const ListCategory = () => {
                       : item.description}
                   </td>
                   <td className="tm-product-name">{item.slug}</td>
-                  <td className="tm-product-name">{item.parent_id}</td>
+                  <td className="tm-product-name">{item.parent_id != null ? item.parent_id : 'none'}</td>
                   <td>
-                    <button onClick={() => handleDeleteClick(item.id)}>
+                    <button
+                        className="btn p-0"
+                        onClick={() => handleDeleteClick(item.id)}
+                    >
                       <i className="bi bi-trash"></i>
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                        className="btn p-0"
+                        onClick={() => {
+                          navigate("/admin/category/editCategory/" + item.id);
+                        }}
+                    >
+                      <i className="bi bi-pencil"></i>
                     </button>
                   </td>
                 </tr>
