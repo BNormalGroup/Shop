@@ -1,73 +1,96 @@
-import React, { useState, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import React, {useState, useEffect} from "react";
+import {useTranslation} from "react-i18next";
 import useStyles from "./MenuHeaderStyle.tsx";
+import {Link} from "react-router-dom";
+import {ImageMenu} from "./imageMenu/ImageMenu.tsx";
+import womenDressesImage from "../../assets/HeaderMenu/womenDresses.png"
+import womenSpringImage from "../../assets/HeaderMenu/womenSpring.png"
+import {ICategoryParentItem} from "../../utils/types.ts";
+import http from "../../http.ts";
 
 const MenuHeader = () => {
-  const { t } = useTranslation();
-  const classes = useStyles();
-  const [isElement, setIsElement] = useState<boolean>(false);
+    const {t} = useTranslation();
+    const classes = useStyles();
+    const [isElement, setIsElement] = useState<boolean>(false);
+    const [elementId, setElementId] = useState<number>(0);
+    const [category, setCategory] = useState<ICategoryParentItem[]>();
 
-  const [targetLinkSelect, setTargetLinkSelect] = useState<HTMLElement | null>(
-    null,
-  );
+    const [targetLinkSelect, setTargetLinkSelect] = useState<HTMLElement | null>(
+        null,
+    );
 
-  const handleMouseEnter = (event: any) => {
-    setIsElement(true);
-    const target = event.target as HTMLAnchorElement;
-    target.classList.add(classes.show);
-    setTargetLinkSelect(target);
-  };
 
-  const handleMouseLeave = (event: any) => {
-    const panel = document.getElementById("panelMenuInformation");
+    useEffect(() => {
+        http.get<ICategoryParentItem[]>("/categories/child")
+            .then((resp) => {
+                setCategory(resp.data);
+                console.log(resp.data);
+            })
+    }, []);
 
-    if (
-      !panel ||
-      (event.relatedTarget instanceof Node &&
-        panel.contains(event.relatedTarget))
-    ) {
-      return;
-    }
-    setIsElement(false);
-    targetLinkSelect?.classList.remove(classes.show);
-  };
+    const handleMouseEnter = (event: any) => {
 
-  return (
-    <>
-      <div id="panelMenuContainer" className={classes.headerWrapper}>
-        {[
-          "New In",
-          "Clothing",
-          "Dresses",
-          "Shoes",
-          "Accessories",
-          "Sportswear",
-          "Face + Body",
-          "Topshop",
-          "Brands",
-          "Marketplace",
-          "Sale",
-        ].map((label, index) => (
-          <a
-            key={index}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={classes.linkButton}
-          >
-            {label}
-          </a>
-        ))}
-      </div>
-      <div
-        id="panelMenuInformation"
-        onMouseLeave={handleMouseLeave}
-        className={`${classes.panelMenuHeader} ${classes.overlay} container`}
-        style={{ visibility: isElement ? "visible" : "hidden" }}
-      >
-        <p>blalbal</p>
-      </div>
-    </>
-  );
+        setIsElement(true);
+        const target = event.target as HTMLAnchorElement;
+        target.classList.add(classes.show);
+        setTargetLinkSelect(target);
+    };
+    const handleMouseLeave = (event: any) => {
+        const panel = document.getElementById("panelMenuInformation");
+        if (
+            !panel ||
+            (event.relatedTarget instanceof Node &&
+                panel.contains(event.relatedTarget))
+        ) {
+            return;
+        }
+        setIsElement(false);
+        targetLinkSelect?.classList.remove(classes.show);
+    };
+
+    return (
+        <>
+            <div id="panelMenuContainer" className={classes.headerWrapper}>
+                {category?.slice(0, 11).map((item, index) => (
+                    <a
+                        key={index}
+                        onMouseEnter={(event) => {
+                            handleMouseEnter(event);
+                            setElementId(index);
+                        }}
+                        onMouseLeave={handleMouseLeave}
+                        className={classes.linkButton}
+                    >
+                        {item.name}
+                    </a>
+                ))}
+            </div>
+            <div
+                id="panelMenuInformation"
+                onMouseLeave={handleMouseLeave}
+                className={`${classes.panelMenuHeader} ${classes.overlay} container`}
+                style={{visibility: isElement ? "visible" : "hidden"}}
+            >
+                <div className={classes.linkContainer}>
+                    <h1 className={classes.linkContainerHeader}>SHOP BY PRODUCT</h1>
+                    <div className={classes.listLink}>
+                        <p className={classes.link} style={{marginBottom: 0, fontWeight: 600}}>Top Rated Clothing</p>
+                        {
+                            category && category[elementId]?.children?.map((item, childIndex) => (
+                                    <Link key={childIndex} className={classes.link} to={''}>{item.name}</Link>
+                                )
+                            )
+                        }
+
+                    </div>
+                </div>
+                <div className={classes.imageContainer}>
+                    <ImageMenu image={womenDressesImage} text={'Spring 2024'}></ImageMenu>
+                    <ImageMenu image={womenSpringImage} text={'Spring 2024'}></ImageMenu>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default MenuHeader;

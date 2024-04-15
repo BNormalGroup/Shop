@@ -6,6 +6,20 @@ export interface ICategoryItem {
   parent_id?: number;
 }
 
+export interface ICategoryPostItem {
+  name: string;
+  slug: string;
+  description: string;
+  parent_id?: string;
+}
+export interface ICategoryParentItem {
+  id?: number;
+  name: string;
+  slug: string;
+  description: string;
+  children?: ICategoryParentItem[];
+}
+
 export interface IBrandItem {
   id?: number;
   name: string;

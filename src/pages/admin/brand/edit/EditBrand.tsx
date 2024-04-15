@@ -3,7 +3,7 @@ import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import { IBrandItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const EditBrand = () => {
   const [brand, setBrand] = useState<IBrandItem>({
@@ -13,6 +13,7 @@ const EditBrand = () => {
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     http
@@ -34,6 +35,10 @@ const EditBrand = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+      }).then((r) => {
+        if (r.status == 200) {
+          navigate('/admin/brand/listBrand');
+        }
       });
     } catch (error: any) {
       setError(error);

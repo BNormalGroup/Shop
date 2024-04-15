@@ -3,7 +3,7 @@ import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import { IBrandItem, ICategoryItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 const EditCategory = () => {
   const [category, setCategory] = useState<ICategoryItem>({
@@ -15,6 +15,7 @@ const EditCategory = () => {
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     http
@@ -38,7 +39,12 @@ const EditCategory = () => {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+      }).then((r) => {
+        if (r.status == 200) {
+          navigate('/admin/category/listCategory');
+        }
       });
+
     } catch (error: any) {
       startTransition(() => {
         setError(error);
@@ -103,9 +109,9 @@ const EditCategory = () => {
                       <label htmlFor="parent">Parent Id</label>
                       <input
                         onChange={handleChange}
-                        id="parent"
+                        id="parent_id"
                         value={category.parent_id}
-                        name="parent"
+                        name="parent_id"
                         type="number"
                         className="form-control validate"
                       />
