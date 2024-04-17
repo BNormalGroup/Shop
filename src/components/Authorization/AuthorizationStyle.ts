@@ -97,5 +97,5 @@ export const useStyles = createUseStyles({
     fontSize: "14px",
     lineHeight: "17.54px",
     fontFamily: "Source Serif Pro",
-  }
+  },
 });
