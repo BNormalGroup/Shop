@@ -4,12 +4,15 @@ import App from "./App.tsx";
 import "./index.css";
 import "./utils/i18n.ts";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./app/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense fallback={<>...</>}>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
-    ,
   </Suspense>,
 );

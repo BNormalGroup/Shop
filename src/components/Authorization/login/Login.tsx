@@ -8,43 +8,56 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
   const { t } = useTranslation();
   const [isRegister, setIsRegister] = useState<boolean>(false);
 
- if (!isRegister) return (
-    <>
-      <div className={classes.overlay} onClick={setClose} />
-      <div className={classes.content}>
-        <div className={classes.contentContainer}>
-          <p className={classes.contentText}>{t("LoginAccount")}</p>
-          <div className={classes.inputsContainer}>
-            <div className={classes.validationInput}>
-              <label className={classes.textValidation}>
-                {t('ValidationRegisterEmail')}
-              </label>
+  if (!isRegister)
+    return (
+      <>
+        <div className={classes.overlay} onClick={setClose} />
+        <div className={classes.content}>
+          <div className={classes.contentContainer}>
+            <p className={classes.contentText}>{t("LoginAccount")}</p>
+            <div className={classes.inputsContainer}>
+              <div className={classes.validationInput}>
+                <label className={classes.textValidation}>
+                  {t("ValidationRegisterEmail")}
+                </label>
+                <input
+                  className={classes.inputRegister}
+                  placeholder={t("CreateEmail")}
+                />
+              </div>
               <input
                 className={classes.inputRegister}
-                placeholder={t("CreateEmail")}
+                placeholder={t("CreatePassword")}
+                type="password"
               />
+              <p className={classes.forgotPasswordText}>
+                {t("ForgotPassword")}
+              </p>
             </div>
-            <input
-              className={classes.inputRegister}
-              placeholder={t("CreatePassword")}
-              type="password"
-            />
-            <p className={classes.forgotPasswordText}>{t('ForgotPassword')}</p>
-          </div>
-          <div className={classes.buttonsContainer}>
-            <button className={classes.buttonCreate}>
-              {t("LoginButton")}
-            </button>
-            <button className={classes.buttonBack} onClick={()=>{setIsRegister(true)}}>
-              {t("CreateAnAccount")}
-            </button>
+            <div className={classes.buttonsContainer}>
+              <button className={classes.buttonCreate}>
+                {t("LoginButton")}
+              </button>
+              <button
+                className={classes.buttonBack}
+                onClick={() => {
+                  setIsRegister(true);
+                }}
+              >
+                {t("CreateAnAccount")}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
- else
-   return (
-    <Register setClose={setClose} backLogin={()=>{setIsRegister(false)}}/>
-   );
+      </>
+    );
+  else
+    return (
+      <Register
+        setClose={setClose}
+        backLogin={() => {
+          setIsRegister(false);
+        }}
+      />
+    );
 };
