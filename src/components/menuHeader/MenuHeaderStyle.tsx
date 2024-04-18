@@ -6,7 +6,7 @@ const useStyles = createUseStyles({
         width: "100%",
         zIndex: 1000,
         backgroundColor: "#282826",
-        padding: "0px 53px",
+        padding: "0px 43px",
         justifyContent: "start",
         display: "flex",
         alignItems: "center",

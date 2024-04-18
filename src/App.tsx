@@ -11,6 +11,7 @@ import AddItem from "./pages/admin/item/add/AddItem.tsx";
 import EditItem from "./pages/admin/item/edit/EditItem.tsx";
 import ListUser from "./pages/admin/user/list/ListUser.tsx";
 import MenuPage from "./pages/menu/MenuPage.tsx";
+import ProductListPage from "./pages/productList/ProductListPage.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
@@ -35,6 +36,7 @@ function App() {
           <Route path="/" element={<MenuPage></MenuPage>}></Route>
           <Route path={"/women"} element={<WomanShop />} />
           <Route path={"/men"} element={<MenShop />} />
+          <Route path="category/:id" element={<ProductListPage />}></Route>
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">
