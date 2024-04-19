@@ -1,6 +1,12 @@
 import http from "../http.ts";
-import { IUser } from "../utils/types.ts";
+import { IUserRegister } from "../components/Authorization/types/types.ts";
 
-const register = (user: IUser) => {
-  return http.post("/register", { user });
+export const register = async (user: IUserRegister) => {
+  try {
+    await http
+      .post<IUserRegister>("/auth/register", user);
+  } catch (error: any) {
+    console.log(error);
+    throw error.response;
+  }
 };
