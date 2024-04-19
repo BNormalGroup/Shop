@@ -32,5 +32,10 @@
   "LoginAccount": "Увійти в свій обліковий запис",
   "ForgotPassword": "Забули пароль?",
   "LoginButton": "Увійти",
-  "Create an Account": "Створити обліковий запис"
+  "Create an Account": "Створити обліковий запис",
+  "PasswordRequired": "Пароль обов'язковий",
+  "FirstNameRequired": "Ім'я обов'язкове",
+  "PasswordIsShort": "Пароль занадто короткий - повинен містити принаймні 6 символів",
+  "FirstNameLettersOnly": "Тільки літери",
+  "EmailInvalid": "Електронна пошта повинна бути дійсною"
 }

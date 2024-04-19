@@ -27,9 +27,14 @@
   "CreateButton": "Create",
   "BackButton": "Back",
   "ValidationRegisterEmail": "Please enter valid email address",
+  "PasswordRequired": "Password is required",
+  "FirstNameRequired": "First name is required",
+  "PasswordIsShort": "Password is too short - should be 6 chars min",
+  "FirstNameLettersOnly": "Letters only",
   "ValidationLoginEmail": "Oops! Looks like you put in the wrong email",
   "ValidationLoginPassword": "Oops! Looks like you put in the wrong password",
   "LoginAccount": "Sing in to your Account",
   "ForgotPassword": "Forgot your password?",
-  "LoginButton": "Sing in"
+  "LoginButton": "Sing in",
+  "EmailInvalid": "Email must be a valid email"
 }
