@@ -1,6 +1,6 @@
 import { useStyles } from "../AuthorizationStyle.ts";
 import { useTranslation } from "react-i18next";
-import { Form, Formik, FormikHelpers } from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormRegister } from "./Form.tsx";
 import { defaultData } from "./default-data.ts";
@@ -17,23 +17,24 @@ export const Register = ({
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<string>("");
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email(t("EmailInvalid")).required(t("ValidationRegisterEmail")),
-    firstName: Yup.string().required(t("FirstNameRequired")).matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+$/, t("FirstNameLettersOnly")),
-    password: Yup.string().required(t("PasswordRequired"))
+    email: Yup.string()
+      .email(t("EmailInvalid"))
+      .required(t("ValidationRegisterEmail")),
+    firstName: Yup.string()
+      .required(t("FirstNameRequired"))
+      .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+$/, t("FirstNameLettersOnly")),
+    password: Yup.string()
+      .required(t("PasswordRequired"))
       .min(6, t("PasswordIsShort")),
   });
 
-  const handleSubmit = async (
-    data: IUserRegister
-  ) => {
-    try{
+  const handleSubmit = async (data: IUserRegister) => {
+    try {
       await register(data);
       backLogin();
-    }
-    catch (error: any)
-    {
+    } catch (error: any) {
       setError(error.data);
     }
   };

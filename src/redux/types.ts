@@ -10,6 +10,7 @@ export const initialState: IssueInitialState = {
     firstName: "",
     lastName: "",
     email: "",
+    birthday: "",
     isAdmin: false,
     isBanned: false,
   },

@@ -5,3 +5,8 @@ export interface IUserRegister {
   isBanned: boolean;
   password: string;
 }
+
+export interface IUserLogin {
+  email: string;
+  password: string;
+}

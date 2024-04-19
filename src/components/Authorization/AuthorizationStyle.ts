@@ -93,6 +93,7 @@ export const useStyles = createUseStyles({
     fontFamily: "Source Serif Pro",
   },
   forgotPasswordText: {
+    cursor: "pointer",
     color: "black",
     fontSize: "14px",
     lineHeight: "17.54px",
