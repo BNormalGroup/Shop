@@ -52,7 +52,8 @@ const MenuHeader = () => {
         <>
             <div id="panelMenuContainer" className={classes.headerWrapper}>
                 {category?.slice(0, 11).map((item, index) => (
-                    <a
+                    <Link
+                        to={'/category/'+ item.id}
                         key={index}
                         onMouseEnter={(event) => {
                             handleMouseEnter(event);
@@ -62,7 +63,7 @@ const MenuHeader = () => {
                         className={classes.linkButton}
                     >
                         {item.name}
-                    </a>
+                    </Link>
                 ))}
             </div>
             <div
@@ -77,7 +78,7 @@ const MenuHeader = () => {
                         <p className={classes.link} style={{marginBottom: 0, fontWeight: 600}}>Top Rated Clothing</p>
                         {
                             category && category[elementId]?.children?.map((item, childIndex) => (
-                                    <Link key={childIndex} className={classes.link} to={''}>{item.name}</Link>
+                                    <Link key={childIndex} className={classes.link} to={'/category/'+ item.id}>{item.name}</Link>
                                 )
                             )
                         }
