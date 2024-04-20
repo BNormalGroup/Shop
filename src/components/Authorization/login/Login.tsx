@@ -6,14 +6,19 @@ import { Form, Formik } from "formik";
 import { defaultData } from "./default-data.ts";
 import { FormLogin } from "./Form.tsx";
 import * as Yup from "yup";
-import { IUserLogin, IUserRegister } from "../types/types.ts";
-import { register, singIn } from "../../../services/authService.ts";
+import { IUserLogin,  } from "../types/types.ts";
+import { SingInService } from "../../../services/authService.ts";
+import { useDispatch } from "react-redux";
 
 export const Login = ({ setClose }: { setClose: () => void }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  /**
+   @todo: redux save user data
+   **/
+  //const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -26,7 +31,7 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
 
   const handleSubmit = async (data: IUserLogin) => {
     try {
-      await singIn(data);
+      await SingInService(data);
       /**
        @todo: navigate to cabinet
        **/

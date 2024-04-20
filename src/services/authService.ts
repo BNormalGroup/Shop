@@ -3,10 +3,16 @@ import {
   IUserLogin,
   IUserRegister,
 } from "../components/Authorization/types/types.ts";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/userSlice.ts";
 
-export const register = async (user: IUserRegister) => {
+interface ResponseTypeLogin {
+  access_token: string;
+  user: IUserLogin;
+  expires_in: number;
+  token_type: string;
+  isBanned: boolean;
+}
+
+export const RegisterService = async (user: IUserRegister) => {
   try {
     await http.post<IUserRegister>("/auth/register", user);
   } catch (error: any) {
@@ -14,13 +20,11 @@ export const register = async (user: IUserRegister) => {
   }
 };
 
-export const singIn = async (user: IUserLogin) => {
-  // const dispatch = useDispatch();
-
+export const SingInService = async (user: IUserLogin) => {
   try {
-    console.log("ds");
-    await http.post<IUserLogin>("/auth/login", user);
-    // dispatch(login(user));
+   const response = await http.post("/auth/login", user);
+    const responseData: ResponseTypeLogin = response.data;
+    return responseData;
   } catch (error: any) {
     throw error.response;
   }
