@@ -3,6 +3,7 @@ import React from "react";
 import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
 import { useStyles } from "./ProductStyle.ts";
 import { ProductImages } from "../../../components/productImages/ProductImages.tsx";
+import { ProductData } from "../../../components/productData/ProductData.tsx";
 
 const Product = () => {
   const classes = useStyles();
@@ -25,8 +26,9 @@ const Product = () => {
                 ]}
               />
             </div>
-            <ProductImages images={["","",""]} />
+            <ProductImages images={["", "", ""]} />
           </div>
+          <ProductData />
         </div>
       </div>
     </>

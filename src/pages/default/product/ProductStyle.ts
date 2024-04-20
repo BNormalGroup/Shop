@@ -16,9 +16,9 @@ export const useStyles = createUseStyles({
     gap: "20px",
   },
   leftStack: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: '28px'
-  }
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "28px",
+  },
 });
