@@ -22,7 +22,7 @@ export const RegisterService = async (user: IUserRegister) => {
 
 export const SingInService = async (user: IUserLogin) => {
   try {
-   const response = await http.post("/auth/login", user);
+    const response = await http.post("/auth/login", user);
     const responseData: ResponseTypeLogin = response.data;
     return responseData;
   } catch (error: any) {

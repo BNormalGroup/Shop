@@ -3,7 +3,7 @@ import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import { IBrandItem, ICategoryItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditCategory = () => {
   const [category, setCategory] = useState<ICategoryItem>({
@@ -35,16 +35,17 @@ const EditCategory = () => {
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
     try {
-      await http.post<IBrandItem>("/categories/" + params.id, category, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then((r) => {
-        if (r.status == 200) {
-          navigate('/admin/category/listCategory');
-        }
-      });
-
+      await http
+        .post<IBrandItem>("/categories/" + params.id, category, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((r) => {
+          if (r.status == 200) {
+            navigate("/admin/category/listCategory");
+          }
+        });
     } catch (error: any) {
       startTransition(() => {
         setError(error);
