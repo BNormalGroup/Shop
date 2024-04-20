@@ -6,7 +6,7 @@ import { Form, Formik } from "formik";
 import { defaultData } from "./default-data.ts";
 import { FormLogin } from "./Form.tsx";
 import * as Yup from "yup";
-import { IUserLogin,  } from "../types/types.ts";
+import { IUserLogin } from "../types/types.ts";
 import { SingInService } from "../../../services/authService.ts";
 import { useDispatch } from "react-redux";
 

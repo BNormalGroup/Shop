@@ -10,7 +10,7 @@ export const initialState: IssueInitialState = {
     isAdmin: false,
     isBanned: false,
     email: "",
-    password: ""
+    password: "",
   },
   isAuth: false,
 };

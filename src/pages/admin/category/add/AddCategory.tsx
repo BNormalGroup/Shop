@@ -1,9 +1,9 @@
 import React, { startTransition, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import {ICategoryPostItem} from "../../../../utils/types.ts";
+import { ICategoryPostItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddCategory = () => {
   const [category, setCategory] = useState<ICategoryPostItem>({
@@ -18,15 +18,17 @@ const AddCategory = () => {
     event.preventDefault();
     console.log(category);
     try {
-      await http.post<ICategoryPostItem>("/categories/", category, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then((r) => {
-        if (r.status == 200) {
-          navigate('/admin/category/listCategory');
-        }
-      });
+      await http
+        .post<ICategoryPostItem>("/categories/", category, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((r) => {
+          if (r.status == 200) {
+            navigate("/admin/category/listCategory");
+          }
+        });
     } catch (error: any) {
       startTransition(() => {
         setError(error);

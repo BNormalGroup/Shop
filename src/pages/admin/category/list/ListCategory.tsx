@@ -64,21 +64,23 @@ const ListCategory = () => {
                       : item.description}
                   </td>
                   <td className="tm-product-name">{item.slug}</td>
-                  <td className="tm-product-name">{item.parent_id != null ? item.parent_id : 'none'}</td>
+                  <td className="tm-product-name">
+                    {item.parent_id != null ? item.parent_id : "none"}
+                  </td>
                   <td>
                     <button
-                        className="btn p-0"
-                        onClick={() => handleDeleteClick(item.id)}
+                      className="btn p-0"
+                      onClick={() => handleDeleteClick(item.id)}
                     >
                       <i className="bi bi-trash"></i>
                     </button>
                   </td>
                   <td>
                     <button
-                        className="btn p-0"
-                        onClick={() => {
-                          navigate("/admin/category/editCategory/" + item.id);
-                        }}
+                      className="btn p-0"
+                      onClick={() => {
+                        navigate("/admin/category/editCategory/" + item.id);
+                      }}
                     >
                       <i className="bi bi-pencil"></i>
                     </button>

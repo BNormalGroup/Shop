@@ -4,7 +4,7 @@ import "../../css/fontawesome.min.css";
 import { IItemPost } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import import_image from "../../../../assets/import_image.png";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddItem = () => {
   const [item, setItem] = useState<IItemPost>({
@@ -24,16 +24,17 @@ const AddItem = () => {
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
     try {
-      await http.post<IItemPost>("/items/", item, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then((r) => {
-        if (r.status == 200) {
-          navigate("/admin/item/list");
-        }
-      });
-
+      await http
+        .post<IItemPost>("/items/", item, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((r) => {
+          if (r.status == 200) {
+            navigate("/admin/item/list");
+          }
+        });
     } catch (error: any) {
       startTransition(() => {
         setError(error);
