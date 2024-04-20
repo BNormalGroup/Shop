@@ -36,5 +36,8 @@
   "LoginAccount": "Sing in to your Account",
   "ForgotPassword": "Forgot your password?",
   "LoginButton": "Sing in",
-  "EmailInvalid": "Email must be a valid email"
+  "EmailInvalid": "Email must be a valid email",
+  "Color": "Color",
+  "SizeGuide": "Size guide",
+  "EUSize": "EU Size"
 }

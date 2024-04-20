@@ -9,11 +9,11 @@ export const useStyles = createUseStyles({
   images: {
     width: "91px",
     height: "119px",
-    cursor: 'pointer'
+    cursor: "pointer",
   },
   imageMain: {
     width: "100%",
-    objectFit: 'cover',
+    objectFit: "cover",
     height: "100%",
   },
   imageMainWrapper: {
