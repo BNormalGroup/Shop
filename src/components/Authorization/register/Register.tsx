@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { FormRegister } from "./Form.tsx";
 import { defaultData } from "./default-data.ts";
 import { IUserRegister } from "../types/types.ts";
-import { register } from "../../../services/authService.ts";
+import { RegisterService } from "../../../services/authService.ts";
 import { useState } from "react";
 
 export const Register = ({
@@ -32,7 +32,7 @@ export const Register = ({
 
   const handleSubmit = async (data: IUserRegister) => {
     try {
-      await register(data);
+      await RegisterService(data);
       backLogin();
     } catch (error: any) {
       setError(error.data);

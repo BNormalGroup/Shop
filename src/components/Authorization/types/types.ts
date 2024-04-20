@@ -7,6 +7,9 @@ export interface IUserRegister {
 }
 
 export interface IUserLogin {
+  id: number;
   email: string;
+  isAdmin: boolean;
+  isBanned: boolean;
   password: string;
 }
