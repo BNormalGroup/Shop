@@ -1,5 +1,4 @@
 import useStyles from "./styles";
-import { Button } from "react-bootstrap";
 import xIcon from "../../assets/xIcon.png";
 import fIcon from "../../assets/fIcon.png";
 import iIcon from "../../assets/InstagramIcon.png";

@@ -3,6 +3,7 @@ import {
   IUserLogin,
   IUserRegister,
 } from "../components/Authorization/types/types.ts";
+import axios from "axios";
 
 interface ResponseTypeLogin {
   access_token: string;
@@ -16,7 +17,11 @@ export const RegisterService = async (user: IUserRegister) => {
   try {
     await http.post<IUserRegister>("/auth/register", user);
   } catch (error: any) {
-    throw error.response;
+    if (axios.isAxiosError(error)) {
+      throw error.response;
+    } else {
+      console.error("General error:", error.message);
+    }
   }
 };
 
@@ -26,6 +31,10 @@ export const SingInService = async (user: IUserLogin) => {
     const responseData: ResponseTypeLogin = response.data;
     return responseData;
   } catch (error: any) {
-    throw error.response;
+    if (axios.isAxiosError(error)) {
+      throw error.response;
+    } else {
+      console.error("General error:", error.message);
+    }
   }
 };
