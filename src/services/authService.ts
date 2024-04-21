@@ -4,14 +4,7 @@ import {
   IUserRegister,
 } from "../components/Authorization/types/types.ts";
 import axios from "axios";
-
-interface ResponseTypeLogin {
-  access_token: string;
-  user: IUserLogin;
-  expires_in: number;
-  token_type: string;
-  isBanned: boolean;
-}
+import { ResponseTypeLogin } from "../utils/types.ts";
 
 export const RegisterService = async (user: IUserRegister) => {
   try {

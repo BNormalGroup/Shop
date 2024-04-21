@@ -75,7 +75,7 @@ export const useStyles = createUseStyles({
     lineHeight: "20.05px",
   },
   productAdditionalInfo: {
-    marginTop: '20px'
+    marginTop: "20px",
   },
   stack: {
     display: "flex",

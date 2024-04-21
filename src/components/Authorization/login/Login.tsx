@@ -9,16 +9,15 @@ import * as Yup from "yup";
 import { IUserLogin } from "../types/types.ts";
 import { SingInService } from "../../../services/authService.ts";
 import { useDispatch } from "react-redux";
+import { login } from "../../../redux/userSlice.ts";
+import { addLocalStorage } from "../../../utils/localStorageUtils.ts";
 
 export const Login = ({ setClose }: { setClose: () => void }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
-  /**
-   @todo: redux save user data
-   **/
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -29,12 +28,15 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
       .min(6, t("PasswordIsShort")),
   });
 
+  /**
+   @todo: navigate to cabinet
+   **/
   const handleSubmit = async (data: IUserLogin) => {
     try {
-      await SingInService(data);
-      /**
-       @todo: navigate to cabinet
-       **/
+      const user = await SingInService(data);
+      dispatch(login(data));
+      if(user)
+      addLocalStorage('authToken',user?.access_token);
       setClose();
     } catch (error: any) {
       setError(error.data);
