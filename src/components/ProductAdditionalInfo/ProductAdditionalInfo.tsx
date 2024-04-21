@@ -5,15 +5,15 @@ export const ProductAdditionalInfo = () => {
 
   return (
     <>
-        <div className={classes.header}>
-          <p className={classes.headerTextSelected}>Fit</p>
-          <p className={classes.headerText}>Fabric</p>
-          <p className={classes.headerText}>Delivery & Payment</p>
-        </div>
-        <div className={classes.content}>
-          Relaxed fit Organic cotton is grown from non-genetically modified
-          seeds without chemical fertilisers or pesticides
-        </div>
+      <div className={classes.header}>
+        <p className={classes.headerTextSelected}>Fit</p>
+        <p className={classes.headerText}>Fabric</p>
+        <p className={classes.headerText}>Delivery & Payment</p>
+      </div>
+      <div className={classes.content}>
+        Relaxed fit Organic cotton is grown from non-genetically modified seeds
+        without chemical fertilisers or pesticides
+      </div>
     </>
   );
 };

@@ -6,7 +6,7 @@ const NavBarSideAdmin = () => {
       <div className="collapse navbar-collapse" id="navBarSideContent">
         <div
           className="bg-dark navbar-dark"
-          style={{ width: 300, height: "100vh" }}
+          style={{ width: 300, height: "100%" }}
         >
           <div className="container-fluid">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 flex-column align-items-start flex-row">

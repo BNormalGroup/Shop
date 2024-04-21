@@ -13,3 +13,11 @@ export interface IUserLogin {
   isBanned: boolean;
   password: string;
 }
+
+export interface IUserAuth {
+  email: string;
+  isAdmin: boolean;
+  firstName: string;
+  lastName: string;
+  birthday: string;
+}
