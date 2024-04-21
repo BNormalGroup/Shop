@@ -27,7 +27,6 @@ const AddItem = () => {
     event.preventDefault();
     try {
       await AddItemService(item);
-      navigate("/admin/item/list");
     } catch (error: any) {
       startTransition(() => {
         setError(error);
@@ -154,6 +153,17 @@ const AddItem = () => {
                         onChange={handleChange}
                         id="name"
                         name="name"
+                        type="text"
+                        className="form-control validate"
+                        required
+                      />
+                    </div>
+                    <div className="form-group mb-3">
+                      <label htmlFor="price">Price</label>
+                      <input
+                        onChange={handleChange}
+                        id="price"
+                        name="price"
                         type="text"
                         className="form-control validate"
                         required
