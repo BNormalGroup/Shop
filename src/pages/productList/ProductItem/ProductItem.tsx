@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import useStyles from "./style.tsx";
 import http from "../../../http.ts";
 import {IItemShow} from "../../../utils/types.ts";
 import {APP_ENV} from "../../../env";
 import likeImage from '../../../assets/itemIcons/likeBtn.svg';
+import useStyles from "./style.tsx";
+
 
 export const ProductItem = ({
                                 id,
@@ -15,13 +16,14 @@ export const ProductItem = ({
     const [item, setItem] = useState<IItemShow>();
 
     useEffect(() => {
+        setLoading(true);
         http.get<IItemShow>("/items/show/" + id)
             .then((resp) => {
                 setItem(resp.data);
                 console.log(resp.data);
                 setLoading(false);
             })
-    }, []);
+    }, [id]);
 
     return (
         <div key={'item' + id} className={classes.container}>
