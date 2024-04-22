@@ -27,6 +27,7 @@ const AddBrand = lazy(() => import("./pages/admin/brand/add/AddBrand.tsx"));
 const EditBrand = lazy(() => import("./pages/admin/brand/edit/EditBrand"));
 const WomanShop = lazy(() => import("./pages/default/womenShop/WomenShop.tsx"));
 const MenShop = lazy(() => import("./pages/default/menShop/MenShop.tsx"));
+const Product = lazy(() => import("./pages/default/product/Product.tsx"));
 
 function App() {
   return (
@@ -34,9 +35,10 @@ function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/" element={<MenuPage></MenuPage>}></Route>
-          <Route path={"/women"} element={<WomanShop />} />
-          <Route path={"/men"} element={<MenShop />} />
+          <Route path={"/woman"} element={<WomanShop />} />
+          <Route path={"/man"} element={<MenShop />} />
           <Route path="category/:id" element={<ProductListPage />}></Route>
+          <Route path="product/:id" element={<Product />}></Route>
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">

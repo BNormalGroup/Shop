@@ -1,3 +1,6 @@
+import { number, string } from "yup";
+import { IUserLogin } from "../components/Authorization/types/types.ts";
+
 export interface ICategoryItem {
   id?: number;
   name: string;
@@ -25,24 +28,45 @@ export interface IBrandItem {
   name: string;
   description: string;
 }
-export interface IItem {
+export interface IProduct {
   id?: number;
   name: string;
   description: string;
   price: number;
   brand_id?: number;
   category_id?: number;
-  color: string;
   sex: string;
 }
 
-export interface IItemPost extends IItem {
-  images: File[];
+export interface IColor {
+  id?: number;
+  name: string;
+  image: File;
+}
+export interface ISize {
+  size: number;
 }
 
-export interface IItemGet {
-  product: IItem;
+export interface IProductPost extends IProduct {
+  images: File[];
+  image?: File;
+  colors: IColor[];
+  sizes: ISize[];
+}
+
+export interface IProductGet {
+  product?: IProduct;
   images: IImage[];
+  colors: IColor[];
+  sizes: ISize[];
+}
+
+export interface ResponseTypeLogin {
+  access_token: string;
+  user: IUserLogin;
+  expires_in: number;
+  token_type: string;
+  isBanned: boolean;
 }
 
 export interface IImage {
@@ -53,7 +77,7 @@ export interface IImage {
 
 export interface IItemShow {
   status: string;
-  items_data: IItemGet;
+  items_data: IProductGet;
 }
 
 export interface IUser {
@@ -61,6 +85,7 @@ export interface IUser {
   firstName: string;
   lastName: string;
   email: string;
+  birthday: string;
   isAdmin: boolean;
   isBanned: boolean;
 }

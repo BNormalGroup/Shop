@@ -1,5 +1,12 @@
 import { useStyles } from "../AuthorizationStyle.ts";
 import { useTranslation } from "react-i18next";
+import { Form, Formik } from "formik";
+import * as Yup from "yup";
+import { FormRegister } from "./Form.tsx";
+import { defaultData } from "./default-data.ts";
+import { IUserRegister } from "../types/types.ts";
+import { RegisterService } from "../../../services/authService.ts";
+import { useState } from "react";
 
 export const Register = ({
   setClose,
@@ -10,41 +17,51 @@ export const Register = ({
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [error, setError] = useState<string>("");
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email(t("EmailInvalid"))
+      .required(t("ValidationRegisterEmail")),
+    firstName: Yup.string()
+      .required(t("FirstNameRequired"))
+      .matches(/^[A-Za-zА-Яа-яЁёЇїІіЄєҐґ]+$/, t("FirstNameLettersOnly")),
+    password: Yup.string()
+      .required(t("PasswordRequired"))
+      .min(6, t("PasswordIsShort")),
+  });
+
+  const handleSubmit = async (data: IUserRegister) => {
+    try {
+      await RegisterService(data);
+      backLogin();
+    } catch (error: any) {
+      setError(error.data);
+    }
+  };
 
   return (
     <>
       <div className={classes.overlay} onClick={setClose} />
       <div className={classes.content}>
         <div className={classes.contentContainer}>
-          <p className={classes.contentText}>{t("CreateAnAccount")}</p>
-          <div className={classes.inputsContainer}>
-            <input
-              className={classes.inputRegister}
-              placeholder={t("CreateName")}
-            />
-            <div className={classes.validationInput}>
-              <label className={classes.textValidation}>
-                {t("ValidationRegisterEmail")}
-              </label>
-              <input
-                className={classes.inputRegister}
-                placeholder={t("CreateEmail")}
-              />
-            </div>
-            <input
-              className={classes.inputRegister}
-              placeholder={t("CreatePassword")}
-              type="password"
-            />
-          </div>
-          <div className={classes.buttonsContainer}>
-            <button className={classes.buttonCreate}>
-              {t("CreateButton")}
-            </button>
-            <button className={classes.buttonBack} onClick={backLogin}>
-              {t("BackButton")}
-            </button>
-          </div>
+          <Formik
+            initialValues={defaultData}
+            onSubmit={handleSubmit}
+            validationSchema={validationSchema}
+          >
+            <Form>
+              <FormRegister />
+              <div className={classes.buttonsContainer}>
+                <button className={classes.buttonCreate} type={"submit"}>
+                  {t("CreateButton")}
+                </button>
+                <button className={classes.buttonBack} onClick={backLogin}>
+                  {t("BackButton")}
+                </button>
+              </div>
+              <label className={classes.textValidation}>{error}</label>
+            </Form>
+          </Formik>
         </div>
       </div>
     </>

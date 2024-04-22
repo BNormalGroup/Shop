@@ -3,7 +3,7 @@ import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import { IBrandItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
-import {useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditBrand = () => {
   const [brand, setBrand] = useState<IBrandItem>({
@@ -31,15 +31,17 @@ const EditBrand = () => {
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
     try {
-      await http.post<IBrandItem>("/brands/" + params.id, brand, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then((r) => {
-        if (r.status == 200) {
-          navigate('/admin/brand/listBrand');
-        }
-      });
+      await http
+        .post<IBrandItem>("/brands/" + params.id, brand, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((r) => {
+          if (r.status == 200) {
+            navigate("/admin/brand/listBrand");
+          }
+        });
     } catch (error: any) {
       setError(error);
     }

@@ -1,17 +1,16 @@
-import { IUser } from "../utils/types.ts";
+import { IUserLogin } from "../components/Authorization/types/types.ts";
 
 export type IssueInitialState = {
-  user: IUser;
+  user: IUserLogin;
   isAuth: boolean;
 };
 export const initialState: IssueInitialState = {
   user: {
     id: 0,
-    firstName: "",
-    lastName: "",
-    email: "",
     isAdmin: false,
     isBanned: false,
+    email: "",
+    password: "",
   },
   isAuth: false,
 };
