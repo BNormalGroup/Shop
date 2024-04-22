@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from "react";
 import useStyles from "./style.tsx";
-import http from "../../../http.ts";
-import { IItemShow } from "../../../utils/types.ts";
+import {IProductGet} from "../../../utils/types.ts";
 import { APP_ENV } from "../../../env";
 import likeImage from "../../../assets/itemIcons/likeBtn.svg";
+import {GetItemService} from "../../../services/productService.ts";
+import {string} from "yup";
 
 export const ProductItem = ({ id }: { id: number }) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-  const [item, setItem] = useState<IItemShow>();
+  const [item, setItem] = useState<IProductGet>();
 
   useEffect(() => {
-    http.get<IItemShow>("/items/show/" + id).then((resp) => {
-      setItem(resp.data);
-      console.log(resp.data);
-      setLoading(false);
-    });
-  }, []);
+    const fetchData = async () => {
+      let resp;
+      if (id) resp = await GetItemService(id.toString());
+      if (resp) setItem(resp);
+    };
+
+    fetchData();
+    setLoading(false);
+  }, [id]);
 
   return (
     <div key={"item" + id} className={classes.container}>
@@ -31,18 +35,24 @@ export const ProductItem = ({ id }: { id: number }) => {
           <div className={classes.imageContainer}>
             <img
               className={classes.image}
-              src={APP_ENV.UPLOADS_URL + item?.items_data.images[0]?.url}
+              src={APP_ENV.UPLOADS_URL + item?.images[0]?.url != undefined ? item?.images[0]?.url : ''}
               alt={""}
             />
             <button className={classes.likeBtn}>
               <img src={likeImage} />
             </button>
           </div>
-          <p className={classes.title}>{item?.items_data.product.name}</p>
+          <p className={classes.title}>{item?.product?.name}</p>
           <p className={classes.price}>
-            ₴{item?.items_data.product.price} грн.
+            ₴{item?.product?.price} грн.
           </p>
-          <p className={classes.color}>{item?.items_data.product.color}</p>
+          <p className={classes.color}>
+            {item?.colors?.map((prod,index)=>(
+                <>
+                  {prod.name}
+                  {index != item?.colors.length && ' | '}
+                </>
+            ))}</p>
         </>
       )}
     </div>
