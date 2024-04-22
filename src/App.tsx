@@ -35,8 +35,8 @@ function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/" element={<MenuPage></MenuPage>}></Route>
-          <Route path={"/women"} element={<WomanShop />} />
-          <Route path={"/men"} element={<MenShop />} />
+          <Route path={"/woman"} element={<WomanShop />} />
+          <Route path={"/man"} element={<MenShop />} />
           <Route path="category/:id" element={<ProductListPage />}></Route>
           <Route path="product/:id" element={<Product />}></Route>
         </Route>

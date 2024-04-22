@@ -1,10 +1,10 @@
-export const isTokenActive = (token : string | null) => {
+export const isTokenActive = (token: string | null) => {
   if (!token) {
     return false;
   }
 
   try {
-    const tokenData = JSON.parse(atob(token.split('.')[1]));
+    const tokenData = JSON.parse(atob(token.split(".")[1]));
 
     if (tokenData.exp) {
       const expirationTime = tokenData.exp * 1000;
@@ -13,7 +13,7 @@ export const isTokenActive = (token : string | null) => {
       return true;
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     return false;
   }
 };

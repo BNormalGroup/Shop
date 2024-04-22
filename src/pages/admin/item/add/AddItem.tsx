@@ -1,13 +1,13 @@
 import React, { startTransition, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IColor, IItemPost, ISize } from "../../../../utils/types.ts";
+import { IColor, IProductPost, ISize } from "../../../../utils/types.ts";
 import import_image from "../../../../assets/import_image.png";
 import { useNavigate } from "react-router-dom";
-import { AddItemService } from "../../../../services/itemService.ts";
+import { AddProductService } from "../../../../services/productService.ts";
 
 const AddItem = () => {
-  const [item, setItem] = useState<IItemPost>({
+  const [item, setItem] = useState<IProductPost>({
     id: undefined,
     name: "",
     sex: "",
@@ -18,7 +18,7 @@ const AddItem = () => {
     images: [],
     colors: [],
     sizes: [],
-    image: undefined
+    image: undefined,
   });
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const AddItem = () => {
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
     try {
-      await AddItemService(item);
+      await AddProductService(item);
     } catch (error: any) {
       startTransition(() => {
         setError(error);
@@ -45,7 +45,6 @@ const AddItem = () => {
       }));
     });
   };
-
 
   const onImageSelect = () => {
     const input = document.createElement("input");
@@ -73,9 +72,9 @@ const AddItem = () => {
     }));
   };
   const removeSizes = (removedSize: number) => {
-    setItem(prevItem => ({
+    setItem((prevItem) => ({
       ...prevItem,
-      sizes: prevItem.sizes.filter(size => size.size !== removedSize)
+      sizes: prevItem.sizes.filter((size) => size.size !== removedSize),
     }));
   };
   const handleSelectChange = (event: any) => {
@@ -84,46 +83,49 @@ const AddItem = () => {
       sex: event.target.value, // Змінюємо тільки властивість sex
     }));
   };
-  const handleAddSize = () =>{
+  const handleAddSize = () => {
     const input = document.getElementById("size") as HTMLInputElement;
     const size = input.value;
     const newSize: ISize = {
-      size: Number(size)
-    }
-    if(!item.sizes.includes(newSize))
-    setItem((prevItem) => ({
-      ...prevItem,
-      sizes: [...prevItem.sizes, newSize],
-    }));
-  }
+      size: Number(size),
+    };
+    if (!item.sizes.includes(newSize))
+      setItem((prevItem) => ({
+        ...prevItem,
+        sizes: [...prevItem.sizes, newSize],
+      }));
+  };
 
   const handleAddColor = () => {
-    const colorName = (document.getElementById("colorName") as HTMLInputElement).files;
-    const colorImage = (document.getElementById("colorImage") as HTMLInputElement).value;
+    const colorName = (document.getElementById("colorName") as HTMLInputElement)
+      .files;
+    const colorImage = (
+      document.getElementById("colorImage") as HTMLInputElement
+    ).value;
     if (colorName && colorName[0]) {
       const newColor: IColor = {
         name: colorImage,
-        image: colorName[0]
+        image: colorName[0],
       };
-      setItem(prevItem => ({
+      setItem((prevItem) => ({
         ...prevItem,
-        colors: [...prevItem.colors, newColor]
+        colors: [...prevItem.colors, newColor],
       }));
     }
   };
 
   const removeColor = (index: number) => {
-    setItem(prevItem => ({
+    setItem((prevItem) => ({
       ...prevItem,
-      colors: prevItem.colors.filter((_, i) => i !== index)
+      colors: prevItem.colors.filter((_, i) => i !== index),
     }));
   };
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
-      setItem(prevItem => ({
+      setItem((prevItem) => ({
         ...prevItem,
-        image: file
+        image: file,
       }));
     }
   };
@@ -216,48 +218,61 @@ const AddItem = () => {
                         id="size"
                         className="form-control validate"
                       />
-                      <button onClick={handleAddSize} className="btn btn-dark btn-block text-uppercase mt-3">add size</button>
-                      {item.sizes && item.sizes.map((size,key)=>{
-                        return <div key={key} className={'m-1' }>{size.size}<button
-                          type="button"
-                          className="btn-close"
-                          onClick={() => removeSizes(size.size)}
-                          aria-label="Close"
-                        ></button></div>
-                      })}
+                      <button
+                        onClick={handleAddSize}
+                        className="btn btn-dark btn-block text-uppercase mt-3"
+                      >
+                        add size
+                      </button>
+                      {item.sizes &&
+                        item.sizes.map((size, key) => {
+                          return (
+                            <div key={key} className={"m-1"}>
+                              {size.size}
+                              <button
+                                type="button"
+                                className="btn-close"
+                                onClick={() => removeSizes(size.size)}
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                          );
+                        })}
                     </div>
                     <div className="form-group mb-3">
+                      <input name="color" type="file" id="colorName" />
                       <input
                         name="color"
-                        type="file"
-                        id="colorName"
-                      />
-                      <input
-                        name="color"
-                        placeholder='name'
+                        placeholder="name"
                         type="text"
                         id="colorImage"
                         className="form-control validate mt-3"
                       />
-                      <button onClick={handleAddColor} className="btn btn-dark btn-block text-uppercase mt-3">add color</button>
+                      <button
+                        onClick={handleAddColor}
+                        className="btn btn-dark btn-block text-uppercase mt-3"
+                      >
+                        add color
+                      </button>
                       <div className="row">
-                        {item.colors && item.colors.map((color, index) => (
-                          <div className="col-md-3" key={index}>
-                            <label>{color.name}</label>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              onClick={() => removeColor(index)}
-                              aria-label="Close"
-                            ></button>
-                            <img
-                              className="img-fluid"
-                              src={URL.createObjectURL(color.image)}
-                              alt={color.name}
-                              style={{ cursor: "pointer" }}
-                            />
-                          </div>
-                        ))}
+                        {item.colors &&
+                          item.colors.map((color, index) => (
+                            <div className="col-md-3" key={index}>
+                              <label>{color.name}</label>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                onClick={() => removeColor(index)}
+                                aria-label="Close"
+                              ></button>
+                              <img
+                                className="img-fluid"
+                                src={URL.createObjectURL(color.image)}
+                                alt={color.name}
+                                style={{ cursor: "pointer" }}
+                              />
+                            </div>
+                          ))}
                       </div>
                     </div>
                     <div className="form-group mb-3">
@@ -274,9 +289,9 @@ const AddItem = () => {
                         <option value="" disabled>
                           Select sex
                         </option>
-                        <option value="1">Man</option>
-                        <option value="2">Woman</option>
-                        <option value="3">Unisex</option>
+                        <option value="Man">Man</option>
+                        <option value="Woman">Woman</option>
+                        <option value="Unisex">Unisex</option>
                       </select>
                     </div>
                     <div className="mb-3">

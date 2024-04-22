@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "./types.ts";
-import { IUserAuth, IUserLogin } from "../components/Authorization/types/types.ts";
+import {
+  IUserAuth,
+  IUserLogin,
+} from "../components/Authorization/types/types.ts";
 
 export const userSlice = createSlice({
   name: "user",
@@ -14,8 +17,8 @@ export const userSlice = createSlice({
       state.user = initialState.user;
       state.isAuth = false;
     },
-    auth: (state, action: PayloadAction<IUserAuth>) =>{
-      state.user  = {
+    auth: (state, action: PayloadAction<IUserAuth>) => {
+      state.user = {
         id: 0,
         isAdmin: action.payload.isAdmin,
         isBanned: false,
@@ -23,7 +26,7 @@ export const userSlice = createSlice({
         password: "",
       };
       state.isAuth = true;
-    }
+    },
   },
 });
 

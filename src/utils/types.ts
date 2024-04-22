@@ -28,7 +28,7 @@ export interface IBrandItem {
   name: string;
   description: string;
 }
-export interface IItem {
+export interface IProduct {
   id?: number;
   name: string;
   description: string;
@@ -47,16 +47,18 @@ export interface ISize {
   size: number;
 }
 
-export interface IItemPost extends IItem {
+export interface IProductPost extends IProduct {
   images: File[];
   image?: File;
   colors: IColor[];
   sizes: ISize[];
 }
 
-export interface IItemGet {
-  product: IItem;
+export interface IProductGet {
+  product?: IProduct;
   images: IImage[];
+  colors: IColor[];
+  sizes: ISize[];
 }
 
 export interface ResponseTypeLogin {
@@ -75,7 +77,7 @@ export interface IImage {
 
 export interface IItemShow {
   status: string;
-  items_data: IItemGet;
+  items_data: IProductGet;
 }
 
 export interface IUser {
