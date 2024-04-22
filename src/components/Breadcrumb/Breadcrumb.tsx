@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Breadcrumb = ({
   titles,
 }: {
-  titles: { name: string; url: string }[];
+  titles: { name: string; url?: string }[];
 }) => {
   const classes = useStyles();
 
@@ -18,12 +18,24 @@ export const Breadcrumb = ({
           ) : (
             ""
           )}
-          <Link
-            className={`${classes.link} ${index == titles.length - 1 ? classes.disabled : ""}`}
-            to={item.url}
-          >
-            {item.name}
-          </Link>
+          {item.url ? (
+            <Link
+              className={`${classes.link} ${
+                index === titles.length - 1 ? classes.disabled : ""
+              }`}
+              to={item.url}
+            >
+              {item.name}
+            </Link>
+          ) : (
+            <span
+              className={`${classes.link} ${
+                index === titles.length - 1 ? classes.disabled : ""
+              }`}
+            >
+              {item.name}
+            </span>
+          )}
         </React.Fragment>
       ))}
     </ul>

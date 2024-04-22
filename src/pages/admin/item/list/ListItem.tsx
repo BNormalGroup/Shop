@@ -1,18 +1,18 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IItem } from "../../../../utils/types.ts";
+import { IProduct } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
 
 const ListItem = () => {
-  const [Items, setItems] = useState<IItem[]>([]);
+  const [Items, setItems] = useState<IProduct[]>([]);
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
     http
-      .get<IItem[]>("/items/")
+      .get<IProduct[]>("/items/")
       .then((resp) => {
         startTransition(() => {
           setItems(resp.data);
@@ -54,7 +54,7 @@ const ListItem = () => {
               </tr>
             </thead>
             <tbody>
-              {Items.map((item: IItem) => (
+              {Items.map((item: IProduct) => (
                 <tr key={item.id}>
                   <th scope="row">
                     <a>{item.id}</a>

@@ -35,8 +35,7 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
     try {
       const user = await SingInService(data);
       dispatch(login(data));
-      if(user)
-      addLocalStorage('authToken',user?.access_token);
+      if (user) addLocalStorage("authToken", user?.access_token);
       setClose();
     } catch (error: any) {
       setError(error.data);

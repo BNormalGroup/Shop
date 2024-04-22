@@ -11,9 +11,9 @@ import { jwtDecode } from "jwt-decode";
 import { IUserAuth } from "./components/Authorization/types/types.ts";
 
 const token = localStorage.getItem("authToken");
-if (typeof token === 'string') {
-    const decoded = jwtDecode<IUserAuth>(token);
-     store.dispatch(auth(decoded));
+if (typeof token === "string") {
+  const decoded = jwtDecode<IUserAuth>(token);
+  store.dispatch(auth(decoded));
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

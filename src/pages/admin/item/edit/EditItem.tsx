@@ -1,14 +1,14 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IImage, IItemPost, IItemShow } from "../../../../utils/types.ts";
+import { IImage, IProductPost, IItemShow } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { APP_ENV } from "../../../../env";
 import import_image from "../../../../assets/import_image.png";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditItem = () => {
-  const [item, setItem] = useState<IItemPost>({
+  const [item, setItem] = useState<IProductPost>({
     id: undefined,
     name: "",
     sex: "",
@@ -44,7 +44,7 @@ const EditItem = () => {
     event.preventDefault();
     try {
       await http
-        .post<IItemPost>("/items/" + params.id, item, {
+        .post<IProductPost>("/items/" + params.id, item, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
