@@ -32,6 +32,7 @@ export interface IProduct {
   id?: number;
   name: string;
   description: string;
+  texture: string;
   price: number;
   brand_id?: number;
   category_id?: number;

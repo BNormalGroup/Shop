@@ -33,9 +33,6 @@ const Product = () => {
     return (
       <>
         <MenuHeader />
-        {/*
-      @todo Breadcrumb from server
-      */}
         <div className={`container ${classes.Container}`}>
           <div className={classes.TopWrapper}>
             <div className={classes.leftStack}>
@@ -47,14 +44,13 @@ const Product = () => {
                       name: `${product.product.sex}`,
                       url: `/${product.product.sex.toLowerCase()}`,
                     },
-                    { name: "Dresses", url: "/men/dresses" },
                     { name: `${product.product.name}`, url: undefined },
                   ]}
                 />
               </div>
-              <ProductImages images={["", "", ""]} />
+              <ProductImages images={product.images.map(image => image.url)} />
             </div>
-            <ProductData />
+            <ProductData product={product}/>
           </div>
         </div>
       </>

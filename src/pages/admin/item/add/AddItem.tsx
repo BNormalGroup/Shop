@@ -15,6 +15,7 @@ const AddItem = () => {
     brand_id: undefined,
     category_id: undefined,
     price: 0,
+    texture: '',
     images: [],
     colors: [],
     sizes: [],
@@ -172,6 +173,17 @@ const AddItem = () => {
                       />
                     </div>
                     <div className="form-group mb-3">
+                      <label htmlFor="texture">Texture</label>
+                      <input
+                        onChange={handleChange}
+                        id="texture"
+                        name="texture"
+                        type="text"
+                        className="form-control validate"
+                        required
+                      />
+                    </div>
+                    <div className="form-group mb-3">
                       <label htmlFor="image">Main image</label>
                       <input
                         name="image"
@@ -289,9 +301,9 @@ const AddItem = () => {
                         <option value="" disabled>
                           Select sex
                         </option>
-                        <option value="Man">Man</option>
-                        <option value="Woman">Woman</option>
-                        <option value="Unisex">Unisex</option>
+                        <option value="man">Man</option>
+                        <option value="woman">Woman</option>
+                        <option value="unisex">Unisex</option>
                       </select>
                     </div>
                     <div className="mb-3">
