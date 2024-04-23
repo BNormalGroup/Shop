@@ -1,6 +1,7 @@
 import { useStyles } from "./ProductImagesStyle.ts";
 import { useState } from "react";
 import { APP_ENV } from "../../env";
+import likeIcon from "../../assets/likeIcon.png";
 
 export const ProductImages = ({ images }: { images: string[] }) => {
   const classes = useStyles();
@@ -27,7 +28,10 @@ export const ProductImages = ({ images }: { images: string[] }) => {
           <img
             src={APP_ENV.UPLOADS_URL + imageSelected}
             className={classes.imageMain}
-          />
+          ></img>
+          <button className={classes.likeButton}>
+            <img src={likeIcon} className={classes.likeIcon}/>
+          </button>
         </div>
       </div>
     </>
