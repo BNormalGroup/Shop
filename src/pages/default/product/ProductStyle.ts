@@ -12,9 +12,9 @@ export const useStyles = createUseStyles({
   },
   TopWrapper: {
     display: "flex",
-    flexDirection: "row",
     gap: "20px",
-  },
+  },  flexDirection: "row",
+
   leftStack: {
     display: "flex",
     flexDirection: "column",

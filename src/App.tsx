@@ -25,9 +25,10 @@ const EditCategory = lazy(
 const ListBrand = lazy(() => import("./pages/admin/brand/list/ListBrand.tsx"));
 const AddBrand = lazy(() => import("./pages/admin/brand/add/AddBrand.tsx"));
 const EditBrand = lazy(() => import("./pages/admin/brand/edit/EditBrand"));
-const WomanShop = lazy(() => import("./pages/default/womenShop/WomenShop.tsx"));
-const MenShop = lazy(() => import("./pages/default/menShop/MenShop.tsx"));
+const WomanShop = lazy(() => import("./pages/default/womanShop/WomenShop.tsx"));
+const MenShop = lazy(() => import("./pages/default/manShop/MenShop.tsx"));
 const Product = lazy(() => import("./pages/default/product/Product.tsx"));
+const Favorite = lazy(() => import("./pages/default/favorite/Favorite.tsx"));
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path={"/man"} element={<MenShop />} />
           <Route path="category/:id" element={<ProductListPage />}></Route>
           <Route path="product/:id" element={<Product />}></Route>
+          <Route path="favorite" element={<Favorite/>}></Route>
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">
