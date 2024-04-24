@@ -1,4 +1,4 @@
-import useStyles from "./styles";
+import useStyles from "./styles.tsx";
 import { useTranslation } from "react-i18next";
 import { Button } from "react-bootstrap";
 

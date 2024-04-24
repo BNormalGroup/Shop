@@ -1,6 +1,6 @@
 import React from "react";
-import { SexImage } from "../../../components/sexImage/SexImage.tsx";
-import { ShopNowBlock } from "../../../components/shopNowBlock/ShopNowBlock.tsx";
+import {SexImage} from "../../../components/sexImage/SexImage.tsx";
+import {ShopNowBlock} from "../../../components/shopNowBlock/ShopNowBlock.tsx";
 import MenImage from "../../../assets/MenImage.png";
 import ChainImage from "../../../assets/chainImage.png";
 import TrousersImage from "../../../assets/trousersImage.png";
@@ -13,39 +13,39 @@ import ShoesImage from "../../../assets/itemCategoryMen/shoes.png";
 import BagsImage from "../../../assets/itemCategoryMen/bags.png";
 import SocksImage from "../../../assets/itemCategoryMen/socks.png";
 import AccessoriesImage from "../../../assets/itemCategoryMen/accessories.png";
-import { SexCategoryItems } from "../../../utils/types.ts";
-import { useTranslation } from "react-i18next";
+import {SexCategoryItems} from "../../../utils/types.ts";
+import {useTranslation} from "react-i18next";
 
 const MenShop = () => {
-  const { t } = useTranslation();
-  const categories: SexCategoryItems[] = [
-    { image: JeansImage, name: t("JeansMen") },
-    { image: TShirtsImage, name: t("t-shirtsMen") },
-    { image: ShoesImage, name: t("shoeMen") },
-    { image: BagsImage, name: t("BagsMen") },
-    { image: SocksImage, name: t("SocksMen") },
-    { image: AccessoriesImage, name: t("AccessoriesMen") },
-  ];
+    const {t} = useTranslation();
+    const categories: SexCategoryItems[] = [
+        {image: JeansImage, name: t("JeansMen")},
+        {image: TShirtsImage, name: t("t-shirtsMen")},
+        {image: ShoesImage, name: t("shoeMen")},
+        {image: BagsImage, name: t("BagsMen")},
+        {image: SocksImage, name: t("SocksMen")},
+        {image: AccessoriesImage, name: t("AccessoriesMen")},
+    ];
 
-  return (
-    <>
-      <div className="container" style={{ marginBottom: 56, padding: 0 }}>
-        <MenuHeader></MenuHeader>
-        <SexImage image={MenImage} isButtonBlack={true} />
-        <ShopNowBlock
-          images={[
-            ChainImage,
-            TrousersImage,
-            tShirtImage,
-            ShoeMenImage,
-            ShoeMenImage,
-            tShirtImage,
-          ]}
-          categories={categories}
-        />
-      </div>
-    </>
-  );
+    return (
+        <>
+            <MenuHeader></MenuHeader>
+            <div className="container" style={{marginBottom: 56, padding: 0}}>
+                <SexImage image={MenImage} isButtonBlack={true}/>
+                <ShopNowBlock
+                    images={[
+                        ChainImage,
+                        TrousersImage,
+                        tShirtImage,
+                        ShoeMenImage,
+                        ShoeMenImage,
+                        tShirtImage,
+                    ]}
+                    categories={categories}
+                />
+            </div>
+        </>
+    );
 };
 
 export default MenShop;

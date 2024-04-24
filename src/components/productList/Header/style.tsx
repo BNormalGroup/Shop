@@ -1,6 +1,9 @@
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
+  containerHead:{
+    backgroundColor: "#D4D2B4",
+  },
   container: {
     maxHeight: 260,
     backgroundColor: "#D4D2B4",

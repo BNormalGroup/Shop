@@ -1,6 +1,6 @@
 import womanImage from "../../../assets/menu/CollectioinSelectWoman.png";
 import manImage from "../../../assets/menu/CollectionSelectMan.png";
-import useStyles from "./styles";
+import useStyles from "./styles.tsx";
 import { useTranslation } from "react-i18next";
 
 const CollectionSelect = () => {

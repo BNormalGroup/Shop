@@ -10,8 +10,8 @@ import ListItem from "./pages/admin/item/list/ListItem.tsx";
 import AddItem from "./pages/admin/item/add/AddItem.tsx";
 import EditItem from "./pages/admin/item/edit/EditItem.tsx";
 import ListUser from "./pages/admin/user/list/ListUser.tsx";
-import MenuPage from "./pages/menu/MenuPage.tsx";
-import ProductListPage from "./pages/productList/ProductListPage.tsx";
+import MenuPage from "./pages/default/menu/MenuPage.tsx";
+import ProductListPage from "./pages/default/productList/ProductListPage.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),

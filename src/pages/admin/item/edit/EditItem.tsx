@@ -1,7 +1,7 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IImage, IProductPost, IItemShow } from "../../../../utils/types.ts";
+import {IImage, IProductPost, IItemShow, IProductGet} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { APP_ENV } from "../../../../env";
 import import_image from "../../../../assets/import_image.png";
@@ -16,8 +16,9 @@ const EditItem = () => {
     brand_id: undefined,
     category_id: undefined,
     price: 0,
-    color: "",
     images: [],
+    sizes: [],
+    colors: []
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
@@ -25,14 +26,17 @@ const EditItem = () => {
   const navigate = useNavigate();
   useEffect(() => {
     http
-      .get<IItemShow>("/items/show/" + params.id)
+      .get<IProductGet>("/items/show/" + params.id)
       .then((resp) => {
         startTransition(() => {
+          if(resp.data.product)
           setItem({
-            ...resp.data.items_data.product,
+            ...resp.data.product,
             images: [],
+            sizes: [],
+            colors: []
           });
-          setImage(resp.data.items_data.images);
+          setImage(resp.data.images);
           console.log(resp.data);
         });
       })
@@ -186,7 +190,6 @@ const EditItem = () => {
                         onChange={handleChange}
                         id="color"
                         name="color"
-                        value={item.color || ""}
                         type="text"
                         className="form-control validate"
                         required
