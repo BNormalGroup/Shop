@@ -18,7 +18,8 @@ const EditItem = () => {
     price: 0,
     images: [],
     sizes: [],
-    colors: []
+    colors: [],
+    texture: ''
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
