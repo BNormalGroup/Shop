@@ -1,6 +1,6 @@
-import SexSelect from "./SelectSex/SexSelect.tsx";
-import CollectionSelect from "./SelectCollection/CollectionSelect.tsx";
-import MenuFooter from "./MenuFooter/MenuFooter.tsx";
+import SexSelect from "../../../components/menu/SelectSex/SexSelect.tsx";
+import CollectionSelect from "../../../components/menu/SelectCollection/CollectionSelect.tsx";
+import MenuFooter from "../../../components/menu/MenuFooter/MenuFooter.tsx";
 
 const MenuPage = () => {
   return (

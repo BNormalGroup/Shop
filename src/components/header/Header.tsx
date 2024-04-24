@@ -32,10 +32,10 @@ export const Header = () => {
           }}
         >
           <Logo />
-          <Link to="/women" className={classes.genderText}>
+          <Link to="/woman" className={classes.genderText}>
             {t("womenHeader")}
           </Link>
-          <Link to="/men" className={classes.genderText}>
+          <Link to="/man" className={classes.genderText}>
             {t("menHeader")}
           </Link>
           <SearchHeader />

@@ -5,7 +5,6 @@ const useStyles = createUseStyles({
     minHeight: "60px",
     width: "100%",
     zIndex: 1000,
-    backgroundColor: "#282826",
     padding: "0px 43px",
     justifyContent: "start",
     display: "flex",

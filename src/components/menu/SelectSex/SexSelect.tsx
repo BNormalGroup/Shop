@@ -1,6 +1,6 @@
 import womanImage from "../../../assets/menu/woman_menu.jfif";
 import manImage from "../../../assets/menu/man_menu.jfif";
-import useStyles from "./styles";
+import useStyles from "./styles.tsx";
 import { useTranslation } from "react-i18next";
 const SexSelect = () => {
   const classes = useStyles();
