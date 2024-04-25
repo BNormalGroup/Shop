@@ -29,7 +29,7 @@ export const ProductData = ({product}:{product: IProductGet}) => {
           <p className={classes.textParam}>{t("EUSize")}</p>
           <SelectProduct content={sizeOption} />
           <p className={classes.textGuide}>{t("SizeGuide")}</p>
-          <button className={classes.buttonBag}>ADD TO BAG</button>
+          <button className={classes.buttonBag}>{t('AddToBag')}</button>
           <p className={classes.textDescription}>
             {product?.product?.description}
           </p>
