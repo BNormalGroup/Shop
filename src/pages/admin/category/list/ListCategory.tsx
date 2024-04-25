@@ -4,6 +4,8 @@ import "../../css/fontawesome.min.css";
 import { ICategoryItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
+import categorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
+import {GetCategoriesService} from "../../../../services/categoryService.ts";
 
 const ListCategory = () => {
   const [allCategories, setAllCategories] = useState<ICategoryItem[]>([]);
@@ -11,20 +13,15 @@ const ListCategory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    http
-      .get<ICategoryItem[]>("/categories/")
-      .then((resp) => {
-        startTransition(() => {
-          setAllCategories(resp.data);
-          console.log(resp.data);
-        });
-      })
-      .catch((error) => {
-        startTransition(() => {
-          setError(error);
-        });
-      });
+    setCategoriesFromServer();
   }, []);
+
+  async function setCategoriesFromServer(){
+    const category = await GetCategoriesService();
+    if (category){
+      setAllCategories(category);
+    }
+  }
 
   async function handleDeleteClick(id: number | undefined) {
     if (id !== undefined) {

@@ -6,6 +6,11 @@ import http from "../../../../http.ts";
 import { APP_ENV } from "../../../../env";
 import import_image from "../../../../assets/import_image.png";
 import { useNavigate, useParams } from "react-router-dom";
+import SizeSelector from "../../../../components/Admin/SizeSelector/SizeSelector.tsx";
+import ColorSelector from "../../../../components/Admin/ColorSelector/ColorSelector.tsx";
+import SexSelector from "../../../../components/Admin/SexSelector/SexSelector.tsx";
+import ImageSelector from "../../../../components/Admin/ImageSelector/ImageSelector.tsx";
+import CategorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
 
 const EditItem = () => {
   const [item, setItem] = useState<IProductPost>({
@@ -78,50 +83,6 @@ const EditItem = () => {
     });
   };
 
-  const onImageSelect = () => {
-    const input = document.createElement("input");
-    input.setAttribute("type", "file");
-    input.setAttribute("accept", "image/*");
-    input.addEventListener("change", (e: any) => {
-      const files = e.target.files;
-      if (files) {
-        const file = files[0];
-        setItem((prevItem) => ({
-          ...prevItem,
-          images: [...prevItem.images, file], // Додавання нового запису до масиву images
-        }));
-      }
-    });
-    input.click();
-  };
-  const removeImage = (index: number) => {
-    const newArray = item.images; // Створюємо копію масиву
-    newArray.splice(index, 1); // Видаляємо елемент за індексом
-    setItem((prevItem) => ({
-      ...prevItem,
-      images: [...newArray], // Оновлюємо стан масиву
-    }));
-  };
-  // Видалення вже інуючих фото з сервера
-  const removeImageServer = (index: number) => {
-    const id_image = image[index].id;
-
-    http.delete("/items/deleteImage/" + id_image).then((r) => {
-      console.log(r.data);
-      if (r.status === 200) {
-        const newArray = image.filter((_item, i) => i !== index);
-        setImage(newArray);
-      }
-    });
-  };
-
-  const handleSelectChange = (event: any) => {
-    setItem((prevItem) => ({
-      ...prevItem, // Копіюємо всі інші властивості з поточного стану
-      sex: event.target.value, // Змінюємо тільки властивість sex
-    }));
-  };
-
   return (
     <>
       <div className="container tm-mt-big tm-mb-big">
@@ -174,93 +135,13 @@ const EditItem = () => {
                         className="form-control validate"
                       />
                     </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="category_id">Category id</label>
-                      <input
-                        onChange={handleChange}
-                        id="category_id"
-                        name="category_id"
-                        value={item.category_id || ""}
-                        type="number"
-                        className="form-control validate"
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="color">Color</label>
-                      <input
-                        onChange={handleChange}
-                        id="color"
-                        name="color"
-                        type="text"
-                        className="form-control validate"
-                        required
-                      />
-                    </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="sex">Sex</label>
-                      {/* select для вибору */}
-                      <select
-                        id="sex"
-                        name="sex"
-                        className="form-select validate"
-                        onChange={handleSelectChange} // Функція для відслідковування зміни
-                        value={item.sex || "man"} // Поточне значення вибору
-                        required
-                      >
-                        <option value="0" disabled>
-                          Select sex
-                        </option>
-                        <option value="man">Man</option>
-                        <option value="woman">Woman</option>
-                        <option value="unisex">Unisex</option>
-                      </select>
-                    </div>
-                    <div className="mb-3">
-                      <div className="row">
-                        <div className="col-md-3">
-                          <img
-                            className="img-fluid"
-                            src={import_image}
-                            onClick={onImageSelect}
-                            alt="Оберіть фото"
-                            style={{ cursor: "pointer" }}
-                          />
-                        </div>
-                        {item.images.map((img, index) => (
-                          <div className="col-md-3" key={index}>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              onClick={() => removeImage(index)}
-                              aria-label="Close"
-                            ></button>
-                            <img
-                              className="img-fluid"
-                              src={URL.createObjectURL(img)}
-                              onClick={onImageSelect}
-                              alt="Оберіть фото"
-                              style={{ cursor: "pointer" }}
-                            />
-                          </div>
-                        ))}
-                        {image.map((img, index) => (
-                          <div className="col-md-3" key={index}>
-                            <button
-                              type="button"
-                              className="btn-close"
-                              onClick={() => removeImageServer(index)}
-                              aria-label="Close"
-                            ></button>
-                            <img
-                              className="img-fluid"
-                              src={APP_ENV.UPLOADS_URL + img.url}
-                              alt="Оберіть фото"
-                              style={{ cursor: "pointer" }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+
+                    <CategorySelect setItem={setItem} category_id={item.category_id}/>
+                    <SizeSelector handleChange={handleChange} setItem={setItem} sizes={item.sizes}/>
+                    <ColorSelector setItem={setItem} colors={item.colors}/>
+                    <SexSelector sex={item.sex} setItem={setItem}/>
+                    <ImageSelector images={item.images} importImage={import_image} setItem={setItem} imageServer={image} setImageServer={setImage} />
+
                     <div className="col-12">
                       <button
                         type="submit"
