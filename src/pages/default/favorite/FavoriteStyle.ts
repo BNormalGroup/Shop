@@ -34,5 +34,10 @@ export const useStyles = createUseStyles({
     fontWeight: '400',
     lineHeight: '20.05px',
     fontFamily: "Source Serif Pro"
+  },
+  ItemsWrapper: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    gap: '20px'
   }
 });

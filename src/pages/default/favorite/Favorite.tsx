@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStyles } from "./FavoriteStyle.ts";
 import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
+import { IProductGet } from "../../../utils/types.ts";
+import { FavoriteItem } from "../../../components/favoriteItem/FavoriteItem.tsx";
 
 const Favorite = () => {
   const classes = useStyles();
+  const [items, setItems] = useState<IProductGet[]>([]);
+
 
   return (
     <>
@@ -24,6 +28,11 @@ const Favorite = () => {
         <p className={classes.PageTitle}>My Favourites</p>
           <p className={classes.CountItems}>4 ITEMS</p>
         </div>
+          <div className={classes.ItemsWrapper}>
+            {items.map((product, key)=>{
+              return <FavoriteItem product={product} key={key}/>
+            })}
+          </div>
         </div>
       </div>
     </>
