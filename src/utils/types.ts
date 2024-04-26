@@ -23,6 +23,10 @@ export interface ICategoryParentItem {
   children?: ICategoryParentItem[];
 }
 
+export interface IFavoritePost {
+  userId: number;
+  productId: number;
+}
 export interface IBrandItem {
   id?: number;
   name: string;
