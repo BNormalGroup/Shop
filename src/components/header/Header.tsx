@@ -46,7 +46,9 @@ export const Header = () => {
           >
             <img src={accountIcon} className={classes.icon} />
           </button>
-          <img src={likeIcon} className={classes.icon} />
+          <Link to="/favorite">
+            <img src={likeIcon} className={classes.icon} />
+          </Link>
           <BasketIcon />
         </Stack>
       </div>

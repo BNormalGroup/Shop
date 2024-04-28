@@ -22,7 +22,7 @@ const Favorite = () => {
     };
 
     fetchData();
-  }, []);
+  }, [user.id]);
 
   return (
     <>
@@ -41,12 +41,13 @@ const Favorite = () => {
           </div>
           <div className={classes.Center}>
             <p className={classes.PageTitle}>My Favourites</p>
-            <p className={classes.CountItems}>4 ITEMS</p>
+            <p className={classes.CountItems}>{items.length} ITEMS</p>
           </div>
           <div className={classes.ItemsWrapper}>
-            {items.map((product, key) => {
-              return <FavoriteItem product={product} key={key} />;
-            })}
+            {items &&
+              items.map((product, key) => {
+                return <FavoriteItem product={product} key={key} />;
+              })}
           </div>
         </div>
       </div>

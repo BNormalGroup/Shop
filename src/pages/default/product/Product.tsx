@@ -49,6 +49,7 @@ const Product = () => {
                 />
               </div>
               <ProductImages
+                productId={product.product.id}
                 images={product.images.map((image) => image.url)}
               />
             </div>

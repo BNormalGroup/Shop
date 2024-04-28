@@ -24,8 +24,8 @@ export interface ICategoryParentItem {
 }
 
 export interface IFavoritePost {
-  userId: number;
-  productId: number;
+  item_id: number;
+  user_id: number;
 }
 export interface IBrandItem {
   id?: number;

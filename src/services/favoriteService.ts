@@ -5,8 +5,8 @@ import { IFavoritePost, IProductGet } from "../utils/types.ts";
 export const LikeService = async (productId: number, userId: number) => {
   try {
     const data: IFavoritePost = {
-      productId: productId,
-      userId: userId,
+      item_id: productId,
+      user_id: userId,
     };
     await http.post<IFavoritePost>("/likes/", data);
   } catch (error: any) {
