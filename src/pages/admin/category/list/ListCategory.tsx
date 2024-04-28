@@ -5,7 +5,7 @@ import { ICategoryItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
 import categorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
-import {GetCategoriesService} from "../../../../services/categoryService.ts";
+import { GetCategoriesService } from "../../../../services/categoryService.ts";
 
 const ListCategory = () => {
   const [allCategories, setAllCategories] = useState<ICategoryItem[]>([]);
@@ -16,9 +16,9 @@ const ListCategory = () => {
     setCategoriesFromServer();
   }, []);
 
-  async function setCategoriesFromServer(){
+  async function setCategoriesFromServer() {
     const category = await GetCategoriesService();
-    if (category){
+    if (category) {
       setAllCategories(category);
     }
   }

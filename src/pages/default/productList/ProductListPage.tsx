@@ -21,10 +21,10 @@ const ProductListPage = () => {
     <>
       <MenuHeader></MenuHeader>
       <HeaderProductList
-          title={"Dresses For Women"}
-          description={
-            "Discover the epitome of timeless elegance with ModaMingle's latest women's dresses collection, where classic design meets modern sophistication. Each dress in this meticulously curated collection is a celebration of femininity and refined style, crafted for the confident, contemporary woman."
-          }
+        title={"Dresses For Women"}
+        description={
+          "Discover the epitome of timeless elegance with ModaMingle's latest women's dresses collection, where classic design meets modern sophistication. Each dress in this meticulously curated collection is a celebration of femininity and refined style, crafted for the confident, contemporary woman."
+        }
       ></HeaderProductList>
       <div
         className="container"

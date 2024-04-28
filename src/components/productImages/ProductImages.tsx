@@ -1,11 +1,35 @@
 import { useStyles } from "./ProductImagesStyle.ts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { APP_ENV } from "../../env";
 import likeIcon from "../../assets/likeIcon.png";
+import { CheckLikedService, LikeService } from "../../services/favoriteService.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store.ts";
 
-export const ProductImages = ({ images }: { images: string[] }) => {
+export const ProductImages = ({
+  images,
+  productId,
+}: {
+  images: string[];
+  productId: number | undefined;
+}) => {
   const classes = useStyles();
   const [imageSelected, setImageSelected] = useState<string>(images[0]);
+  const userId = useSelector((state: RootState) => state.users.user.id);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
+
+  const likeClick = async () => {
+    if (productId) await LikeService(productId, userId);
+  };
+
+  useEffect(() => {
+    if(productId)
+    {
+      const resp = CheckLikedService(userId,productId);
+      if (resp)
+      setIsLiked(resp);
+    }
+  }, []);
 
   return (
     <>
@@ -29,8 +53,8 @@ export const ProductImages = ({ images }: { images: string[] }) => {
             src={APP_ENV.UPLOADS_URL + imageSelected}
             className={classes.imageMain}
           ></img>
-          <button className={classes.likeButton}>
-            <img src={likeIcon} className={classes.likeIcon}/>
+          <button className={classes.likeButton} onClick={likeClick}>
+            <img src={likeIcon} className={classes.likeIcon} />
           </button>
         </div>
       </div>

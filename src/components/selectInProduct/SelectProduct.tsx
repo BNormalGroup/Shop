@@ -9,7 +9,7 @@ export const SelectProduct = ({ content }: { content: React.ReactNode[] }) => {
     <>
       <select className={classes.select}>
         {content.map((item, index) => (
-          <option className={classes.option} key={index}>
+          <option className={classes.option} key={index} value={index}>
             {item}
           </option>
         ))}
@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
     appearance: "none",
     WebkitAppearance: "none",
     MozAppearance: "none",
-    width: "422px",
+    width: "100%",
     height: "40px",
     fontWeight: "400",
     fontSize: "16px",

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useStyles from "./style.tsx";
-import {IProductGet} from "../../../utils/types.ts";
+import { IProductGet } from "../../../utils/types.ts";
 import { APP_ENV } from "../../../env";
 import likeImage from "../../../assets/itemIcons/likeBtn.svg";
-import {GetItemService} from "../../../services/productService.ts";
-import {string} from "yup";
+import { GetItemService } from "../../../services/productService.ts";
+import { string } from "yup";
 
 export const ProductItem = ({ id }: { id: number }) => {
   const classes = useStyles();
@@ -35,7 +35,11 @@ export const ProductItem = ({ id }: { id: number }) => {
           <div className={classes.imageContainer}>
             <img
               className={classes.image}
-              src={APP_ENV.UPLOADS_URL + item?.images[0]?.url != undefined ? item?.images[0]?.url : ''}
+              src={
+                APP_ENV.UPLOADS_URL + item?.images[0]?.url != undefined
+                  ? item?.images[0]?.url
+                  : ""
+              }
               alt={""}
             />
             <button className={classes.likeBtn}>
@@ -43,16 +47,15 @@ export const ProductItem = ({ id }: { id: number }) => {
             </button>
           </div>
           <p className={classes.title}>{item?.product?.name}</p>
-          <p className={classes.price}>
-            ₴{item?.product?.price} грн.
-          </p>
+          <p className={classes.price}>₴{item?.product?.price} грн.</p>
           <p className={classes.color}>
-            {item?.colors?.map((prod,index)=>(
-                <>
-                  {prod.name}
-                  {index != item?.colors.length && ' | '}
-                </>
-            ))}</p>
+            {item?.colors?.map((prod, index) => (
+              <>
+                {prod.name}
+                {index != item?.colors.length && " | "}
+              </>
+            ))}
+          </p>
         </>
       )}
     </div>

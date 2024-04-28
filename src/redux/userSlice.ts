@@ -19,9 +19,9 @@ export const userSlice = createSlice({
     },
     auth: (state, action: PayloadAction<IUserAuth>) => {
       state.user = {
-        id: 0,
+        id: action.payload.id,
         isAdmin: action.payload.isAdmin,
-        isBanned: false,
+        isBanned: action.payload.isBanned,
         email: action.payload.email,
         password: "",
       };

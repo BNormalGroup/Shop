@@ -20,7 +20,7 @@ const AddItem = () => {
     brand_id: undefined,
     category_id: undefined,
     price: 0,
-    texture: '',
+    texture: "",
     images: [],
     colors: [],
     sizes: [],
@@ -32,18 +32,13 @@ const AddItem = () => {
   async function handleSumbit(event: React.FormEvent) {
     event.preventDefault();
     try {
-      const result = await AddProductService(item) ;
-      if(result == 200){
+      const result = await AddProductService(item);
+      if (result == 200) {
         navigate("/admin/item/list");
+      } else {
+        setError("Error: " + result);
       }
-      else
-      {
-        setError('Error: ' + result);
-      }
-
-    } catch (error: any) {
-
-    }
+    } catch (error: any) {}
   }
 
   const handleChange = (
@@ -57,9 +52,6 @@ const AddItem = () => {
       }));
     });
   };
-
-
-
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
@@ -152,12 +144,22 @@ const AddItem = () => {
                       />
                     </div>
 
-                    <CategorySelect setItem={setItem} category_id={item.category_id}/>
-                    <SizeSelector handleChange={handleChange} setItem={setItem} sizes={item.sizes}/>
-                    <ColorSelector setItem={setItem} colors={item.colors}/>
-                    <SexSelector sex={item.sex} setItem={setItem}/>
-                    <ImageSelector images={item.images} importImage={import_image} setItem={setItem}/>
-
+                    <CategorySelect
+                      setItem={setItem}
+                      category_id={item.category_id}
+                    />
+                    <SizeSelector
+                      handleChange={handleChange}
+                      setItem={setItem}
+                      sizes={item.sizes}
+                    />
+                    <ColorSelector setItem={setItem} colors={item.colors} />
+                    <SexSelector sex={item.sex} setItem={setItem} />
+                    <ImageSelector
+                      images={item.images}
+                      importImage={import_image}
+                      setItem={setItem}
+                    />
 
                     <div className="col-12">
                       <button
