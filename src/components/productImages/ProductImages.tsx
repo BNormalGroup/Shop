@@ -30,7 +30,7 @@ export const ProductImages = ({ images }: { images: string[] }) => {
             className={classes.imageMain}
           ></img>
           <button className={classes.likeButton}>
-            <img src={likeIcon} className={classes.likeIcon}/>
+            <img src={likeIcon} className={classes.likeIcon} />
           </button>
         </div>
       </div>

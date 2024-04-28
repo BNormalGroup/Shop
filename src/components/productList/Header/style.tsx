@@ -1,7 +1,7 @@
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
-  containerHead:{
+  containerHead: {
     backgroundColor: "#D4D2B4",
   },
   container: {

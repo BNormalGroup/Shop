@@ -48,9 +48,11 @@ const Product = () => {
                   ]}
                 />
               </div>
-              <ProductImages images={product.images.map(image => image.url)} />
+              <ProductImages
+                images={product.images.map((image) => image.url)}
+              />
             </div>
-            <ProductData product={product}/>
+            <ProductData product={product} />
           </div>
         </div>
       </>

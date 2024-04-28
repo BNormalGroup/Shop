@@ -2,7 +2,9 @@ import http from "../http.ts";
 import axios from "axios";
 import { IProductGet, IProductPost } from "../utils/types.ts";
 
-export const AddProductService = async (item: IProductPost): Promise<number> => {
+export const AddProductService = async (
+  item: IProductPost,
+): Promise<number> => {
   try {
     const response = await http.post<IProductPost>("/items/", item, {
       headers: {

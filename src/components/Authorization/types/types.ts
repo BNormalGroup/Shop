@@ -15,9 +15,11 @@ export interface IUserLogin {
 }
 
 export interface IUserAuth {
+  id: number;
   email: string;
   isAdmin: boolean;
   firstName: string;
   lastName: string;
+  isBanned: boolean;
   birthday: string;
 }

@@ -1,7 +1,12 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import {IImage, IProductPost, IItemShow, IProductGet} from "../../../../utils/types.ts";
+import {
+  IImage,
+  IProductPost,
+  IItemShow,
+  IProductGet,
+} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { APP_ENV } from "../../../../env";
 import import_image from "../../../../assets/import_image.png";
@@ -24,7 +29,7 @@ const EditItem = () => {
     images: [],
     sizes: [],
     colors: [],
-    texture: ''
+    texture: "",
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
@@ -35,13 +40,13 @@ const EditItem = () => {
       .get<IProductGet>("/items/show/" + params.id)
       .then((resp) => {
         startTransition(() => {
-          if(resp.data.product)
-          setItem({
-            ...resp.data.product,
-            images: [],
-            sizes: [],
-            colors: []
-          });
+          if (resp.data.product)
+            setItem({
+              ...resp.data.product,
+              images: [],
+              sizes: [],
+              colors: [],
+            });
           setImage(resp.data.images);
           console.log(resp.data);
         });
@@ -136,11 +141,24 @@ const EditItem = () => {
                       />
                     </div>
 
-                    <CategorySelect setItem={setItem} category_id={item.category_id}/>
-                    <SizeSelector handleChange={handleChange} setItem={setItem} sizes={item.sizes}/>
-                    <ColorSelector setItem={setItem} colors={item.colors}/>
-                    <SexSelector sex={item.sex} setItem={setItem}/>
-                    <ImageSelector images={item.images} importImage={import_image} setItem={setItem} imageServer={image} setImageServer={setImage} />
+                    <CategorySelect
+                      setItem={setItem}
+                      category_id={item.category_id}
+                    />
+                    <SizeSelector
+                      handleChange={handleChange}
+                      setItem={setItem}
+                      sizes={item.sizes}
+                    />
+                    <ColorSelector setItem={setItem} colors={item.colors} />
+                    <SexSelector sex={item.sex} setItem={setItem} />
+                    <ImageSelector
+                      images={item.images}
+                      importImage={import_image}
+                      setItem={setItem}
+                      imageServer={image}
+                      setImageServer={setImage}
+                    />
 
                     <div className="col-12">
                       <button
