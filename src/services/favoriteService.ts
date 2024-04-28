@@ -30,3 +30,22 @@ export const GetLikesService = async (userId: number) => {
     }
   }
 };
+
+export const CheckLikedService =  async (userId: number, productId: number) => {
+  try {
+    const data: IFavoritePost = {
+      item_id: productId,
+      user_id: userId,
+    };
+    const response = await http.post<boolean>("/likes/check", data);
+    console.log('resp',response.data);
+    return response.data;
+
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      throw error.response;
+    } else {
+      console.error("General error:", error.message);
+    }
+  }
+};
