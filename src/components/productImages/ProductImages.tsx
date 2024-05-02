@@ -2,9 +2,11 @@ import {useStyles} from "./ProductImagesStyle.ts";
 import {useEffect, useState} from "react";
 import {APP_ENV} from "../../env";
 import likeIcon from "../../assets/likeIcon.png";
-import {CheckLikedService, LikeService} from "../../services/favoriteService.ts";
+import likeIconActive from "../../assets/likeIconActive.png";
+import {CheckLikedService, DeleteLikeService, LikeService} from "../../services/favoriteService.ts";
 import {useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
+import {number} from "yup";
 
 export const ProductImages = ({
                                   images,
@@ -17,9 +19,13 @@ export const ProductImages = ({
     const [imageSelected, setImageSelected] = useState<string>(images[0]);
     const userId = useSelector((state: RootState) => state.users.user.id);
     const [isLiked, setIsLiked] = useState<boolean>(false);
+    const [likeId, setLikeId] = useState<number>(0);
 
     const likeClick = async () => {
         if (productId) await LikeService(productId, userId);
+    };
+    const unlikeClick = async () => {
+        if (productId) await DeleteLikeService(likeId);
     };
 
     useEffect(() => {
@@ -30,7 +36,10 @@ export const ProductImages = ({
     if (productId) {
       const resp = await CheckLikedService(userId, productId);
       if (resp)
-        setIsLiked(resp);
+      {
+        setIsLiked(resp.liked);
+        setLikeId(resp.like_id);
+      }
     }
   };
 
@@ -56,9 +65,16 @@ export const ProductImages = ({
                         src={APP_ENV.UPLOADS_URL + imageSelected}
                         className={classes.imageMain}
                     ></img>
-                    <button className={classes.likeButton} onClick={likeClick}>
-                        <img src={likeIcon} className={classes.likeIcon}/>
-                    </button>
+                    {isLiked &&
+                        <button className={classes.likeButton} onClick={likeClick}>
+                            <img src={likeIcon} className={classes.likeIcon}/>
+                        </button>
+                    ||
+                        <button className={classes.likeButton} onClick={unlikeClick}>
+                            <img src={likeIconActive} className={classes.likeIcon}/>
+                        </button>
+                    }
+
                 </div>
             </div>
         </>

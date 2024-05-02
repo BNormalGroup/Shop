@@ -23,6 +23,10 @@ export interface ICategoryParentItem {
   children?: ICategoryParentItem[];
 }
 
+export interface IFavoriteCheckRequest {
+  liked: boolean;
+  like_id: number;
+}
 export interface IFavoritePost {
   item_id: number;
   user_id: number;
