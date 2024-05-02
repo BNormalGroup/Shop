@@ -65,7 +65,7 @@ export const ProductImages = ({
                         src={APP_ENV.UPLOADS_URL + imageSelected}
                         className={classes.imageMain}
                     ></img>
-                    {isLiked &&
+                    {!isLiked &&
                         <button className={classes.likeButton} onClick={likeClick}>
                             <img src={likeIcon} className={classes.likeIcon}/>
                         </button>
