@@ -37,7 +37,7 @@ export const CheckLikedService =  async (userId: number, productId: number) => {
       item_id: productId,
       user_id: userId,
     };
-    const response = await http.post<boolean>("/likes/check", data);
+    const response = await http.get<boolean>(`/likes/check?user_id=${data.user_id}&item_id=${data.item_id}`);
     console.log('resp',response.data);
     return response.data;
 
