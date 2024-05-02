@@ -5,6 +5,9 @@ import {APP_ENV} from "../../../env";
 import likeImage from "../../../assets/itemIcons/likeBtn.svg";
 import {GetItemService} from "../../../services/productService.ts";
 import NotFoundImage from "../../../assets/notFoundImage.jpg"
+import likeIcon from "../../../assets/likeIcon.png";
+import likeIconActive from "../../../assets/likeIconActive.png";
+import {LikeButton} from "../../LikeButton/LikeButton.tsx";
 
 
 export const ProductItem = ({id}: { id: number }) => {
@@ -39,9 +42,7 @@ export const ProductItem = ({id}: { id: number }) => {
                             src={item && item.images && item.images[0] ? (APP_ENV.UPLOADS_URL + item.images[0].url) : NotFoundImage}
                             alt={""}
                         />
-                        <button className={classes.likeBtn}>
-                            <img src={likeImage}/>
-                        </button>
+                        <LikeButton productId={id}></LikeButton>
                     </div>
                     <p className={classes.title}>{item?.product?.name}</p>
                     <p className={classes.price}>₴{item?.product?.price} грн.</p>

@@ -7,6 +7,7 @@ import {CheckLikedService, DeleteLikeService, LikeService} from "../../services/
 import {useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
 import {number} from "yup";
+import {LikeButton} from "../LikeButton/LikeButton.tsx";
 
 export const ProductImages = ({
                                   images,
@@ -17,31 +18,6 @@ export const ProductImages = ({
 }) => {
     const classes = useStyles();
     const [imageSelected, setImageSelected] = useState<string>(images[0]);
-    const userId = useSelector((state: RootState) => state.users.user.id);
-    const [isLiked, setIsLiked] = useState<boolean>(false);
-    const [likeId, setLikeId] = useState<number>(0);
-
-    const likeClick = async () => {
-        if (productId) await LikeService(productId, userId);
-    };
-    const unlikeClick = async () => {
-        if (productId) await DeleteLikeService(likeId);
-    };
-
-    useEffect(() => {
-       checkLiked();
-    }, []);
-
-  const checkLiked = async () => {
-    if (productId) {
-      const resp = await CheckLikedService(userId, productId);
-      if (resp)
-      {
-        setIsLiked(resp.liked);
-        setLikeId(resp.like_id);
-      }
-    }
-  };
 
     return (
         <>
@@ -65,16 +41,7 @@ export const ProductImages = ({
                         src={APP_ENV.UPLOADS_URL + imageSelected}
                         className={classes.imageMain}
                     ></img>
-                    {!isLiked &&
-                        <button className={classes.likeButton} onClick={likeClick}>
-                            <img src={likeIcon} className={classes.likeIcon}/>
-                        </button>
-                    ||
-                        <button className={classes.likeButton} onClick={unlikeClick}>
-                            <img src={likeIconActive} className={classes.likeIcon}/>
-                        </button>
-                    }
-
+                    <LikeButton productId={productId}></LikeButton>
                 </div>
             </div>
         </>
