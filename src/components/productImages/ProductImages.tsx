@@ -1,16 +1,6 @@
 import { useStyles } from "./ProductImagesStyle.ts";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { APP_ENV } from "../../env";
-import likeIcon from "../../assets/likeIcon.png";
-import likeIconActive from "../../assets/likeIconActive.png";
-import {
-  CheckLikedService,
-  DeleteLikeService,
-  LikeService,
-} from "../../services/favoriteService.ts";
-import { useSelector } from "react-redux";
-import { RootState } from "../../app/store.ts";
-import { number } from "yup";
 import { LikeButton } from "../LikeButton/LikeButton.tsx";
 
 export const ProductImages = ({

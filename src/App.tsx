@@ -29,6 +29,7 @@ const WomanShop = lazy(() => import("./pages/default/womanShop/WomenShop.tsx"));
 const MenShop = lazy(() => import("./pages/default/manShop/MenShop.tsx"));
 const Product = lazy(() => import("./pages/default/product/Product.tsx"));
 const Favorite = lazy(() => import("./pages/default/favorite/Favorite.tsx"));
+const ReviewBag = lazy(() => import("./pages/default/reviewBag/ReviewBag.tsx"));
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="category/:id" element={<ProductListPage />}></Route>
           <Route path="product/:id" element={<Product />}></Route>
           <Route path="favorite" element={<Favorite />}></Route>
+          <Route path="review-bag" element={<ReviewBag />}></Route>
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="category">

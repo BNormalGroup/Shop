@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
     position: "relative",
   },
   title: {
-    fontFamily: "OswaldFont",
+    fontFamily: "Oswald, sans-serif",
     fontSize: "30px",
     fontWeight: 400,
     lineHeight: "44.46px",

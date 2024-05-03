@@ -26,14 +26,14 @@ export const useStyles = createUseStyles({
     fontSize: "35px",
     fontWeight: "400",
     lineHeight: "43.86px",
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
   },
   CountItems: {
     color: "#686747",
     fontSize: "16px",
     fontWeight: "400",
     lineHeight: "20.05px",
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
   },
   ItemsWrapper: {
     display: "grid",

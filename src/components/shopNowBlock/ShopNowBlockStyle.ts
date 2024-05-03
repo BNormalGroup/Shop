@@ -11,7 +11,7 @@ export const useStyles = createUseStyles({
     justifyContent: "center",
   },
   text: {
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
     color: "#686747",
     fontWeight: "600",
     fontSize: "35px",
