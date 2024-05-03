@@ -40,5 +40,13 @@
   "Color": "Color",
   "SizeGuide": "Size guide",
   "EUSize": "EU Size",
-  "AddToBag": "ADD TO BAG"
+  "AddToBag": "ADD TO BAG",
+  "OrderSummary": "ORDER SUMMARY",
+  "Subtotal": "Subtotal",
+  "FreeShipping": "Free UA Shipping & Returns",
+  "Delivery": "Delivery",
+  "Total": "Total",
+  "PromoCode": "Have a promo code? Enter it in checkout",
+  "Checkout": "CHECKOUT",
+  "WeAccept": "WE ACCEPT"
 }

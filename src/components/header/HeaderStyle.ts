@@ -6,7 +6,7 @@ export const useStyles = createUseStyles({
     fontSize: "21px",
     lineHeight: "31px",
     color: "#000000",
-    fontFamily: "OswaldFont",
+    fontFamily: "Oswald, sans-serif",
     textDecoration: "none",
   },
   headerWrapper: {
