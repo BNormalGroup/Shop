@@ -3,6 +3,7 @@ import { useStyles } from "./FavoriteItemStyle.ts";
 import { APP_ENV } from "../../env";
 import { SelectProduct } from "../selectInProduct/SelectProduct.tsx";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export const FavoriteItem = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
@@ -20,7 +21,12 @@ export const FavoriteItem = ({ product }: { product: IProductGet }) => {
           className={classes.image}
           src={APP_ENV.UPLOADS_URL + product.images[0].url}
         />
-        <p className={classes.textName}>{product.product?.name}</p>
+        <Link
+          to={"/product/" + product.product?.id}
+          className={classes.textName}
+        >
+          {product.product?.name}
+        </Link>
         <p className={classes.textPrice}>${product.product?.price} USD</p>
         <SelectProduct content={sizeOptions} />
         <button className={classes.addButton}>{t("AddToBag")}</button>

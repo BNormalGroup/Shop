@@ -14,6 +14,8 @@ export const useStyles = createUseStyles({
     marginTop: "10px",
     fontSize: "14px",
     fontWeight: "400",
+    textDecoration: "none",
+    color: "black",
     lineHeight: "17.54px",
     fontFamily: "Source Serif Pro",
   },
