@@ -2,10 +2,9 @@ import React, {useEffect, useState} from "react";
 import useStyles from "./style.tsx";
 import likeIcon from "../../assets/likeIcon.png";
 import likeIconActive from "../../assets/likeIconActive.png";
-import {CheckLikedService, DeleteLikeService, LikeService} from "../../services/favoriteService.ts";
 import {useSelector} from "react-redux";
 import {RootState} from "../../app/store.ts";
-
+import {CheckLikedService, DeleteLikeService, LikeService} from "../../services/favoriteService.ts";
 
 export const LikeButton = ({productId}: { productId: number | undefined }) => {
     const userId = useSelector((state: RootState) => state.users.user.id);
