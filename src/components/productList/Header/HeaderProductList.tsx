@@ -1,8 +1,8 @@
 import React from "react";
 import useStyles from "./style.tsx";
 import { Breadcrumb } from "../../Breadcrumb/Breadcrumb.tsx";
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const HeaderProductList = ({
   title,
@@ -12,6 +12,7 @@ export const HeaderProductList = ({
   title: string;
 }) => {
   const classes = useStyles();
+  const {t} = useTranslation();
 
   return (
     <>
@@ -20,7 +21,7 @@ export const HeaderProductList = ({
           <div className={classes.breadcrumb}>
             <Breadcrumb
               titles={[
-                { name: "Home", url: "/" },
+                { name: `${t('Home')}`, url: "/" },
                 { name: "Women", url: "/men" },
                 { name: "Dresses", url: "/men/dresses" },
               ]}

@@ -23,9 +23,6 @@ const AddCategory = lazy(
 const EditCategory = lazy(
   () => import("./pages/admin/category/edit/EditCategory"),
 );
-const ListBrand = lazy(() => import("./pages/admin/brand/list/ListBrand.tsx"));
-const AddBrand = lazy(() => import("./pages/admin/brand/add/AddBrand.tsx"));
-const EditBrand = lazy(() => import("./pages/admin/brand/edit/EditBrand"));
 const WomanShop = lazy(() => import("./pages/default/womanShop/WomenShop.tsx"));
 const MenShop = lazy(() => import("./pages/default/manShop/MenShop.tsx"));
 const Product = lazy(() => import("./pages/default/product/Product.tsx"));
@@ -50,11 +47,6 @@ function App() {
             <Route path="listCategory" element={<ListCategory />}></Route>
             <Route path="addCategory" element={<AddCategory />}></Route>
             <Route path="editCategory/:id" element={<EditCategory />}></Route>
-          </Route>
-          <Route path="brand">
-            <Route path="listBrand" element={<ListBrand />}></Route>
-            <Route path="addBrand" element={<AddBrand />}></Route>
-            <Route path="editBrand/:id" element={<EditBrand />}></Route>
           </Route>
           <Route path="item">
             <Route path="list" element={<ListItem></ListItem>}></Route>

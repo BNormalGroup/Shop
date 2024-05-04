@@ -4,6 +4,8 @@ import MasterCard from "../../../assets/cardsImage/masterCard.png";
 import PayPal from "../../../assets/cardsImage/payPal.png";
 import Klarna from "../../../assets/cardsImage/klarna.png";
 import { useTranslation } from "react-i18next";
+import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
+import React from "react";
 
 const ReviewBag = () => {
   const classes = useStyles();
@@ -13,12 +15,21 @@ const ReviewBag = () => {
     <>
       <div className={`container ${classes.container}`}>
         <div className={classes.wrapper}>
-         <div></div>
+         <div>
+           <div className={classes.breadcrumbWrapper}>
+             <Breadcrumb
+               titles={[
+                 { name: `${t('Home')}`, url: "/" },
+                 { name: `${t('ShoppingBag')}`, url: undefined },
+               ]}
+             />
+           </div>
+         </div>
           <div className={classes.summaryWrapper}>
             <p className={classes.summaryText}>{t('OrderSummary')}</p>
             <hr className={classes.line}/>
             <div className={classes.stackSummaryData}>
-              <p className={classes.dataSummaryText}>{t('Subtotal')}</p>
+              <p className={`${classes.dataSummaryText} ${classes.subtotalMargin}`}>{t('Subtotal')}</p>
               <p className={classes.dataSummaryText}>123</p>
             </div>
             <div className={classes.stackSummaryData}>

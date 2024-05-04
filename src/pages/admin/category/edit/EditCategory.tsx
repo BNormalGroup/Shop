@@ -1,7 +1,7 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IBrandItem, ICategoryItem } from "../../../../utils/types.ts";
+import { ICategoryItem, ICategoryPostItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -36,7 +36,7 @@ const EditCategory = () => {
     event.preventDefault();
     try {
       await http
-        .post<IBrandItem>("/categories/" + params.id, category, {
+        .post<ICategoryPostItem>("/categories/" + params.id, category, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

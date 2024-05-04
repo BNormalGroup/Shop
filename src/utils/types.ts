@@ -1,4 +1,3 @@
-import { number, string } from "yup";
 import { IUserLogin } from "../components/Authorization/types/types.ts";
 
 export interface ICategoryItem {
@@ -15,6 +14,7 @@ export interface ICategoryPostItem {
   description: string;
   parent_id?: string;
 }
+
 export interface ICategoryParentItem {
   id?: number;
   name: string;
@@ -27,24 +27,28 @@ export interface IFavoriteCheckRequest {
   liked: boolean;
   like_id: number;
 }
+
 export interface IFavoritePost {
   item_id: number;
   user_id: number;
 }
-export interface IBrandItem {
-  id?: number;
-  name: string;
-  description: string;
-}
+
 export interface IProduct {
   id?: number;
+  mainImage: string;
   name: string;
   description: string;
   texture: string;
   price: number;
-  brand_id?: number;
   category_id?: number;
   sex: string;
+}
+
+export interface IProductBag extends IProduct{
+  color: string;
+  quantity: number;
+  sizes: ISize[];
+  selectedSize: ISize;
 }
 
 export interface IColor {
@@ -52,6 +56,7 @@ export interface IColor {
   name: string;
   image: File;
 }
+
 export interface ISize {
   size: number;
 }
@@ -102,6 +107,7 @@ export interface IUser {
 export interface IUserBanned extends IUser {
   bans: IBan[];
 }
+
 export interface IBan {
   id: number;
   reason: string;
@@ -117,6 +123,7 @@ export interface IOrderStatus {
   id: number;
   status: string;
 }
+
 export interface IOrder {
   id: number;
   status_id: number;

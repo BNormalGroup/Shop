@@ -4,11 +4,9 @@ import "../../css/fontawesome.min.css";
 import {
   IImage,
   IProductPost,
-  IItemShow,
   IProductGet,
 } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
-import { APP_ENV } from "../../../../env";
 import import_image from "../../../../assets/import_image.png";
 import { useNavigate, useParams } from "react-router-dom";
 import SizeSelector from "../../../../components/Admin/SizeSelector/SizeSelector.tsx";
@@ -23,7 +21,6 @@ const EditItem = () => {
     name: "",
     sex: "",
     description: "",
-    brand_id: undefined,
     category_id: undefined,
     price: 0,
     images: [],
@@ -128,17 +125,6 @@ const EditItem = () => {
                         required
                         name="description"
                       ></textarea>
-                    </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="brand_id">Brand id</label>
-                      <input
-                        onChange={handleChange}
-                        id="brand_id"
-                        name="brand_id"
-                        value={item.brand_id || 0}
-                        type="number"
-                        className="form-control validate"
-                      />
                     </div>
 
                     <CategorySelect

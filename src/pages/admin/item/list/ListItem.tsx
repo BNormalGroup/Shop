@@ -45,7 +45,6 @@ const ListItem = () => {
                 <th scope="col">ID</th>
                 <th scope="col">NAME</th>
                 <th scope="col">DESCRIPTION</th>
-                <th scope="col">BRAND ID</th>
                 <th scope="col">CATEGORY ID</th>
                 <th scope="col">SEX</th>
                 <th scope="col">&nbsp;</th>
@@ -64,7 +63,6 @@ const ListItem = () => {
                       ? item.description.slice(0, 270) + "..."
                       : item.description}
                   </td>
-                  <td className="tm-product-name">{item.brand_id}</td>
                   <td className="tm-product-name">{item.category_id}</td>
                   <td className="tm-product-name">{item.sex}</td>
                   <td>
