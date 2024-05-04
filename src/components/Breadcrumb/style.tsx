@@ -10,6 +10,9 @@ const useStyles = createUseStyles({
     margin: 0,
     padding: 0,
   },
+  arrow: {
+    paddingBottom: '2px'
+  },
   link: {
     fontFamily: "SourceSerifPro",
     fontSize: "12px",

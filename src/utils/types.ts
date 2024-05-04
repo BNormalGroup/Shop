@@ -14,6 +14,7 @@ export interface ICategoryPostItem {
   description: string;
   parent_id?: string;
 }
+
 export interface ICategoryParentItem {
   id?: number;
   name: string;
@@ -26,12 +27,15 @@ export interface IFavoriteCheckRequest {
   liked: boolean;
   like_id: number;
 }
+
 export interface IFavoritePost {
   item_id: number;
   user_id: number;
 }
+
 export interface IProduct {
   id?: number;
+  mainImage: string;
   name: string;
   description: string;
   texture: string;
@@ -40,11 +44,19 @@ export interface IProduct {
   sex: string;
 }
 
+export interface IProductBag extends IProduct{
+  color: string;
+  quantity: number;
+  sizes: ISize[];
+  selectedSize: ISize;
+}
+
 export interface IColor {
   id?: number;
   name: string;
   image: File;
 }
+
 export interface ISize {
   size: number;
 }
@@ -95,6 +107,7 @@ export interface IUser {
 export interface IUserBanned extends IUser {
   bans: IBan[];
 }
+
 export interface IBan {
   id: number;
   reason: string;
@@ -110,6 +123,7 @@ export interface IOrderStatus {
   id: number;
   status: string;
 }
+
 export interface IOrder {
   id: number;
   status_id: number;

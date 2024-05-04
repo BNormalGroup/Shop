@@ -6,9 +6,11 @@ import { FavoriteItem } from "../../../components/favoriteItem/FavoriteItem.tsx"
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { GetLikesService } from "../../../services/favoriteService.ts";
+import { useTranslation } from "react-i18next";
 
 const Favorite = () => {
   const classes = useStyles();
+  const {t} = useTranslation();
   const [items, setItems] = useState<IProductGet[]>([]);
   const user = useSelector(
     (state: RootState) => state.users.user,
@@ -31,7 +33,7 @@ const Favorite = () => {
           <div className={classes.BreadcrumbWrapper}>
             <Breadcrumb
               titles={[
-                { name: "Home", url: "/" },
+                { name: `${t('Home')}`, url: "/" },
                 {
                   name: `My Favourites`,
                   url: undefined,

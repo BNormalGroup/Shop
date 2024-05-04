@@ -6,6 +6,7 @@ const useStyles = createUseStyles({
     flexDirection: "row",
     gap: "20px",
   },
+  //right side
   summaryWrapper: {
     backgroundColor: "#D4D2B4",
     padding: "27px 91px 70px 91px",
@@ -20,7 +21,7 @@ const useStyles = createUseStyles({
     fontSize: "18px",
     lineHeight: "26.68px",
     color: "black",
-    marginBottom: "10px",
+    margin: 0
   },
   stackSummaryData: {
     display: "flex",
@@ -28,21 +29,22 @@ const useStyles = createUseStyles({
     justifyContent: "space-between",
   },
   dataSummaryText: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif 4",
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "19.19px",
     color: "black",
-    marginBottom: "15px",
-    marginTop: "15px",
+    margin: 0
   },
   totalText: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: '"Source Serif 4", serif',
     fontWeight: "600",
     fontSize: "14px",
     lineHeight: "19.19px",
     color: "black",
-    marginTop: "20px",
+  },
+  subtotalMargin: {
+    marginBottom: "15px",
   },
   promoText: {
     fontFamily: "Source Serif 4, serif",
@@ -62,6 +64,7 @@ const useStyles = createUseStyles({
     fontSize: "18px",
     lineHeight: "26.68px",
     color: "#F5F5F5",
+    marginBottom: '37px'
   },
   container: {
     marginBottom: 56,
@@ -97,5 +100,16 @@ const useStyles = createUseStyles({
     height: "100%",
     objectFit: "contain",
   },
+  //left side
+  breadcrumbWrapper: {
+    marginTop: '10px'
+  },
+  wrapperProducts: {
+    maxWidth: '645px',
+    width: '100%',
+    marginTop: '39px',
+    display: 'flex',
+    flexDirection: 'column'
+  }
 });
 export default useStyles;

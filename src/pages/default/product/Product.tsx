@@ -7,8 +7,10 @@ import { ProductData } from "../../../components/productData/ProductData.tsx";
 import { IProductGet } from "../../../utils/types.ts";
 import { GetItemService } from "../../../services/productService.ts";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Product = () => {
+  const {t} = useTranslation();
   const classes = useStyles();
   const [product, setProduct] = useState<IProductGet>({
     product: undefined,
@@ -39,7 +41,7 @@ const Product = () => {
               <div className={classes.BreadcrumbWrapper}>
                 <Breadcrumb
                   titles={[
-                    { name: "Home", url: "/" },
+                    { name: `${t('Home')}`, url: "/" },
                     {
                       name: `${product.product.sex}`,
                       url: `/${product.product.sex.toLowerCase()}`,
