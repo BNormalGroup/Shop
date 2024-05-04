@@ -1,4 +1,3 @@
-import { number, string } from "yup";
 import { IUserLogin } from "../components/Authorization/types/types.ts";
 
 export interface ICategoryItem {
@@ -31,18 +30,12 @@ export interface IFavoritePost {
   item_id: number;
   user_id: number;
 }
-export interface IBrandItem {
-  id?: number;
-  name: string;
-  description: string;
-}
 export interface IProduct {
   id?: number;
   name: string;
   description: string;
   texture: string;
   price: number;
-  brand_id?: number;
   category_id?: number;
   sex: string;
 }

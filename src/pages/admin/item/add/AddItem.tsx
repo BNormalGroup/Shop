@@ -1,7 +1,7 @@
 import React, { startTransition, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IColor, IProductPost, ISize } from "../../../../utils/types.ts";
+import { IProductPost } from "../../../../utils/types.ts";
 import import_image from "../../../../assets/import_image.png";
 import { useNavigate } from "react-router-dom";
 import { AddProductService } from "../../../../services/productService.ts";
@@ -17,7 +17,6 @@ const AddItem = () => {
     name: "",
     sex: "",
     description: "",
-    brand_id: undefined,
     category_id: undefined,
     price: 0,
     texture: "",
@@ -38,7 +37,9 @@ const AddItem = () => {
       } else {
         setError("Error: " + result);
       }
-    } catch (error: any) {}
+    } catch (error: any) {
+      console.log('error', error);
+    }
   }
 
   const handleChange = (
@@ -132,16 +133,6 @@ const AddItem = () => {
                         required
                         name="description"
                       ></textarea>
-                    </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="brand_id">Brand id</label>
-                      <input
-                        onChange={handleChange}
-                        id="brand_id"
-                        name="brand_id"
-                        type="number"
-                        className="form-control validate"
-                      />
                     </div>
 
                     <CategorySelect
