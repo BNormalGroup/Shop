@@ -112,3 +112,20 @@ export type SexCategoryItems = {
   image: string;
   name: string;
 };
+
+export interface IOrderStatus {
+  id: number;
+  status: string;
+}
+export interface IOrder {
+  id: number;
+  status_id: number;
+  user: IUser;
+  item: IItemOrder;
+  color: IColor;
+  size: ISize;
+}
+
+export interface IItemOrder extends IProduct {
+  image: string;
+}

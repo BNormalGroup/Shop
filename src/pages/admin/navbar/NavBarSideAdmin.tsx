@@ -53,6 +53,15 @@ const NavBarSideAdmin = () => {
                   <span className="ms-1 d-none d-sm-inline">Users</span>
                 </Link>
               </li>
+              <li>
+                <Link
+                  to={"/admin/order/list"}
+                  className="nav-link px-0 align-middle w-100"
+                >
+                  <i className="fs-4 bi-bar-chart-steps"></i>
+                  <span className="ms-1 d-none d-sm-inline">Orders</span>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
