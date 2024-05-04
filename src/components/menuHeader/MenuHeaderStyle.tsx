@@ -76,7 +76,7 @@ const useStyles = createUseStyles({
     marginRight: 25,
   },
   linkContainerHeader: {
-    fontFamily: "OswaldFont",
+    fontFamily: "Oswald, sans-serif",
     fontSize: "16px",
     fontWeight: 600,
     lineHeight: "23.71px",

@@ -31,7 +31,7 @@ export const useStyles = createUseStyles({
     fontSize: "21px",
     lineHeight: "31.12px",
     color: "#000000",
-    fontFamily: "OswaldFont",
+    fontFamily: "Oswald, sans-serif",
     textDecoration: "none",
   },
   inputsContainer: {
@@ -52,7 +52,7 @@ export const useStyles = createUseStyles({
     width: "400px",
     "&::placeholder": {
       color: "#5A5A5A",
-      fontFamily: "Source Serif Pro",
+      fontFamily: "Source Serif 4, serif",
       fontSize: "14px",
       lineHeight: "17.54px",
       fontWeight: "400",
@@ -72,7 +72,7 @@ export const useStyles = createUseStyles({
     color: "#F5F5F5",
     lineHeight: "26.68px",
     fontWeight: "400",
-    fontFamily: "OswaldFont",
+    fontFamily: "Oswald, sans-serif",
     border: "0",
   },
   buttonBack: {
@@ -83,20 +83,20 @@ export const useStyles = createUseStyles({
     color: "#282826",
     lineHeight: "26.68px",
     fontWeight: "400",
-    fontFamily: "OswaldFont",
+    fontFamily: "Oswald, sans-serif",
     border: "1px solid #282826",
   },
   textValidation: {
     color: "#C10000",
     fontSize: "11px",
     lineHeight: "13.78px",
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
   },
   forgotPasswordText: {
     cursor: "pointer",
     color: "black",
     fontSize: "14px",
     lineHeight: "17.54px",
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
   },
 });

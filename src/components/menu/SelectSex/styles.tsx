@@ -28,7 +28,7 @@ const useStyles = createUseStyles({
     border: "none",
     cursor: "pointer",
     fontFamily: "OswaldFont, sans-serif",
-    fontSize: 35,
+    fontSize: 25,
     fontWeight: 400,
     display: "flex", // Встановлюємо flex контейнер
     alignItems: "center", // Вертикальне центрування

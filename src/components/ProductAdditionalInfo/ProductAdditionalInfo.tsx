@@ -34,7 +34,7 @@ const useStyles = createUseStyles({
     borderBottom: "1px solid black",
   },
   headerText: {
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
     color: "#686747",
     fontWeight: "300",
     fontSize: "16px",
@@ -44,7 +44,7 @@ const useStyles = createUseStyles({
     lineHeight: "20.05px",
   },
   headerTextSelected: {
-    fontFamily: "Source Serif Pro",
+    fontFamily: "Source Serif 4, serif",
     color: "black",
     fontWeight: "600",
     padding: "0",
