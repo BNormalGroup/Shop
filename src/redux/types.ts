@@ -1,4 +1,5 @@
 import { IUserLogin } from "../components/Authorization/types/types.ts";
+import { IProductBag } from "../utils/types.ts";
 
 export type IssueInitialState = {
   user: IUserLogin;
@@ -13,4 +14,12 @@ export const initialState: IssueInitialState = {
     password: "",
   },
   isAuth: false,
+};
+
+export type IssueInitialStateBag = {
+  products: IProductBag[];
+};
+
+export const initialStateBag: IssueInitialStateBag = {
+ products: []
 };
