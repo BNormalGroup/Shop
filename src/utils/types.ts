@@ -44,11 +44,12 @@ export interface IProduct {
   sex: string;
 }
 
-export interface IProductBag extends IProduct{
+export interface IProductBag {
+  product: IProduct;
   color: string;
   quantity: number;
   sizes: ISize[];
-  selectedSize: ISize;
+  selectedSize: string;
 }
 
 export interface IColor {

@@ -10,7 +10,7 @@ export const BagSlice = createSlice({
       state.products.push(action.payload);
     },
     deleteProduct: (state, action: PayloadAction<number>) => {
-      state.products = state.products.filter(product=> product.id != action.payload);
+      state.products = state.products.filter(product=> product.product.id != action.payload);
     }
   }
 });

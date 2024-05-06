@@ -1,20 +1,49 @@
 import { useStyles } from "./ProductDataStyle.ts";
-import { SelectProduct } from "../selectInProduct/SelectProduct.tsx";
+// import { SelectProduct } from "../selectInProduct/SelectProduct.tsx";
 import { useTranslation } from "react-i18next";
 //import { ProductAdditionalInfo } from "../ProductAdditionalInfo/ProductAdditionalInfo.tsx";
 import { IProductGet } from "../../utils/types.ts";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/bagSlice.ts";
+import React, { useState } from "react";
 
 export const ProductData = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const sizeOption = product.sizes.map((size, key) => {
-    return <div key={key}>{size.size}</div>;
+    return (
+      <option className={classes.option} key={key} value={size.size}>
+        {size.size}
+      </option>
+    );
   });
 
   const colorOption = product.colors.map((color, key) => {
-    return <p key={key}>{color.name}</p>;
+    return (
+      <option key={key} value={color.name}>
+        {color.name}
+      </option>
+    );
   });
+  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0].size.toString());
+  const [selectedColor, setSelectedColor] = useState<string>(product.colors[0].name);
+
+  const clickAddProductToBag = () => {
+    if (product.product) {
+      dispatch(
+        addProduct({
+          product: product.product,
+          sizes: product.sizes,
+          quantity: 1,
+          color: selectedColor,
+          selectedSize: selectedSize,
+        }),
+      );
+    }
+  };
+
   return (
     <>
       <div className={classes.container}>
@@ -23,11 +52,28 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           <p className={classes.textTexture}>{product?.product?.texture}</p>
           <p className={classes.textPrice}>${product?.product?.price} USD</p>
           <p className={classes.textParam}>{t("Color")}</p>
-          <SelectProduct content={colorOption} />
-          <p className={classes.textParam}>{t("EUSize")}</p>
-          <SelectProduct content={sizeOption} />
+          <select
+            className={classes.select}
+            value={selectedSize}
+            onChange={(e) => {
+              console.log("e.target.value)", e.target.value);
+              setSelectedColor(e.target.value);
+            }}
+              >
+            {colorOption}
+              </select>
+              <p className={classes.textParam}>{t("EUSize")}</p>
+          <select
+            className={classes.select}
+            value={selectedColor}
+            onChange={(e) => setSelectedSize(e.target.value)}
+          >
+            {sizeOption}
+          </select>
           <p className={classes.textGuide}>{t("SizeGuide")}</p>
-          <button className={classes.buttonBag}>{t("AddToBag")}</button>
+          <button className={classes.buttonBag} onClick={clickAddProductToBag}>
+            {t("AddToBag")}
+          </button>
           <p className={classes.textDescription}>
             {product?.product?.description}
           </p>
