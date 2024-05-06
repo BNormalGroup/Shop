@@ -23,6 +23,7 @@ const AddItem = () => {
     images: [],
     colors: [],
     sizes: [],
+    mainImage: "",
     image: undefined,
   });
   const [error, setError] = useState<string>("");
