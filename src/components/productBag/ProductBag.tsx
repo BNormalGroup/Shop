@@ -7,6 +7,9 @@ export const ProductBag = ({product}:{product:IProductBag}) => {
   return(
     <>
       <hr className={classes.line}/>
+      <div className={classes.mainBox}>
+
+      </div>
     </>
   )
 }

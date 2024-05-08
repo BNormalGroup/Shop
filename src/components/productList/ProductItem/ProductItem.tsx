@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import useStyles from "./style.tsx";
 import { IProductGet } from "../../../utils/types.ts";
 import { APP_ENV } from "../../../env";
-import likeImage from "../../../assets/itemIcons/likeBtn.svg";
 import { GetItemService } from "../../../services/productService.ts";
 import NotFoundImage from "../../../assets/notFoundImage.jpg";
-import likeIcon from "../../../assets/likeIcon.png";
-import likeIconActive from "../../../assets/likeIconActive.png";
 import { LikeButton } from "../../LikeButton/LikeButton.tsx";
+import { Link } from "react-router-dom";
 
 export const ProductItem = ({ id }: { id: number }) => {
   const classes = useStyles();
@@ -47,7 +45,7 @@ export const ProductItem = ({ id }: { id: number }) => {
             />
             <LikeButton productId={id}></LikeButton>
           </div>
-          <p className={classes.title}>{item?.product?.name}</p>
+          <Link className={classes.title} to={'/product/'+item?.product?.id}>{item?.product?.name}</Link>
           <p className={classes.price}>₴{item?.product?.price} грн.</p>
           <p className={classes.color}>
             {item?.colors?.map((prod, index) => (
