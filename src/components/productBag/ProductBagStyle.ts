@@ -36,6 +36,15 @@ const useStyles = createUseStyles({
     lineHeight: "16.45px",
     color: "black",
   },
+  mainBox: {
+    display: "flex",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  photoBox: {
+    display: 'flex',
+  },
   line: {
     color: "black",
     height: "1px",

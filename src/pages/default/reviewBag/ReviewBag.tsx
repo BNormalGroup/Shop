@@ -6,11 +6,14 @@ import Klarna from "../../../assets/cardsImage/klarna.png";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../app/store.ts";
 
 const ReviewBag = () => {
   const classes = useStyles();
   const {t} = useTranslation();
-
+  const products = useSelector((state:RootState)=> state.bag.products);
+  
   return (
     <>
       <div className={`container ${classes.container}`}>

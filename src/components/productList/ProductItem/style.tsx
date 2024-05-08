@@ -17,6 +17,7 @@ const useStyles = createUseStyles({
     marginTop: "10px",
     fontFamily: "SourceSerifPro",
     fontSize: "16px",
+    textDecoration: 'none',
     fontWeight: 500,
     color: "#000000",
   },

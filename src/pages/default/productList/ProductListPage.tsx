@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { HeaderProductList } from "../../../components/productList/Header/HeaderProductList.tsx";
 import useStyles from "./style.tsx";
 import { ProductItem } from "../../../components/productList/ProductItem/ProductItem.tsx";
-import { IItemShow } from "../../../utils/types.ts";
 import http from "../../../http.ts";
 import { useParams } from "react-router-dom";
 
