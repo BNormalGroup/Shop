@@ -36,7 +36,7 @@ const ProductListPage = () => {
 
     useEffect(() => {
         loadProducts('sort'); // Завантаження товарів при першому рендері
-    }, [sortField, sortDirection]);
+    }, [sortField, sortDirection, params.id]);
 
     const showMore = () => {
         setPage((prevPage) => prevPage + 1); // Збільшення сторінки для завантаження більше товарів

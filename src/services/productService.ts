@@ -51,7 +51,7 @@ export const GetItemListService = async (
                 sort_field: sortField,
                 sort_direction: sortDirection,
                 per_page: 10,
-                category_id: categoryId,
+                id_category: categoryId,
                 page,
             },
         });
