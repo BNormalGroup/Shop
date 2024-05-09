@@ -139,6 +139,8 @@ const AddItem = () => {
                     <CategorySelect
                       setItem={setItem}
                       category_id={item.category_id}
+                      nameProps={'category_id'}
+                      requiredSelect={true}
                     />
                     <SizeSelector
                       handleChange={handleChange}

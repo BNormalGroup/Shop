@@ -33,3 +33,21 @@ export const GetCategoriesService = async (): Promise<ICategoryItem[]> => {
     }
   }
 };
+
+export const GetChildesCategoryService = async (id : number | string): Promise<ICategoryItem[]> => {
+  try {
+    const response = await http.get<ICategoryItem[]>("/categories/child/" + id);
+
+    // Повернення даних відповіді
+    return response.data;
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      // Кидання помилки з даними відповіді
+      throw error.response;
+    } else {
+      // Інший тип помилки, виводимо в консоль і кидаємо нову помилку
+      console.error("General error:", error.message);
+      throw new Error("An unexpected error occurred");
+    }
+  }
+};

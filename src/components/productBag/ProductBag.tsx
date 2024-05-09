@@ -8,7 +8,7 @@ export const ProductBag = ({product}:{product:IProductBag}) => {
     <>
       <hr className={classes.line}/>
       <div className={classes.mainBox}>
-
+          {product && 'ok'}
       </div>
     </>
   )
