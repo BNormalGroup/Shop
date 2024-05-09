@@ -5,6 +5,7 @@ import { ICategoryPostItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
 import { AddCategoryService } from "../../../../services/categoryService.ts";
+import CategorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
 
 const AddCategory = () => {
   const [category, setCategory] = useState<ICategoryPostItem>({
@@ -79,16 +80,7 @@ const AddCategory = () => {
                         name="description"
                       ></textarea>
                     </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="parent">Parent Id</label>
-                      <input
-                        onChange={handleChange}
-                        id="parent_id"
-                        name="parent_id"
-                        type="number"
-                        className="form-control validate"
-                      />
-                    </div>
+                    <CategorySelect setItem={setCategory} nameProps={'parent_id'} category_id={parseInt(category.parent_id ?? '0', 10)}></CategorySelect>
                     <div className="form-group mb-3">
                       <label htmlFor="slug">Slug</label>
                       <input

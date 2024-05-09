@@ -48,7 +48,8 @@ const useStyles = createUseStyles({
     margin: "0px 53px",
     padding: "20px 0px",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
+
   },
   titleButton: {
     maxHeight: 35,
@@ -74,6 +75,7 @@ const useStyles = createUseStyles({
     fontFamily: "SourceSerifPro",
     fontSize: "14px",
     fontWeight: 600,
+    marginRight: '56px',
   },
 });
 export default useStyles;

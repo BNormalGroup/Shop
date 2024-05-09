@@ -4,6 +4,8 @@ import "../../css/fontawesome.min.css";
 import { ICategoryItem, ICategoryPostItem } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate, useParams } from "react-router-dom";
+import CategorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
+import categorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
 
 const EditCategory = () => {
   const [category, setCategory] = useState<ICategoryItem>({
@@ -106,17 +108,7 @@ const EditCategory = () => {
                         name="description"
                       ></textarea>
                     </div>
-                    <div className="form-group mb-3">
-                      <label htmlFor="parent">Parent Id</label>
-                      <input
-                        onChange={handleChange}
-                        id="parent_id"
-                        value={category.parent_id}
-                        name="parent_id"
-                        type="number"
-                        className="form-control validate"
-                      />
-                    </div>
+                    <CategorySelect setItem={setCategory} nameProps={'parent_id'} category_id={category.parent_id}></CategorySelect>
                     <div className="form-group mb-3">
                       <label htmlFor="slug">Slug</label>
                       <input
