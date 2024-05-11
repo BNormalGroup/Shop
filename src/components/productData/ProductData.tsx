@@ -2,11 +2,10 @@ import { useStyles } from "./ProductDataStyle.ts";
 // import { SelectProduct } from "../selectInProduct/SelectProduct.tsx";
 import { useTranslation } from "react-i18next";
 //import { ProductAdditionalInfo } from "../ProductAdditionalInfo/ProductAdditionalInfo.tsx";
-import { IProductGet } from "../../utils/types.ts";
-import { useDispatch, useSelector } from "react-redux";
+import { IProductBagPost, IProductGet } from "../../utils/types.ts";
+import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/bagSlice.ts";
 import React, { useState } from "react";
-import { RootState } from "../../app/store.ts";
 
 export const ProductData = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
@@ -30,7 +29,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
   });
   const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0].size.toString());
   const [selectedColor, setSelectedColor] = useState<string>(product.colors[0].name);
-  console.log('re render');
+
   const clickAddProductToBag = () => {
     if (product.product) {
       dispatch(
@@ -42,7 +41,9 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           selectedSize: selectedSize,
         }),
       );
-
+      // const postData: IProductBagPost = {
+      //   user_id:
+      // }
     }
   };
 
@@ -56,9 +57,8 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           <p className={classes.textParam}>{t("Color")}</p>
           <select
             className={classes.select}
-            value={selectedSize}
+            value={selectedColor}
             onChange={(e) => {
-              console.log("e.target.value)", e.target.value);
               setSelectedColor(e.target.value);
             }}
               >

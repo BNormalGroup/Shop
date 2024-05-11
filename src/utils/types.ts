@@ -34,7 +34,7 @@ export interface IFavoritePost {
 }
 
 export interface IProduct {
-  id?: number;
+  id: number;
   mainImage: string;
   name: string;
   description: string;
@@ -50,6 +50,14 @@ export interface IProductBag {
   quantity: number;
   sizes: ISize[];
   selectedSize: string;
+}
+
+export interface IProductBagPost {
+  item_id: number;
+  user_id: number;
+  color: string;
+  quantity: number;
+  size: string;
 }
 
 export interface IColor {

@@ -22,12 +22,12 @@ const useStyles = createUseStyles({
   },
   titleNav: {},
   titleButton: {
-    height: 38,
+    height: 40,
     margin: "0px 36px",
-    padding: "5px 0px",
     backgroundColor: "#00000000",
     border: "2px solid #282826",
     color: "#282826",
+    lineHeight: '31.12px',
     cursor: "pointer",
     transition: "background-color 0.3s, color 0.3s",
     "&:hover": {
@@ -35,7 +35,7 @@ const useStyles = createUseStyles({
       color: "white",
       border: "2px solid #282826",
     },
-    fontSize: 21,
+    fontSize: 15,
     fontWeight: 400,
     fontFamily: "OswaldFont, sans-serif",
     display: "flex", // Встановлюємо flex контейнер

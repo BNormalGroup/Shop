@@ -50,5 +50,9 @@
   "Checkout": "CHECKOUT",
   "WeAccept": "WE ACCEPT",
   "ShoppingBag": "Shopping bag",
-  "Home": "Home"
+  "Home": "Home",
+  "Size": "Size",
+  "Colour": "Colour",
+  "Quantity": "Quantity",
+  "EmptyBag": "The basket is empty"
 }

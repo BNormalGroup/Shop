@@ -4,7 +4,6 @@ const useStyles = createUseStyles({
   container: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     flexDirection: "row",
     textDecoration: "none",
     margin: 0,

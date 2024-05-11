@@ -52,7 +52,7 @@ export const useStyles = createUseStyles({
     width: "400px",
     "&::placeholder": {
       color: "#5A5A5A",
-      fontFamily: "Source Serif 4, serif",
+      fontFamily: "Source Serif",
       fontSize: "14px",
       lineHeight: "17.54px",
       fontWeight: "400",
@@ -90,13 +90,13 @@ export const useStyles = createUseStyles({
     color: "#C10000",
     fontSize: "11px",
     lineHeight: "13.78px",
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
   },
   forgotPasswordText: {
     cursor: "pointer",
     color: "black",
     fontSize: "14px",
     lineHeight: "17.54px",
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
   },
 });

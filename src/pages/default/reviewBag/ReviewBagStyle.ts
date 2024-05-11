@@ -47,7 +47,7 @@ const useStyles = createUseStyles({
     marginBottom: "15px",
   },
   promoText: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "19.19px",
@@ -74,6 +74,7 @@ const useStyles = createUseStyles({
   line: {
     color: "black",
     height: "1px",
+    opacity: '1'
   },
   whiteCardWrapper: {
     width: "50px",
@@ -102,7 +103,14 @@ const useStyles = createUseStyles({
   },
   //left side
   breadcrumbWrapper: {
-    marginTop: '10px'
+    marginTop: '10px',
+    left: 0
+  },
+  leftWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    width: '100%'
   },
   wrapperProducts: {
     maxWidth: '645px',
@@ -110,6 +118,20 @@ const useStyles = createUseStyles({
     marginTop: '39px',
     display: 'flex',
     flexDirection: 'column'
+  },
+  noItemsContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+  noItemsText: {
+    fontFamily: "Oswald, sans-serif",
+    fontWeight: "600",
+    fontSize: "40px",
+    lineHeight: "26.68px",
+    color: "black",
+
   }
 });
 export default useStyles;
