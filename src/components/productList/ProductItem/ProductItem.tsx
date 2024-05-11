@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import useStyles from "./style.tsx";
 import {IProductGet} from "../../../utils/types.ts";
 import {APP_ENV} from "../../../env";
-import {GetItemService} from "../../../services/productService.ts";
 import NotFoundImage from "../../../assets/notFoundImage.jpg";
 import {LikeButton} from "../../LikeButton/LikeButton.tsx";
 import {Link} from "react-router-dom";
