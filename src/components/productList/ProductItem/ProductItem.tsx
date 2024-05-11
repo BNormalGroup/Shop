@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import useStyles from "./style.tsx";
 import {IProductGet} from "../../../utils/types.ts";
 import {APP_ENV} from "../../../env";
-import {GetItemService} from "../../../services/productService.ts";
 import NotFoundImage from "../../../assets/notFoundImage.jpg";
 import {LikeButton} from "../../LikeButton/LikeButton.tsx";
 import {Link} from "react-router-dom";
@@ -20,6 +19,15 @@ export const ProductItem = ({item}: { item: IProductGet }) => {
         // Заміна джерела на резервне зображення, якщо виникла помилка
         setSrc(NotFoundImage);
     };
+
+    useEffect(() => {
+        // Оновлення зображення, якщо об'єкт item змінився
+        setSrc(
+            item && item.images && item.images[0]
+                ? APP_ENV.UPLOADS_URL + item.images[0].url
+                : NotFoundImage
+        );
+    }, [item]);
 
     return (
         <div  className={classes.container}>
