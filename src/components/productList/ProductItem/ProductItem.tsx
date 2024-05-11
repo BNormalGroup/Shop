@@ -21,6 +21,15 @@ export const ProductItem = ({item}: { item: IProductGet }) => {
         setSrc(NotFoundImage);
     };
 
+    useEffect(() => {
+        // Оновлення зображення, якщо об'єкт item змінився
+        setSrc(
+            item && item.images && item.images[0]
+                ? APP_ENV.UPLOADS_URL + item.images[0].url
+                : NotFoundImage
+        );
+    }, [item]);
+
     return (
         <div  className={classes.container}>
 
