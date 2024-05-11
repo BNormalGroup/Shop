@@ -20,4 +20,13 @@ export const useStyles = createUseStyles({
     width: "24px",
     height: "24px",
   },
+  SearchResults: {
+    position: "absolute",
+    marginTop: "50px", // Додайте потрібний відступ зверху
+    padding: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+    backgroundColor: "#f9f9f9",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  },
 });
