@@ -16,7 +16,7 @@ export const useStyles = createUseStyles({
     marginBottom: "0",
   },
   textTexture: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     color: "#686747",
     fontWeight: "400",
     fontSize: "16px",
@@ -25,7 +25,7 @@ export const useStyles = createUseStyles({
     marginBottom: "0",
   },
   textPrice: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     color: "black",
     fontWeight: "400",
     fontSize: "16px",
@@ -34,7 +34,7 @@ export const useStyles = createUseStyles({
     marginBottom: "0",
   },
   textParam: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     color: "black",
     fontWeight: "400",
     fontSize: "16px",
@@ -44,7 +44,7 @@ export const useStyles = createUseStyles({
   },
   textGuide: {
     marginTop: "8px",
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     cursor: "pointer",
     textDecoration: "underline",
     fontWeight: "400",
@@ -66,7 +66,7 @@ export const useStyles = createUseStyles({
     border: "0",
   },
   textDescription: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     color: "black",
     fontWeight: "300",
     fontSize: "16px",
@@ -94,7 +94,7 @@ export const useStyles = createUseStyles({
     paddingLeft: "11px",
     paddingRight: "24px",
     color: "black",
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     lineHeight: "20.05px",
     border: "1px solid black",
     backgroundColor: "#F5F5F5",

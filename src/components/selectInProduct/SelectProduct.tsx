@@ -31,7 +31,7 @@ const useStyles = createUseStyles({
     paddingLeft: "11px",
     paddingRight: "24px",
     color: "black",
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     lineHeight: "20.05px",
     border: "1px solid black",
     backgroundColor: "#F5F5F5",

@@ -47,7 +47,7 @@ const useStyles = createUseStyles({
     marginBottom: "15px",
   },
   promoText: {
-    fontFamily: "Source Serif 4, serif",
+    fontFamily: "Source Serif",
     fontWeight: "400",
     fontSize: "14px",
     lineHeight: "19.19px",
@@ -102,7 +102,14 @@ const useStyles = createUseStyles({
   },
   //left side
   breadcrumbWrapper: {
-    marginTop: '10px'
+    marginTop: '10px',
+    left: 0
+  },
+  leftWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    width: '100%'
   },
   wrapperProducts: {
     maxWidth: '645px',

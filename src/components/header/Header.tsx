@@ -5,9 +5,9 @@ import { Logo } from "../../assets/Logo.tsx";
 import { useTranslation } from "react-i18next";
 import { SearchHeader } from "../searchHeader/SearchHeader.tsx";
 import { LanguageSwitcher } from "../languageSwitcher/LanguageSwitcher.tsx";
-import { BasketIcon } from "../../assets/icons/BasketIcon.tsx";
 import accountIcon from "../../assets/account.png";
 import likeIcon from "../../assets/likeIcon.png";
+import bagIcon from "../../assets/bagImage.png";
 import { Link } from "react-router-dom";
 import { Login } from "../Authorization/login/Login.tsx";
 
@@ -49,7 +49,9 @@ export const Header = () => {
           <Link to="/favorite">
             <img src={likeIcon} className={classes.icon} />
           </Link>
-          <BasketIcon />
+          <Link to={'/review-bag'}>
+            <img src={bagIcon} className={classes.icon}/>
+          </Link>
         </Stack>
       </div>
       {registerOpen ? (
