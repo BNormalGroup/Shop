@@ -52,6 +52,14 @@ export interface IProductBag {
   selectedSize: string;
 }
 
+export interface IProductBagPost {
+  item_id: number;
+  user_id: number;
+  color: string;
+  quantity: number;
+  size: string;
+}
+
 export interface IColor {
   id?: number;
   name: string;

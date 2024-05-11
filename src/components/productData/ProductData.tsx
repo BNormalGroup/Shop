@@ -2,7 +2,7 @@ import { useStyles } from "./ProductDataStyle.ts";
 // import { SelectProduct } from "../selectInProduct/SelectProduct.tsx";
 import { useTranslation } from "react-i18next";
 //import { ProductAdditionalInfo } from "../ProductAdditionalInfo/ProductAdditionalInfo.tsx";
-import { IProductGet } from "../../utils/types.ts";
+import { IProductBagPost, IProductGet } from "../../utils/types.ts";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/bagSlice.ts";
 import React, { useState } from "react";
@@ -41,7 +41,9 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           selectedSize: selectedSize,
         }),
       );
-
+      // const postData: IProductBagPost = {
+      //   user_id:
+      // }
     }
   };
 
@@ -65,7 +67,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
               <p className={classes.textParam}>{t("EUSize")}</p>
           <select
             className={classes.select}
-            value={selectedSize}
+            value={selectedColor}
             onChange={(e) => setSelectedSize(e.target.value)}
           >
             {sizeOption}

@@ -21,7 +21,9 @@ export const BagSlice = createSlice({
       }
     },
     deleteProduct: (state, action: PayloadAction<IProductBag>) => {
-      /*@todo fix bug last delete*/
+      /*@todo fix bug last delete
+       *   local storage
+       * mainImage */
       state.products = state.products.filter(
         (product) =>
           product.product.id !== action.payload.product.id &&
@@ -29,11 +31,17 @@ export const BagSlice = createSlice({
           product.color !== action.payload.color,
       );
     },
-    updateQuantity: (state, action: PayloadAction<{ productId: number, quantity: number }>) => {
+    updateQuantity: (
+      state,
+      action: PayloadAction<{ productId: number; quantity: number }>,
+    ) => {
       const { productId, quantity } = action.payload;
-      const productIndex = state.products.findIndex(product => product.product.id === productId);
+      const productIndex = state.products.findIndex(
+        (product) => product.product.id === productId,
+      );
       if (productIndex !== -1) {
-        state.products[productIndex].quantity = state.products[productIndex].quantity+quantity;
+        state.products[productIndex].quantity =
+          state.products[productIndex].quantity + quantity;
       }
     },
   },
