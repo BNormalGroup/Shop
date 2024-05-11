@@ -15,6 +15,7 @@ const ReviewBag = () => {
   const { t } = useTranslation();
   const products = useSelector((state: RootState) => state.bag.products);
   console.log(products);
+
   return (
     <>
       <div className={`container ${classes.container}`}>

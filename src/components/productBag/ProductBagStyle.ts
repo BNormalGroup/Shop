@@ -11,6 +11,7 @@ const useStyles = createUseStyles({
     maxWidth: '100px',
     alignItems: 'center',
     justifyContent: "space-between",
+    marginTop: '4px'
   },
   image: {
     width: "91px",
@@ -26,6 +27,16 @@ const useStyles = createUseStyles({
     lineHeight: "19.19px",
     color: "black",
   },
+  boxColumn: {
+    display: 'flex',
+    height: '100%',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between'
+  },
+  boxName: {
+    marginBottom: '21px'
+  },
   properties: {
     fontFamily: "Source Serif",
     fontWeight: "300",
@@ -38,6 +49,7 @@ const useStyles = createUseStyles({
     fontFamily: "Source Serif",
     fontWeight: "400",
     fontSize: "12px",
+    margin: '0',
     lineHeight: "16.45px",
     color: "black",
   },
@@ -85,6 +97,32 @@ const useStyles = createUseStyles({
     gap: '21px',
     justifyContent: 'center',
     alignItems: 'flex-start'
+  },
+  quantityCircle: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
+    width: '15px',
+    border: 0,
+    color: 'white',
+    height: '15px',
+    borderRadius: '50%',
+    cursor: 'pointer'
+  },
+  buttonDelete: {
+    backgroundColor: 'transparent',
+    border: '0',
+  },
+  quantityText: {
+    color: 'white',
+    fontSize: '11px',
+    textDecoration: 'none'
+  },
+  quantityBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: '5px'
   }
 });
 export default useStyles;

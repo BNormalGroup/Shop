@@ -55,7 +55,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           <p className={classes.textParam}>{t("Color")}</p>
           <select
             className={classes.select}
-            value={selectedSize}
+            value={selectedColor}
             onChange={(e) => {
               setSelectedColor(e.target.value);
             }}
@@ -65,7 +65,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
               <p className={classes.textParam}>{t("EUSize")}</p>
           <select
             className={classes.select}
-            value={selectedColor}
+            value={selectedSize}
             onChange={(e) => setSelectedSize(e.target.value)}
           >
             {sizeOption}

@@ -4,13 +4,21 @@ import { APP_ENV } from "../../env";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../../redux/bagSlice.ts";
 
 export const ProductBag = ({ product }: { product: IProductBag }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [selectedSize, setSelectedSize] = useState<string>(
-    product.sizes[0].size.toString(),
+    product.selectedSize,
   );
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState<number>(product.quantity);
+
+  const deleteClicked = () => {
+    if (product.product.id) dispatch(deleteProduct(product));
+  };
 
   const sizeOption = product.sizes.map((size, key) => {
     return (
@@ -30,17 +38,19 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
             className={classes.image}
           />
           <div>
-            <Link
-              to={"/product/" + product.product.id}
-              className={classes.name}
-            >
-              {product.product.name}
-            </Link>
+            <div className={classes.boxName}>
+              <Link
+                to={"/product/" + product.product.id}
+                className={classes.name}
+              >
+                {product.product.name}
+              </Link>
+            </div>
             <div className={classes.box}>
               <p className={classes.properties}>{t("Size")}</p>
               <select
                 className={classes.select}
-                value={product.selectedSize}
+                value={selectedSize}
                 onChange={(e) => {
                   setSelectedSize(e.target.value);
                 }}
@@ -52,7 +62,44 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
               <p className={classes.properties}>{t("Colour")}</p>
               <p className={classes.properties}>{product.color}</p>
             </div>
+            <div className={classes.box}>
+              <p className={classes.properties}>{t("Quantity")}</p>
+              <div className={classes.quantityBox}>
+                <button
+                  className={classes.quantityCircle}
+                  onClick={() => {
+                    setQuantity(quantity + 1);
+                  }}
+                >
+                  <a className={classes.quantityText}>+</a>
+                </button>
+                <p className={classes.properties}>{quantity}</p>
+                <button
+                  className={classes.quantityCircle}
+                  onClick={() => {
+                    if (quantity > 1) setQuantity(quantity - 1);
+                  }}
+                >
+                  <a className={classes.quantityText}>-</a>
+                </button>
+              </div>
+            </div>
           </div>
+        </div>
+        <div className={classes.boxColumn}>
+          <button className={classes.buttonDelete} onClick={deleteClicked}>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1 1L11 11" stroke="black" strokeLinecap="round" />
+              <path d="M1 11L11 1" stroke="black" strokeLinecap="round" />
+            </svg>
+          </button>
+          <p className={classes.price}>${product.product.price} USD</p>
         </div>
       </div>
     </>
