@@ -34,7 +34,7 @@ export interface IFavoritePost {
 }
 
 export interface IProduct {
-  id?: number;
+  id: number;
   mainImage: string;
   name: string;
   description: string;

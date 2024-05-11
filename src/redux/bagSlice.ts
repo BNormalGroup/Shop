@@ -29,8 +29,15 @@ export const BagSlice = createSlice({
           product.color !== action.payload.color,
       );
     },
+    updateQuantity: (state, action: PayloadAction<{ productId: number, quantity: number }>) => {
+      const { productId, quantity } = action.payload;
+      const productIndex = state.products.findIndex(product => product.product.id === productId);
+      if (productIndex !== -1) {
+        state.products[productIndex].quantity = state.products[productIndex].quantity+quantity;
+      }
+    },
   },
 });
 
-export const { addProduct, deleteProduct } = BagSlice.actions;
+export const { addProduct, deleteProduct, updateQuantity } = BagSlice.actions;
 export default BagSlice.reducer;

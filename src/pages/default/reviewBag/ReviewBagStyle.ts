@@ -74,6 +74,7 @@ const useStyles = createUseStyles({
   line: {
     color: "black",
     height: "1px",
+    opacity: '1'
   },
   whiteCardWrapper: {
     width: "50px",
@@ -117,6 +118,20 @@ const useStyles = createUseStyles({
     marginTop: '39px',
     display: 'flex',
     flexDirection: 'column'
+  },
+  noItemsContainer: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+  noItemsText: {
+    fontFamily: "Oswald, sans-serif",
+    fontWeight: "600",
+    fontSize: "40px",
+    lineHeight: "26.68px",
+    color: "black",
+
   }
 });
 export default useStyles;

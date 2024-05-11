@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteProduct } from "../../redux/bagSlice.ts";
+import { deleteProduct, updateQuantity } from "../../redux/bagSlice.ts";
 
 export const ProductBag = ({ product }: { product: IProductBag }) => {
   const classes = useStyles();
@@ -69,6 +69,12 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
                   className={classes.quantityCircle}
                   onClick={() => {
                     setQuantity(quantity + 1);
+                    dispatch(
+                      updateQuantity({
+                        productId: product.product.id,
+                        quantity: 1,
+                      }),
+                    );
                   }}
                 >
                   <a className={classes.quantityText}>+</a>
@@ -77,7 +83,15 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
                 <button
                   className={classes.quantityCircle}
                   onClick={() => {
-                    if (quantity > 1) setQuantity(quantity - 1);
+                    if (quantity > 1) {
+                      setQuantity(quantity - 1);
+                      dispatch(
+                        updateQuantity({
+                          productId: product.product.id,
+                          quantity: -1,
+                        }),
+                      );
+                    }
                   }}
                 >
                   <a className={classes.quantityText}>-</a>
