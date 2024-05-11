@@ -1,6 +1,6 @@
 import http from "../http.ts";
 import axios from "axios";
-import {IProductGet, IProductPost} from "../utils/types.ts";
+import {IProduct, IProductGet, IProductPost} from "../utils/types.ts";
 
 export const AddProductService = async (
     item: IProductPost,
@@ -58,6 +58,30 @@ export const GetItemListService = async (
 
         // Повертаємо масив продуктів
         return response.data.data;
+
+    } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+            console.error("Axios error:", error.response); // або throw error.response;
+            throw error.response; // Якщо потрібно перехопити на вищому рівні
+        } else {
+            console.error("General error:", error.message);
+            throw error; // Перекидання помилки, якщо не Axios
+        }
+    }
+};
+
+export const SearchItemListService = async (
+    keyword: string,
+): Promise<IProductGet[]> => {
+    try {
+        const response = await http.get<IProductGet[]>('/items/search', {
+            params: {
+                keyword: keyword,
+            },
+        });
+
+        // Повертаємо масив продуктів
+        return response.data;
 
     } catch (error: any) {
         if (axios.isAxiosError(error)) {

@@ -13,6 +13,7 @@ import ListUser from "./pages/admin/user/list/ListUser.tsx";
 import MenuPage from "./pages/default/menu/MenuPage.tsx";
 import ProductListPage from "./pages/default/productList/ProductListPage.tsx";
 import ListOrders from "./pages/admin/orders/list/ListOrders.tsx";
+import SearchProduct from "./pages/default/searchProduct/SearchProduct.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
@@ -39,6 +40,7 @@ function App() {
           <Route path={"/man"} element={<MenShop />} />
           <Route path="category/:id" element={<ProductListPage />}></Route>
           <Route path="product/:id" element={<Product />}></Route>
+          <Route path="searchproduct/:keyword" element={<SearchProduct />}></Route>
           <Route path="favorite" element={<Favorite />}></Route>
           <Route path="review-bag" element={<ReviewBag />}></Route>
         </Route>
