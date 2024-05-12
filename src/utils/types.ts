@@ -55,7 +55,7 @@ export interface IProductBag {
 export interface IProductBagPost {
   item_id: number;
   user_id: number;
-  color: string;
+  colour: string;
   quantity: number;
   size: string;
 }

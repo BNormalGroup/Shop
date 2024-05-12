@@ -12,6 +12,13 @@ const useStyles = createUseStyles({
     maxHeight: 700,
     overflow: "hidden",
   },
+  textSelectSex: {
+    fontFamily: "OswaldFont, sans-serif",
+    fontSize: 25,
+    fontWeight: 400,
+    color: 'white',
+    textDecoration: 'none'
+  },
   image: {
     width: "100%",
     height: "auto",
@@ -27,9 +34,6 @@ const useStyles = createUseStyles({
     color: "#F5F5F5",
     border: "none",
     cursor: "pointer",
-    fontFamily: "OswaldFont, sans-serif",
-    fontSize: 25,
-    fontWeight: 400,
     display: "flex", // Встановлюємо flex контейнер
     alignItems: "center", // Вертикальне центрування
     justifyContent: "center", // Горизонтальне центрування

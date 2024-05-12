@@ -54,5 +54,9 @@
   "Size": "Size",
   "Colour": "Colour",
   "Quantity": "Quantity",
-  "EmptyBag": "The basket is empty"
+  "EmptyBag": "The basket is empty",
+  "NotFound": "Not found",
+  "NotFoundError": "The resource requested could not be found on this server",
+  "SomethingWentWrong": "Something went wrong",
+  "ReturnToHome": "Return to the main page"
 }
