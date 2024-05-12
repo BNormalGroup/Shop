@@ -19,7 +19,7 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
   const deleteClicked = () => {
     if (product.product.id) dispatch(deleteProduct(product));
   };
-
+  console.log('product',product);
   const sizeOption = product.sizes.map((size, key) => {
     return (
       <option key={key} value={size.size}>
@@ -34,7 +34,7 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
       <div className={classes.mainBox}>
         <div className={classes.innerBox}>
           <img
-            src={APP_ENV.UPLOADS_URL + product.product.mainImage}
+            src={APP_ENV.UPLOADS_URL + product.product.image}
             className={classes.image}
           />
           <div>
