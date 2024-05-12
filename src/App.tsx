@@ -30,6 +30,7 @@ const Product = lazy(() => import("./pages/default/product/Product.tsx"));
 const Favorite = lazy(() => import("./pages/default/favorite/Favorite.tsx"));
 const ReviewBag = lazy(() => import("./pages/default/reviewBag/ReviewBag.tsx"));
 const NotFound = lazy(()=> import('./pages/default/notFound/NotFoundPage.tsx'));
+const CheckoutPage = lazy(()=> import('./pages/default/checkout/CheckoutPage.tsx'));
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="searchproduct/:keyword" element={<SearchProduct />}></Route>
           <Route path="favorite" element={<Favorite />}></Route>
           <Route path="review-bag" element={<ReviewBag />}></Route>
+          <Route path="checkout" element={<CheckoutPage/>}></Route>
           <Route path={'*'} element={<NotFound/>}/>
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
