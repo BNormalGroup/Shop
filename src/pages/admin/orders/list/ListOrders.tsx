@@ -1,9 +1,9 @@
-import React, {startTransition, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import {OrderStatusesProvider} from "../../../../services/statusesProvider.tsx";
 import OrderStatusSelect from "../../../../components/Admin/OrderStatusSelect/OrderStatusSelect.tsx";
-import {ICategoryItem, IOrder, IOrderStatus} from "../../../../utils/types.ts";
+import {IOrder} from "../../../../utils/types.ts";
 import {GetOrdersService} from "../../../../services/ordersService.ts";
 import {APP_ENV} from "../../../../env";
 
@@ -44,8 +44,8 @@ const ListOrders = () => {
                             {orders.map((item: IOrder) => (
                                 <tr key={item.id}>
                                     <th scope="row">{item.id}</th>
-                                    <th scope="row">{item.user.id}</th>
-                                    <th scope="row">{item.user.firstName}</th>
+                                    <th scope="row">{item.user?.id}</th>
+                                    <th scope="row">{item.user?.firstName}</th>
                                     <th scope="row">{item.item.name}</th>
                                     <th scope="row">
                                         <img
