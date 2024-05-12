@@ -18,7 +18,7 @@ import CategorySelect from "../../../../components/Admin/CategorySelect/Category
 const EditItem = () => {
   const [item, setItem] = useState<IProductPost>({
     image: undefined, mainImage: "",
-    id: undefined,
+    id: 0,
     name: "",
     sex: "",
     description: "",
