@@ -3,14 +3,18 @@ import { useStyles } from "./ProductDataStyle.ts";
 import { useTranslation } from "react-i18next";
 //import { ProductAdditionalInfo } from "../ProductAdditionalInfo/ProductAdditionalInfo.tsx";
 import { IProductBagPost, IProductGet } from "../../utils/types.ts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/bagSlice.ts";
 import React, { useState } from "react";
+import { RootState } from "../../app/store.ts";
+import { AddToBag } from "../../services/bagService.ts";
 
 export const ProductData = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const userId = useSelector((state: RootState) => state.users.user.id);
+  const isAuth = useSelector((state: RootState) => state.users.isAuth);
 
   const sizeOption = product.sizes.map((size, key) => {
     return (
@@ -30,7 +34,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
   const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0].size.toString());
   const [selectedColor, setSelectedColor] = useState<string>(product.colors[0].name);
 
-  const clickAddProductToBag = () => {
+  const clickAddProductToBag = async () => {
     if (product.product) {
       dispatch(
         addProduct({
@@ -41,9 +45,16 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           selectedSize: selectedSize,
         }),
       );
-      // const postData: IProductBagPost = {
-      //   user_id:
-      // }
+      if (isAuth) {
+        const prepareData: IProductBagPost = {
+          user_id: userId,
+          item_id: product.product.id,
+          colour: selectedColor,
+          size: selectedSize,
+          quantity: 1
+        };
+        await AddToBag(prepareData);
+      }
     }
   };
 

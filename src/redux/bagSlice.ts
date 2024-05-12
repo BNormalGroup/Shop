@@ -20,6 +20,9 @@ export const BagSlice = createSlice({
         state.products.push(action.payload);
       }
     },
+    addUserProducts: (state, action: PayloadAction<IProductBag[]>) => {
+      state.products = [...state.products, ...action.payload];
+    },
     deleteProduct: (state, action: PayloadAction<IProductBag>) => {
       /*@todo fix bug last delete
        *   local storage
@@ -47,5 +50,6 @@ export const BagSlice = createSlice({
   },
 });
 
-export const { addProduct, deleteProduct, updateQuantity } = BagSlice.actions;
+export const { addProduct, deleteProduct, updateQuantity, addUserProducts } =
+  BagSlice.actions;
 export default BagSlice.reducer;

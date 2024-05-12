@@ -11,6 +11,8 @@ import { SingInService } from "../../../services/authService.ts";
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/userSlice.ts";
 import { addLocalStorage } from "../../../utils/localStorageUtils.ts";
+// import { ShowUserBag } from "../../../services/bagService.ts";
+// import { addUserProducts } from "../../../redux/bagSlice.ts";
 
 export const Login = ({ setClose }: { setClose: () => void }) => {
   const classes = useStyles();
@@ -35,7 +37,12 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
     try {
       const user = await SingInService(data);
       dispatch(login(data));
-      if (user) addLocalStorage("authToken", user?.access_token);
+      if (user) {
+        addLocalStorage("authToken", user?.access_token);
+        // const bagProducts =  await ShowUserBag(user.user.id);
+        // if(bagProducts)
+        // dispatch(addUserProducts(bagProducts));
+      }
       setClose();
     } catch (error: any) {
       setError(error.data);
