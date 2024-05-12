@@ -15,6 +15,19 @@ export const GetOrdersService = async () => {
         }
     }
 };
+export const GetUserOrdersService = async (userId: number) => {
+    try {
+        const response = await http.get<IOrder[]>("/orders/user/"+userId);
+        console.log(response);
+        return response.data;
+    } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+            throw error.response;
+        } else {
+            console.error("General error:", error.message);
+        }
+    }
+};
 
 export const GetOrderStatusesService = async () => {
     try {

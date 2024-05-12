@@ -136,10 +136,11 @@ export interface IOrderStatus {
 export interface IOrder {
   id: number;
   status_id: number;
-  user: IUser;
+  user?: IUser;
   item: IItemOrder;
   color: IColor;
   size: ISize;
+  status: IOrderStatus;
 }
 
 export interface IItemOrder extends IProduct {
