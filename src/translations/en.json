@@ -56,5 +56,7 @@
   "Quantity": "Quantity",
   "EmptyBag": "The basket is empty",
   "NotFound": "Not found",
-  "NotFoundError": "The resource requested could not be found on this server"
+  "NotFoundError": "The resource requested could not be found on this server",
+  "SomethingWentWrong": "Something went wrong",
+  "ReturnToHome": "Return to the main page"
 }
