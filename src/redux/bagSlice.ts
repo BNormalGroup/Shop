@@ -13,7 +13,6 @@ export const BagSlice = createSlice({
           product.selectedSize === action.payload.selectedSize &&
           product.color === action.payload.color,
       );
-
       if (existingProductIndex !== -1) {
         state.products[existingProductIndex].quantity += 1;
       } else {
@@ -24,15 +23,21 @@ export const BagSlice = createSlice({
       state.products = [...state.products, ...action.payload];
     },
     deleteProduct: (state, action: PayloadAction<IProductBag>) => {
-      /*@todo fix bug last delete
-       *   local storage
-       * mainImage */
-      state.products = state.products.filter(
-        (product) =>
-          product.product.id !== action.payload.product.id &&
-          product.selectedSize !== action.payload.selectedSize &&
-          product.color !== action.payload.color,
+      const { product, color, selectedSize } = action.payload;
+      const indexToDelete = state.products.findIndex(
+        (item) =>
+          item.product.id === product.id &&
+          item.color === color &&
+          item.selectedSize === selectedSize
       );
+      console.log('state.products[0].selectedSize',indexToDelete);
+      if(state.products[0].product.id === product.id &&
+        state.products[0].color === color &&
+        state.products[0].selectedSize === selectedSize)
+        console.log('true');
+      if (indexToDelete !== -1) {
+        state.products.splice(indexToDelete, 1);
+      }
     },
     updateQuantity: (
       state,

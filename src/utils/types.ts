@@ -35,7 +35,7 @@ export interface IFavoritePost {
 
 export interface IProduct {
   id: number;
-  mainImage: string;
+  image: string;
   name: string;
   description: string;
   texture: string;
@@ -70,9 +70,15 @@ export interface ISize {
   size: number;
 }
 
-export interface IProductPost extends IProduct {
+export interface IProductPost {
   images: File[];
   image?: File;
+  name: string;
+  description: string;
+  texture: string;
+  price: number;
+  category_id?: number;
+  sex: string;
   colors: IColor[];
   sizes: ISize[];
 }

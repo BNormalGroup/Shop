@@ -12,15 +12,17 @@ export const LikeButton = ({productId}: { productId: number | undefined }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [likeId, setLikeId] = useState<number>(0);
     const classes = useStyles();
+    const isAuth = useSelector((state: RootState) => state.users.isAuth);
 
     const likeClick = async () => {
         setIsLoading(true);
         try {
-            if (productId) {
-                await LikeService(productId, userId);
-                await checkLiked();
+            if(isAuth) {
+                if (productId) {
+                    await LikeService(productId, userId);
+                    await checkLiked();
+                }
             }
-
         } catch (error: any) {
             console.log(error);
         }
@@ -28,7 +30,7 @@ export const LikeButton = ({productId}: { productId: number | undefined }) => {
     };
     const unlikeClick = async () => {
         try {
-            if (productId) {
+            if (productId && isAuth) {
                 await DeleteLikeService(likeId);
                 await checkLiked();
             }
@@ -43,7 +45,7 @@ export const LikeButton = ({productId}: { productId: number | undefined }) => {
     }, []);
 
     const checkLiked = async () => {
-        if (productId) {
+        if (productId && isAuth) {
             const resp = await CheckLikedService(userId, productId);
             if (resp) {
                 setIsLiked(resp.liked);
