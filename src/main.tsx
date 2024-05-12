@@ -9,6 +9,8 @@ import { store } from "./app/store.ts";
 import { auth } from "./redux/userSlice.ts";
 import { jwtDecode } from "jwt-decode";
 import { IUserAuth } from "./components/Authorization/types/types.ts";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorBoundaryFallBack from "./pages/default/errorBoundary/ErrorBoundaryFallBack.tsx";
 
 const token = localStorage.getItem("authToken");
 if (typeof token === "string") {
@@ -18,10 +20,12 @@ if (typeof token === "string") {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense fallback={<>...</>}>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </Suspense>,
+    <ErrorBoundary fallback={<ErrorBoundaryFallBack/>}>
+      <BrowserRouter>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </ErrorBoundary>
+  </Suspense>
 );
