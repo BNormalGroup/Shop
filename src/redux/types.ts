@@ -21,5 +21,5 @@ export type IssueInitialStateBag = {
 };
 
 export const initialStateBag: IssueInitialStateBag = {
- products: []
+  products: [],
 };

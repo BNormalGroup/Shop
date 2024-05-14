@@ -18,7 +18,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
   const productsInBag = useSelector((state: RootState) => state.bag.products);
 
   useEffect(() => {
-    localStorage.setItem('productsInBag', JSON.stringify(productsInBag));
+    localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
   }, [productsInBag]);
 
   const sizeOption = product.sizes.map((size, key) => {

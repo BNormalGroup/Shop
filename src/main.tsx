@@ -18,19 +18,19 @@ if (typeof token === "string") {
   const decoded = jwtDecode<IUserAuth>(token);
   store.dispatch(auth(decoded));
 }
-const storedProductsInBag = localStorage.getItem('productsInBag');
+const storedProductsInBag = localStorage.getItem("productsInBag");
 if (storedProductsInBag) {
   store.dispatch(addUserProducts(JSON.parse(storedProductsInBag)));
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Suspense fallback={<>...</>}>
-    <ErrorBoundary fallback={<ErrorBoundaryFallBack/>}>
+    <ErrorBoundary fallback={<ErrorBoundaryFallBack />}>
       <BrowserRouter>
         <Provider store={store}>
           <App />
         </Provider>
       </BrowserRouter>
     </ErrorBoundary>
-  </Suspense>
+  </Suspense>,
 );

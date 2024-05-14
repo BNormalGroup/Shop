@@ -5,6 +5,8 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "row",
     gap: "20px",
+    justifyContent: 'center',
+    flexWrap: 'wrap'
   },
   //right side
   summaryWrapper: {
@@ -21,7 +23,7 @@ const useStyles = createUseStyles({
     fontSize: "18px",
     lineHeight: "26.68px",
     color: "black",
-    margin: 0
+    margin: 0,
   },
   stackSummaryData: {
     display: "flex",
@@ -34,7 +36,7 @@ const useStyles = createUseStyles({
     fontSize: "14px",
     lineHeight: "19.19px",
     color: "black",
-    margin: 0
+    margin: 0,
   },
   totalText: {
     fontFamily: '"Source Serif 4", serif',
@@ -64,7 +66,7 @@ const useStyles = createUseStyles({
     fontSize: "18px",
     lineHeight: "26.68px",
     color: "#F5F5F5",
-    marginBottom: '37px'
+    marginBottom: "37px",
   },
   container: {
     marginBottom: 56,
@@ -74,7 +76,7 @@ const useStyles = createUseStyles({
   line: {
     color: "black",
     height: "1px",
-    opacity: '1'
+    opacity: "1",
   },
   whiteCardWrapper: {
     width: "50px",
@@ -103,27 +105,28 @@ const useStyles = createUseStyles({
   },
   //left side
   breadcrumbWrapper: {
-    marginTop: '10px',
-    left: 0
+    marginTop: "10px",
+    left: 0,
   },
   leftWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    width: '100%'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    width: "100%",
+    maxWidth: '645px'
   },
   wrapperProducts: {
-    maxWidth: '645px',
-    width: '100%',
-    marginTop: '39px',
-    display: 'flex',
-    flexDirection: 'column'
+    maxWidth: "645px",
+    width: "100%",
+    marginTop: "39px",
+    display: "flex",
+    flexDirection: "column",
   },
   noItemsContainer: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   },
   noItemsText: {
     fontFamily: "Oswald, sans-serif",
@@ -131,7 +134,6 @@ const useStyles = createUseStyles({
     fontSize: "40px",
     lineHeight: "26.68px",
     color: "black",
-
-  }
+  },
 });
 export default useStyles;

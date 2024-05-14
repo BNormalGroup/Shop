@@ -26,7 +26,9 @@ export const ShopNowBlock = ({
       <div className={classes.categoryItemWrapper}>
         <div className={classes.gridContainer}>
           {categories.map((item, key) => {
-            return <ItemCategory image={item.image} text={item.name} key={key}/>;
+            return (
+              <ItemCategory image={item.image} text={item.name} key={key} />
+            );
           })}
         </div>
       </div>

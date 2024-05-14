@@ -1,58 +1,63 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import useStyles from "./style.tsx";
-import {IProductGet} from "../../../utils/types.ts";
-import {APP_ENV} from "../../../env";
+import { IProductGet } from "../../../utils/types.ts";
+import { APP_ENV } from "../../../env";
 import NotFoundImage from "../../../assets/notFoundImage.jpg";
-import {LikeButton} from "../../LikeButton/LikeButton.tsx";
-import {Link} from "react-router-dom";
+import { LikeButton } from "../../LikeButton/LikeButton.tsx";
+import { Link } from "react-router-dom";
 
-export const ProductItem = ({item}: { item: IProductGet }) => {
-    const classes = useStyles();
+export const ProductItem = ({ item }: { item: IProductGet }) => {
+  const classes = useStyles();
 
-    const [src, setSrc] = useState(
-        item && item.images && item.images[0]
-            ? APP_ENV.UPLOADS_URL + item.images[0].url
-            : NotFoundImage
+  const [src, setSrc] = useState(
+    item && item.images && item.images[0]
+      ? APP_ENV.UPLOADS_URL + item.images[0].url
+      : NotFoundImage,
+  );
+
+  const handleImageError = () => {
+    // Заміна джерела на резервне зображення, якщо виникла помилка
+    setSrc(NotFoundImage);
+  };
+
+  useEffect(() => {
+    // Оновлення зображення, якщо об'єкт item змінився
+    setSrc(
+      item && item.images && item.images[0]
+        ? APP_ENV.UPLOADS_URL + item.images[0].url
+        : NotFoundImage,
     );
+  }, [item]);
 
-    const handleImageError = () => {
-        // Заміна джерела на резервне зображення, якщо виникла помилка
-        setSrc(NotFoundImage);
-    };
-
-    useEffect(() => {
-        // Оновлення зображення, якщо об'єкт item змінився
-        setSrc(
-            item && item.images && item.images[0]
-                ? APP_ENV.UPLOADS_URL + item.images[0].url
-                : NotFoundImage
-        );
-    }, [item]);
-
-    return (
-        <div  className={classes.container}>
-
-            <>
-                <div className={classes.imageContainer}>
-                    <img
-                        className={classes.image}
-                        src={src}
-                        alt={""}
-                        onError={handleImageError}
-                    />
-                    <LikeButton productId={item.product?.id}></LikeButton>
-                </div>
-                <Link to={'/product/' + item?.product?.id} key={item.product?.id} className={classes.title}>{item?.product?.name}</Link>
-                <p className={classes.price}>₴{item?.product?.price} грн.</p>
-                <p className={classes.color}>
-                    {item?.colors?.map((prod, index) => (
-                        <span key={index}>
-                {prod.name}
-                            {index !== item.colors.length - 1 && " | "}
-              </span>
-                    ))}
-                </p>
-            </>
+  return (
+    <div className={classes.container}>
+      <>
+        <div className={classes.imageContainer}>
+          <img
+            className={classes.image}
+            src={src}
+            alt={""}
+            onError={handleImageError}
+          />
+          <LikeButton productId={item.product?.id}></LikeButton>
         </div>
-    );
+        <Link
+          to={"/product/" + item?.product?.id}
+          key={item.product?.id}
+          className={classes.title}
+        >
+          {item?.product?.name}
+        </Link>
+        <p className={classes.price}>${item?.product?.price} USD</p>
+        <p className={classes.color}>
+          {item?.colors?.map((prod, index) => (
+            <span key={index}>
+              {prod.name}
+              {index !== item.colors.length - 1 && " | "}
+            </span>
+          ))}
+        </p>
+      </>
+    </div>
+  );
 };
