@@ -1,11 +1,7 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import {
-  IImage,
-  IProductPost,
-  IProductGet,
-} from "../../../../utils/types.ts";
+import { IImage, IProductPost, IProductGet } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import import_image from "../../../../assets/import_image.png";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,7 +13,8 @@ import CategorySelect from "../../../../components/Admin/CategorySelect/Category
 
 const EditItem = () => {
   const [item, setItem] = useState<IProductPost>({
-    image: undefined, mainImage: "",
+    image: undefined,
+    mainImage: "",
     id: 0,
     name: "",
     sex: "",
@@ -27,7 +24,7 @@ const EditItem = () => {
     images: [],
     sizes: [],
     colors: [],
-    texture: ""
+    texture: "",
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
@@ -131,7 +128,7 @@ const EditItem = () => {
                     <CategorySelect
                       setItem={setItem}
                       category_id={item.category_id}
-                      nameProps={'category_id'}
+                      nameProps={"category_id"}
                       requiredSelect={true}
                     />
                     <SizeSelector

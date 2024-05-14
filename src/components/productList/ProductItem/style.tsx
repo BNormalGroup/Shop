@@ -8,8 +8,11 @@ const useStyles = createUseStyles({
   },
   imageContainer: {
     position: "relative",
+    height: "619px",
+    width: "423px",
   },
   image: {
+    height: "100%",
     width: "100%",
   },
   title: {
@@ -17,7 +20,7 @@ const useStyles = createUseStyles({
     marginTop: "10px",
     fontFamily: "SourceSerifPro",
     fontSize: "16px",
-    textDecoration: 'none',
+    textDecoration: "none",
     fontWeight: 500,
     color: "#000000",
   },

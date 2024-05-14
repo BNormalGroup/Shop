@@ -23,21 +23,13 @@ export const BagSlice = createSlice({
       state.products = [...state.products, ...action.payload];
     },
     deleteProduct: (state, action: PayloadAction<IProductBag>) => {
-      const { product, color, selectedSize } = action.payload;
-      const indexToDelete = state.products.findIndex(
-        (item) =>
-          item.product.id === product.id &&
-          item.color === color &&
-          item.selectedSize === selectedSize
-      );
-      console.log('state.products[0].selectedSize',indexToDelete);
-      if(state.products[0].product.id === product.id &&
-        state.products[0].color === color &&
-        state.products[0].selectedSize === selectedSize)
-        console.log('true');
-      if (indexToDelete !== -1) {
-        state.products.splice(indexToDelete, 1);
-      }
+      state.products = state.products.filter((item) => {
+        const isMatch =
+          item.product.id === action.payload.product.id &&
+          item.color === action.payload.color &&
+          item.selectedSize === action.payload.selectedSize;
+        return !isMatch;
+      });
     },
     updateQuantity: (
       state,

@@ -16,7 +16,7 @@ export const AddToBag = async (product: IProductBagPost) => {
 
 export const ShowUserBag = async (userId: number) => {
   try {
-    const { data }  = await http.get<IProductBag[]>("/basket/show/"+ userId);
+    const { data } = await http.get<IProductBag[]>("/basket/show/" + userId);
     return data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {

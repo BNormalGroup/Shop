@@ -5,7 +5,6 @@ import PayPal from "../../../assets/cardsImage/payPal.png";
 import Klarna from "../../../assets/cardsImage/klarna.png";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
-import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
@@ -35,8 +34,13 @@ const ReviewBag = () => {
 
               <div className={classes.wrapperProducts}>
                 {products.map((item, key) => {
-                  return <ProductBag product={item} key={key} />;
+                  return (
+                    <div key={key}>
+                      <ProductBag product={item} />
+                    </div>
+                  );
                 })}
+                <hr className={classes.line} />
               </div>
             </div>
             <div className={classes.summaryWrapper}>
@@ -88,7 +92,7 @@ const ReviewBag = () => {
       <>
         <div className={`container ${classes.container}`}>
           <div className={classes.noItemsContainer}>
-            <p className={classes.noItemsText}>{t('EmptyBag')}</p>
+            <p className={classes.noItemsText}>{t("EmptyBag")}</p>
           </div>
         </div>
       </>

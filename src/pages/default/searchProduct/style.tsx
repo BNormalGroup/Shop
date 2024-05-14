@@ -8,11 +8,11 @@ const useStyles = createUseStyles({
     padding: "20px 65px",
     rowGap: "20px",
   },
-  message:{
+  message: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: '40px'
-  }
+    marginTop: "40px",
+  },
 });
 export default useStyles;

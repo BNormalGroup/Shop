@@ -11,7 +11,9 @@ const ErrorBoundaryFallBack = () => {
         <div className={classes.box}>
           <p className={classes.text}>{t("SomethingWentWrong")}</p>
           <button className={classes.button}>
-            <a href="/" className={classes.textButton}>{t("ReturnToHome")}</a>
+            <a href="/" className={classes.textButton}>
+              {t("ReturnToHome")}
+            </a>
           </button>
         </div>
       </div>

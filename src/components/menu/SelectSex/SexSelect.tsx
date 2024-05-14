@@ -12,13 +12,19 @@ const SexSelect = () => {
         <div className={classes.imageWrapper}>
           <img className={classes.image} src={womanImage} />
           <button className={classes.button} style={{ right: 15 }}>
-           <Link className={classes.textSelectSex} to={'/woman'}> {t("sexSelectWomen")} </Link>
+            <Link className={classes.textSelectSex} to={"/woman"}>
+              {" "}
+              {t("sexSelectWomen")}{" "}
+            </Link>
           </button>
         </div>
         <div className={classes.imageWrapper}>
           <img className={classes.image} src={manImage} />
           <button className={classes.button} style={{ left: 15 }}>
-            <Link className={classes.textSelectSex} to={'/man'}> {t("sexSelectMen")} </Link>
+            <Link className={classes.textSelectSex} to={"/man"}>
+              {" "}
+              {t("sexSelectMen")}{" "}
+            </Link>
           </button>
         </div>
       </div>

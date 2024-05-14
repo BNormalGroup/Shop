@@ -80,7 +80,11 @@ const AddCategory = () => {
                         name="description"
                       ></textarea>
                     </div>
-                    <CategorySelect setItem={setCategory} nameProps={'parent_id'} category_id={parseInt(category.parent_id ?? '0', 10)}></CategorySelect>
+                    <CategorySelect
+                      setItem={setCategory}
+                      nameProps={"parent_id"}
+                      category_id={parseInt(category.parent_id ?? "0", 10)}
+                    ></CategorySelect>
                     <div className="form-group mb-3">
                       <label htmlFor="slug">Slug</label>
                       <input

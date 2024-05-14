@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
     padding: 0,
   },
   arrow: {
-    paddingBottom: '2px'
+    paddingBottom: "2px",
   },
   link: {
     fontFamily: "SourceSerifPro",

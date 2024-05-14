@@ -1,9 +1,9 @@
 import { useStyles } from "./CheckoutPageStyle.ts";
 
-const CheckoutPage =()=>{
+const CheckoutPage = () => {
   const classes = useStyles();
 
-  return(
+  return (
     <>
       <iframe
         width="600"
@@ -12,10 +12,10 @@ const CheckoutPage =()=>{
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"
         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBdPkplL-jxsGIZzcmBwzowxRTkyCLHaho
-    &q=Space+Needle,Seattle+WA">
-      </iframe>
+    &q=Space+Needle,Seattle+WA"
+      ></iframe>
     </>
-  )
-}
+  );
+};
 
 export default CheckoutPage;
