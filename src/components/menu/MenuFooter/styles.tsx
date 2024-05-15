@@ -27,7 +27,7 @@ const useStyles = createUseStyles({
     backgroundColor: "#00000000",
     border: "2px solid #282826",
     color: "#282826",
-    lineHeight: '31.12px',
+    lineHeight: "31.12px",
     cursor: "pointer",
     transition: "background-color 0.3s, color 0.3s",
     "&:hover": {

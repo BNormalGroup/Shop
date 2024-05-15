@@ -4,14 +4,22 @@ import { APP_ENV } from "../../env";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { addProduct } from "../../redux/bagSlice.ts";
-import { useDispatch } from "react-redux";
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { RootState } from "../../app/store.ts";
 
 export const FavoriteItem = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0].size.toString());
+  const [selectedSize, setSelectedSize] = useState<string>(
+    product.sizes[0].size.toString(),
+  );
+  const productsInBag = useSelector((state: RootState) => state.bag.products);
+
+  useEffect(() => {
+    localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
+  }, [productsInBag]);
 
   const sizeOptions = product.sizes.map((size, key) => (
     <option key={key} value={size.size}>
@@ -53,7 +61,9 @@ export const FavoriteItem = ({ product }: { product: IProductGet }) => {
         >
           {sizeOptions}
         </select>
-        <button onClick={clickAddProductToBag} className={classes.addButton}>{t("AddToBag")}</button>
+        <button onClick={clickAddProductToBag} className={classes.addButton}>
+          {t("AddToBag")}
+        </button>
       </div>
     </>
   );

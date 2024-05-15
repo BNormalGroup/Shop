@@ -34,7 +34,9 @@ export const GetCategoriesService = async (): Promise<ICategoryItem[]> => {
   }
 };
 
-export const GetChildesCategoryService = async (id : number | string): Promise<ICategoryItem[]> => {
+export const GetChildesCategoryService = async (
+  id: number | string,
+): Promise<ICategoryItem[]> => {
   try {
     const response = await http.get<ICategoryItem[]>("/categories/child/" + id);
 

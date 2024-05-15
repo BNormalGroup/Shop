@@ -37,7 +37,7 @@ const AddItem = () => {
         setError("Error: " + result);
       }
     } catch (error: any) {
-      console.log('error', error);
+      console.log("error", error);
     }
   }
 
@@ -137,7 +137,7 @@ const AddItem = () => {
                     <CategorySelect
                       setItem={setItem}
                       category_id={item.category_id}
-                      nameProps={'category_id'}
+                      nameProps={"category_id"}
                       requiredSelect={true}
                     />
                     <SizeSelector

@@ -18,6 +18,7 @@ import CategorySelect from "../../../../components/Admin/CategorySelect/Category
 const EditItem = () => {
   const [item, setItem] = useState<IProductPost>({
     image: undefined,
+    id: 0,
     name: "",
     sex: "",
     description: "",
@@ -27,7 +28,6 @@ const EditItem = () => {
     sizes: [],
     colors: [],
     texture: "",
-    id: 0,
   });
   const params = useParams();
   const [error, setError] = useState<string>("");

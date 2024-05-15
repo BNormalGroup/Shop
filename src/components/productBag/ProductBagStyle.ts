@@ -8,10 +8,10 @@ const useStyles = createUseStyles({
   box: {
     display: "flex",
     flexDirection: "row",
-    maxWidth: '100px',
-    alignItems: 'center',
+    maxWidth: "100px",
+    alignItems: "center",
     justifyContent: "space-between",
-    marginTop: '4px'
+    marginTop: "4px",
   },
   image: {
     width: "91px",
@@ -19,8 +19,8 @@ const useStyles = createUseStyles({
     objectFit: "contain",
   },
   name: {
-    textDecoration: 'none',
-    marginBottom: '21px',
+    textDecoration: "none",
+    marginBottom: "21px",
     fontFamily: "Source Serif",
     fontWeight: "400",
     fontSize: "14px",
@@ -28,14 +28,14 @@ const useStyles = createUseStyles({
     color: "black",
   },
   boxColumn: {
-    display: 'flex',
-    height: '100%',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    justifyContent: 'space-between'
+    display: "flex",
+    height: "100%",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
   },
   boxName: {
-    marginBottom: '21px'
+    marginBottom: "21px",
   },
   properties: {
     fontFamily: "Source Serif",
@@ -43,29 +43,31 @@ const useStyles = createUseStyles({
     fontSize: "12px",
     lineHeight: "16.45px",
     color: "black",
-    margin: '0px'
+    margin: "0px",
   },
   price: {
     fontFamily: "Source Serif",
     fontWeight: "400",
     fontSize: "12px",
-    margin: '0',
+    margin: "0",
     lineHeight: "16.45px",
     color: "black",
   },
   mainBox: {
     display: "flex",
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row'
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexDirection: "row",
+    height: "100%",
+    maxHeight: "140px",
   },
   photoBox: {
-    display: 'flex',
+    display: "flex",
   },
   line: {
     color: "#000000",
     height: "1px",
-    opacity: '1'
+    opacity: "1",
   },
   select: {
     appearance: "none",
@@ -92,37 +94,37 @@ const useStyles = createUseStyles({
     },
   },
   innerBox: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '21px',
-    justifyContent: 'center',
-    alignItems: 'flex-start'
+    display: "flex",
+    flexDirection: "row",
+    gap: "21px",
+    justifyContent: "center",
+    alignItems: "flex-start",
   },
   quantityCircle: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-    width: '15px',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "black",
+    width: "15px",
     border: 0,
-    color: 'white',
-    height: '15px',
-    borderRadius: '50%',
-    cursor: 'pointer'
+    color: "white",
+    height: "15px",
+    borderRadius: "50%",
+    cursor: "pointer",
   },
   buttonDelete: {
-    backgroundColor: 'transparent',
-    border: '0',
+    backgroundColor: "transparent",
+    border: "0",
   },
   quantityText: {
-    color: 'white',
-    fontSize: '11px',
-    textDecoration: 'none'
+    color: "white",
+    fontSize: "11px",
+    textDecoration: "none",
   },
   quantityBox: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '5px'
-  }
+    display: "flex",
+    flexDirection: "row",
+    gap: "5px",
+  },
 });
 export default useStyles;

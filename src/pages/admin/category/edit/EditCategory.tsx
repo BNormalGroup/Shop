@@ -108,7 +108,11 @@ const EditCategory = () => {
                         name="description"
                       ></textarea>
                     </div>
-                    <CategorySelect setItem={setCategory} nameProps={'parent_id'} category_id={category.parent_id}></CategorySelect>
+                    <CategorySelect
+                      setItem={setCategory}
+                      nameProps={"parent_id"}
+                      category_id={category.parent_id}
+                    ></CategorySelect>
                     <div className="form-group mb-3">
                       <label htmlFor="slug">Slug</label>
                       <input

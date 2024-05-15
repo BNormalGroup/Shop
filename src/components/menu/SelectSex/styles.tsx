@@ -16,8 +16,8 @@ const useStyles = createUseStyles({
     fontFamily: "OswaldFont, sans-serif",
     fontSize: 25,
     fontWeight: 400,
-    color: 'white',
-    textDecoration: 'none'
+    color: "white",
+    textDecoration: "none",
   },
   image: {
     width: "100%",

@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const Favorite = () => {
   const classes = useStyles();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [items, setItems] = useState<IProductGet[]>([]);
   const user = useSelector(
     (state: RootState) => state.users.user,
@@ -33,7 +33,7 @@ const Favorite = () => {
           <div className={classes.BreadcrumbWrapper}>
             <Breadcrumb
               titles={[
-                { name: `${t('Home')}`, url: "/" },
+                { name: `${t("Home")}`, url: "/" },
                 {
                   name: `My Favourites`,
                   url: undefined,
