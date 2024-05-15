@@ -13,7 +13,6 @@ import CategorySelect from "../../../../components/Admin/CategorySelect/Category
 
 const AddItem = () => {
   const [item, setItem] = useState<IProductPost>({
-    id: 0,
     name: "",
     sex: "",
     description: "",
@@ -23,7 +22,6 @@ const AddItem = () => {
     images: [],
     colors: [],
     sizes: [],
-    mainImage: "",
     image: undefined,
   });
   const [error, setError] = useState<string>("");

@@ -63,14 +63,16 @@ export interface IProductBagPost {
 export interface IColor {
   id?: number;
   name: string;
-  image: File;
+  image?: File;
 }
 
 export interface ISize {
+  id?: number;
   size: number;
 }
 
 export interface IProductPost {
+  id?: number;
   images: File[];
   image?: File;
   name: string;

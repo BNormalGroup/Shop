@@ -4,7 +4,7 @@ import "../../css/fontawesome.min.css";
 import {
   IImage,
   IProductPost,
-  IProductGet,
+  IProductGet, ISize, IColor,
 } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import import_image from "../../../../assets/import_image.png";
@@ -17,8 +17,7 @@ import CategorySelect from "../../../../components/Admin/CategorySelect/Category
 
 const EditItem = () => {
   const [item, setItem] = useState<IProductPost>({
-    image: undefined, mainImage: "",
-    id: 0,
+    image: undefined,
     name: "",
     sex: "",
     description: "",
@@ -27,24 +26,30 @@ const EditItem = () => {
     images: [],
     sizes: [],
     colors: [],
-    texture: ""
+    texture: "",
+    id: 0,
   });
   const params = useParams();
   const [error, setError] = useState<string>("");
   const [image, setImage] = useState<IImage[]>([]);
+  const [sizes, setSizes] = useState<ISize[]>([]);
+  const [colors, setColors] = useState<IColor[]>([]);
   const navigate = useNavigate();
   useEffect(() => {
     http
       .get<IProductGet>("/items/show/" + params.id)
       .then((resp) => {
         startTransition(() => {
-          if (resp.data.product)
+          if (resp.data && resp.data.product)
             setItem({
               ...resp.data.product,
               images: [],
               sizes: [],
               colors: [],
+              image: undefined,
             });
+          setSizes(resp.data.sizes);
+          setColors(resp.data.colors);
           setImage(resp.data.images);
           console.log(resp.data);
         });
@@ -138,8 +143,10 @@ const EditItem = () => {
                       handleChange={handleChange}
                       setItem={setItem}
                       sizes={item.sizes}
+                      sizesServer={sizes}
+                      setSizesServer={setSizes}
                     />
-                    <ColorSelector setItem={setItem} colors={item.colors} />
+                    <ColorSelector setItem={setItem} colors={item.colors} colorsServer={colors} setColorsServer={setColors}/>
                     <SexSelector sex={item.sex} setItem={setItem} />
                     <ImageSelector
                       images={item.images}
