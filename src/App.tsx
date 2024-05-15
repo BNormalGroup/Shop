@@ -78,6 +78,7 @@ function App() {
             <Route path="list" element={<ListOrders></ListOrders>}></Route>
           </Route>
         </Route>
+        <Route path="/order/checkout" element={<CheckoutPage />}></Route>
       </Routes>
     </>
   );

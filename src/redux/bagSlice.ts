@@ -28,6 +28,7 @@ export const BagSlice = createSlice({
           item.product.id === action.payload.product.id &&
           item.color === action.payload.color &&
           item.selectedSize === action.payload.selectedSize;
+
         return !isMatch;
       });
     },
