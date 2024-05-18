@@ -1,5 +1,6 @@
 export const defaultData = {
   products: [],
+  paymentMethod: "",
   address: {
     email: "",
     firstName: "",

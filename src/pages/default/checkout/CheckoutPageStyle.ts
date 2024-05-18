@@ -49,7 +49,7 @@ export const useStyles = createUseStyles({
   },
   //right side
   rightWrapper: {
-    height: "100%",
+    maxHeight: "2204px",
     backgroundColor: "#D4D2B4",
     maxWidth: "599px",
     width: "100%",

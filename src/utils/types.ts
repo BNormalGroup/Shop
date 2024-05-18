@@ -157,6 +157,7 @@ export interface IItemOrder extends IProduct {
 
 export interface IOrderCreate {
   products: IItemOrder[];
+  paymentMethod: string;
   address: IDeliveryAddress;
   bankCard: IBankCard;
 }
