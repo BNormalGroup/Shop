@@ -70,8 +70,7 @@ const useStyles = createUseStyles({
   },
   container: {
     marginBottom: 56,
-    padding: 0,
-    minHeight: 1000,
+    padding: 0
   },
   line: {
     color: "black",
