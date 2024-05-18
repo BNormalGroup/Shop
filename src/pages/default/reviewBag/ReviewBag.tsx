@@ -8,6 +8,7 @@ import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
+import { useNavigate } from "react-router-dom";
 
 const ReviewBag = () => {
   const classes = useStyles();
@@ -16,6 +17,7 @@ const ReviewBag = () => {
   const totalCost = products.reduce((total, product) => {
     return total + product.product.price * product.quantity;
   }, 0);
+  const navigate = useNavigate();
 
   if (products.length > 0)
     return (
@@ -36,7 +38,7 @@ const ReviewBag = () => {
                 {products.map((item, key) => {
                   return (
                     <div key={key}>
-                      <ProductBag product={item} />
+                      <ProductBag product={item} canEdit={true} />
                     </div>
                   );
                 })}
@@ -64,7 +66,12 @@ const ReviewBag = () => {
                 <p className={classes.totalText}>${totalCost} USD</p>
               </div>
               <p className={classes.promoText}>{t("PromoCode")}</p>
-              <button className={classes.buttonCheckout}>
+              <button
+                className={classes.buttonCheckout}
+                onClick={() => {
+                  navigate("/order/checkout");
+                }}
+              >
                 {t("Checkout")}
               </button>
               <p className={classes.dataSummaryText}>{t("WeAccept")}</p>

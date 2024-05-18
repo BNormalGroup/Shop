@@ -4,7 +4,9 @@ import "../../css/fontawesome.min.css";
 import {
   IImage,
   IProductPost,
-  IProductGet, ISize, IColor,
+  IProductGet,
+  ISize,
+  IColor,
 } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import import_image from "../../../../assets/import_image.png";
@@ -136,7 +138,7 @@ const EditItem = () => {
                     <CategorySelect
                       setItem={setItem}
                       category_id={item.category_id}
-                      nameProps={'category_id'}
+                      nameProps={"category_id"}
                       requiredSelect={true}
                     />
                     <SizeSelector
@@ -146,7 +148,12 @@ const EditItem = () => {
                       sizesServer={sizes}
                       setSizesServer={setSizes}
                     />
-                    <ColorSelector setItem={setItem} colors={item.colors} colorsServer={colors} setColorsServer={setColors}/>
+                    <ColorSelector
+                      setItem={setItem}
+                      colors={item.colors}
+                      colorsServer={colors}
+                      setColorsServer={setColors}
+                    />
                     <SexSelector sex={item.sex} setItem={setItem} />
                     <ImageSelector
                       images={item.images}

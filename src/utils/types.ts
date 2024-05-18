@@ -145,12 +145,40 @@ export interface IOrder {
   id: number;
   status_id: number;
   user?: IUser;
-  item: IItemOrder;
-  color: IColor;
-  size: ISize;
+  item: IItemOrder[];
   status: IOrderStatus;
 }
 
 export interface IItemOrder extends IProduct {
   image: string;
+  color: IColor;
+  size: ISize;
+}
+
+export interface IOrderCreate {
+  products: IItemOrder[];
+  paymentMethod: string;
+  address: IDeliveryAddress;
+  bankCard: IBankCard;
+}
+
+export interface IDeliveryAddress {
+  email: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  country: string;
+  postcode: string;
+  city: string;
+  streetAddress: string;
+  paymentMethod: string;
+}
+
+export interface IBankCard {
+  name: string;
+  number: string;
+  expirationMonth: number;
+  expirationYear: number;
+  cvv: number;
+  postalCode: number;
 }

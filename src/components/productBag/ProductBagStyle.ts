@@ -45,6 +45,13 @@ const useStyles = createUseStyles({
     color: "black",
     margin: "0px",
   },
+  bottomContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    justifyContent: "flex-end",
+    height: "100%",
+  },
   price: {
     fontFamily: "Source Serif",
     fontWeight: "400",
@@ -58,8 +65,7 @@ const useStyles = createUseStyles({
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    height: "100%",
-    maxHeight: "140px",
+    height: "140px",
   },
   photoBox: {
     display: "flex",
