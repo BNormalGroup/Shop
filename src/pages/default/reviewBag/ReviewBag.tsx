@@ -36,7 +36,7 @@ const ReviewBag = () => {
                 {products.map((item, key) => {
                   return (
                     <div key={key}>
-                      <ProductBag product={item} />
+                      <ProductBag product={item} canEdit={true} />
                     </div>
                   );
                 })}

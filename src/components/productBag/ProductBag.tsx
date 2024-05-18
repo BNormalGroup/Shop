@@ -8,7 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, updateQuantity } from "../../redux/bagSlice.ts";
 import { RootState } from "../../app/store.ts";
 
-export const ProductBag = ({ product }: { product: IProductBag }) => {
+export const ProductBag = ({
+  product,
+  canEdit,
+}: {
+  product: IProductBag;
+  canEdit: boolean;
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [selectedSize, setSelectedSize] = useState<string>(
@@ -19,7 +25,7 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
   const productsInBag = useSelector((state: RootState) => state.bag.products);
 
   useEffect(() => {
-    console.log('useEffect');
+    console.log("useEffect");
     localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
   }, [productsInBag]);
 
@@ -58,15 +64,19 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
             </div>
             <div className={classes.box}>
               <p className={classes.properties}>{t("Size")}</p>
-              <select
-                className={classes.select}
-                value={selectedSize}
-                onChange={(e) => {
-                  setSelectedSize(e.target.value);
-                }}
-              >
-                {sizeOption}
-              </select>
+              {canEdit ? (
+                <select
+                  className={classes.select}
+                  value={selectedSize}
+                  onChange={(e) => {
+                    setSelectedSize(e.target.value);
+                  }}
+                >
+                  {sizeOption}
+                </select>
+              ) : (
+                <p className={classes.properties}>{selectedSize}</p>
+              )}
             </div>
             <div className={classes.box}>
               <p className={classes.properties}>{t("Colour")}</p>
@@ -74,55 +84,61 @@ export const ProductBag = ({ product }: { product: IProductBag }) => {
             </div>
             <div className={classes.box}>
               <p className={classes.properties}>{t("Quantity")}</p>
-              <div className={classes.quantityBox}>
-                <button
-                  className={classes.quantityCircle}
-                  onClick={() => {
-                    setQuantity(quantity + 1);
-                    dispatch(
-                      updateQuantity({
-                        productId: product.product.id,
-                        quantity: 1,
-                      }),
-                    );
-                  }}
-                >
-                  <a className={classes.quantityText}>+</a>
-                </button>
-                <p className={classes.properties}>{quantity}</p>
-                <button
-                  className={classes.quantityCircle}
-                  onClick={() => {
-                    if (quantity > 1) {
-                      setQuantity(quantity - 1);
+              {canEdit ? (
+                <div className={classes.quantityBox}>
+                  <button
+                    className={classes.quantityCircle}
+                    onClick={() => {
+                      setQuantity(quantity + 1);
                       dispatch(
                         updateQuantity({
                           productId: product.product.id,
-                          quantity: -1,
+                          quantity: 1,
                         }),
                       );
-                    }
-                  }}
-                >
-                  <a className={classes.quantityText}>-</a>
-                </button>
-              </div>
+                    }}
+                  >
+                    <a className={classes.quantityText}>+</a>
+                  </button>
+                  <p className={classes.properties}>{quantity}</p>
+                  <button
+                    className={classes.quantityCircle}
+                    onClick={() => {
+                      if (quantity > 1) {
+                        setQuantity(quantity - 1);
+                        dispatch(
+                          updateQuantity({
+                            productId: product.product.id,
+                            quantity: -1,
+                          }),
+                        );
+                      }
+                    }}
+                  >
+                    <a className={classes.quantityText}>-</a>
+                  </button>
+                </div>
+              ) : (
+                <p className={classes.properties}>{quantity}</p>
+              )}
             </div>
           </div>
         </div>
-        <div className={classes.boxColumn}>
-          <button className={classes.buttonDelete} onClick={deleteClicked}>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1 1L11 11" stroke="black" strokeLinecap="round" />
-              <path d="M1 11L11 1" stroke="black" strokeLinecap="round" />
-            </svg>
-          </button>
+        <div className={canEdit ? classes.boxColumn : classes.bottomContainer}>
+          {canEdit && (
+            <button className={classes.buttonDelete} onClick={deleteClicked}>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L11 11" stroke="black" strokeLinecap="round" />
+                <path d="M1 11L11 1" stroke="black" strokeLinecap="round" />
+              </svg>
+            </button>
+          )}
           <p className={classes.price}>${product.product.price} USD</p>
         </div>
       </div>
