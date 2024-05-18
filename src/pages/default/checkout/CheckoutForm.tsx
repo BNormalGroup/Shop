@@ -38,13 +38,13 @@ export const CheckoutForm = () => {
         />
         <PaymentMethod />
         <div className={classes.validationInput}>
-          {/*<ErrorMessage*/}
-          {/*  name="email"*/}
-          {/*  component="label"*/}
-          {/*  className={classes.textValidation}*/}
-          {/*/>*/}
           <div className={classes.termsWrapper}>
-            <input className={classes.checkboxTerms} type="checkbox" />
+            <input
+              required={true}
+              className={classes.checkboxTerms}
+              name="termsConditions"
+              type="checkbox"
+            />
             <p className={classes.textTerms}>{t("TermsConditions")}</p>
           </div>
         </div>

@@ -49,7 +49,7 @@ const CheckoutPage = () => {
           >
             <Form>
               <CheckoutForm />
-              <div style={{display: 'flex'}}>
+              <div style={{ display: "flex" }}>
                 <button className={classes.buttonConfirm} type="submit">
                   {t("Confirm")}
                 </button>

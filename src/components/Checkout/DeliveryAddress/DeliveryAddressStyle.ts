@@ -2,8 +2,8 @@ import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
   container: {
-    display: 'flex',
-    flexDirection: 'column'
+    display: "flex",
+    flexDirection: "column",
   },
   textValidation: {
     color: "#C10000",
@@ -16,11 +16,11 @@ export const useStyles = createUseStyles({
     flexDirection: "column",
   },
   containerData: {
-    marginBottom: '58px',
+    marginBottom: "58px",
     display: "flex",
     flexDirection: "row",
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   deliveryAddressText: {
     fontFamily: '"Source Serif 4", serif',
@@ -28,8 +28,8 @@ export const useStyles = createUseStyles({
     fontSize: "21px",
     lineHeight: "28.79px",
     color: "black",
-    marginBottom: '56px',
-    marginTop: '40px'
+    marginBottom: "56px",
+    marginTop: "40px",
   },
   inputMain: {
     border: "none",

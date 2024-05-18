@@ -4,14 +4,14 @@ export const useStyles = createUseStyles({
   validationInput: {
     display: "flex",
     flexDirection: "column",
-    width: '100%'
+    width: "100%",
   },
   containerData: {
-    marginBottom: '29px',
+    marginBottom: "29px",
     display: "flex",
     flexDirection: "row",
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   textValidation: {
     color: "#C10000",
@@ -35,10 +35,10 @@ export const useStyles = createUseStyles({
     },
   },
   dataWrapper: {
-    marginTop: '56px'
+    marginTop: "56px",
   },
   inputFull: {
-    height: '39px',
+    height: "39px",
     border: "none",
     borderBottom: " 1px solid #282826",
     padding: "5px 0px",
@@ -61,22 +61,22 @@ export const useStyles = createUseStyles({
     color: "#585852",
   },
   radioButtonContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '18px',
-    alignItems: 'center',
-    marginTop: '20px'
+    display: "flex",
+    flexDirection: "row",
+    gap: "18px",
+    alignItems: "center",
+    marginTop: "20px",
   },
   cardsStack: {
-    display: 'flex',
-    flexDirection: 'row',
-    gap: '10px'
+    display: "flex",
+    flexDirection: "row",
+    gap: "10px",
   },
   radioButton: {
-    border: '1px solid #282826',
-    width: '12px',
-    height: '12px',
-    accentColor: '#282826'
+    border: "1px solid #282826",
+    width: "12px",
+    height: "12px",
+    accentColor: "#282826",
   },
   cardImage: {
     width: "100%",
@@ -96,7 +96,7 @@ export const useStyles = createUseStyles({
     fontSize: "21px",
     lineHeight: "28.79px",
     color: "black",
-    margin: 0
+    margin: 0,
   },
   pinkCardWrapper: {
     width: "50px",

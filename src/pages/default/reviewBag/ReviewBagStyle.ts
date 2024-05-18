@@ -5,8 +5,8 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "row",
     gap: "20px",
-    justifyContent: 'center',
-    flexWrap: 'wrap'
+    justifyContent: "center",
+    flexWrap: "wrap",
   },
   //right side
   summaryWrapper: {
@@ -70,7 +70,7 @@ const useStyles = createUseStyles({
   },
   container: {
     marginBottom: 56,
-    padding: 0
+    padding: 0,
   },
   line: {
     color: "black",
@@ -112,7 +112,7 @@ const useStyles = createUseStyles({
     flexDirection: "column",
     justifyContent: "flex-start",
     width: "100%",
-    maxWidth: '645px'
+    maxWidth: "645px",
   },
   wrapperProducts: {
     maxWidth: "645px",

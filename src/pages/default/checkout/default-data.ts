@@ -10,7 +10,7 @@ export const defaultData = {
     postcode: "",
     city: "",
     streetAddress: "",
-    paymentMethod: ""
+    paymentMethod: "",
   },
   bankCard: {
     name: "",
@@ -19,5 +19,5 @@ export const defaultData = {
     expirationYear: 0,
     cvv: 0,
     postalCode: 0,
-  }
+  },
 };

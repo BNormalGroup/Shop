@@ -40,7 +40,7 @@ export const useStyles = createUseStyles({
   contentWrapper: {
     paddingTop: "60px",
     display: "flex",
-    justifyContent: 'center',
+    justifyContent: "center",
     flexDirection: "row",
     height: "100%",
     minHeight: "100vh",
@@ -159,6 +159,6 @@ export const useStyles = createUseStyles({
     fontSize: "18px",
     lineHeight: "26.68px",
     color: "#F5F5F5",
-    margin: '0 auto'
+    margin: "0 auto",
   },
 });

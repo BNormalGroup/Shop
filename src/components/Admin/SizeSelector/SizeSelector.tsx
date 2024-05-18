@@ -1,6 +1,6 @@
 import React, { ChangeEvent, Component, Dispatch, SetStateAction } from "react";
-import {IProductPost, ISize} from "../../../utils/types.ts";
-import {DeleteSizeService} from "../../../services/itemSizeColorService.ts";
+import { IProductPost, ISize } from "../../../utils/types.ts";
+import { DeleteSizeService } from "../../../services/itemSizeColorService.ts";
 
 interface SizeFormProps {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -12,7 +12,8 @@ interface SizeFormProps {
 
 class SizeSelector extends Component<SizeFormProps> {
   render() {
-    const { sizes, setItem, sizesServer, setSizesServer, handleChange } = this.props;
+    const { sizes, setItem, sizesServer, setSizesServer, handleChange } =
+      this.props;
     const removeSizes = (removedSize: number) => {
       setItem((prevItem) => ({
         ...prevItem,
@@ -35,7 +36,7 @@ class SizeSelector extends Component<SizeFormProps> {
 
     const removeSizeServer = async (index: number) => {
       if (sizesServer && setSizesServer) {
-        console.log('sizes ', index);
+        console.log("sizes ", index);
         const resp = await DeleteSizeService(sizesServer[index].id);
         if (resp?.status == 200 && sizesServer) {
           const newArray = sizesServer.filter((_item, i) => i !== index);
@@ -74,17 +75,17 @@ class SizeSelector extends Component<SizeFormProps> {
             </div>
           ))}
         {sizes &&
-            sizesServer?.map((size, key) => (
-                <div key={key} className="m-1">
-                  {size.size}
-                  <button
-                      type="button"
-                      className="btn-close"
-                      onClick={() => removeSizeServer(key)}
-                      aria-label="Close"
-                  ></button>
-                </div>
-            ))}
+          sizesServer?.map((size, key) => (
+            <div key={key} className="m-1">
+              {size.size}
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => removeSizeServer(key)}
+                aria-label="Close"
+              ></button>
+            </div>
+          ))}
       </div>
     );
   }

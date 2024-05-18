@@ -72,7 +72,9 @@ export const PaymentMethod = () => {
                 component="label"
                 className={classes.textValidation}
               />
-              <label className={classes.inputLabel}>{t("CardName") + "*"}</label>
+              <label className={classes.inputLabel}>
+                {t("CardName") + "*"}
+              </label>
               <input
                 className={classes.inputFull}
                 onChange={formik.handleChange}
@@ -88,7 +90,9 @@ export const PaymentMethod = () => {
                 component="label"
                 className={classes.textValidation}
               />
-              <label className={classes.inputLabel}>{t("CardNumber") + "*"}</label>
+              <label className={classes.inputLabel}>
+                {t("CardNumber") + "*"}
+              </label>
               <input
                 className={classes.inputFull}
                 onChange={formik.handleChange}
@@ -104,7 +108,9 @@ export const PaymentMethod = () => {
                 component="label"
                 className={classes.textValidation}
               />
-              <label className={classes.inputLabel}>{t("ExpirationMonth") + "*"}</label>
+              <label className={classes.inputLabel}>
+                {t("ExpirationMonth") + "*"}
+              </label>
               <input
                 className={classes.inputMain}
                 onChange={formik.handleChange}
@@ -119,7 +125,9 @@ export const PaymentMethod = () => {
                 component="label"
                 className={classes.textValidation}
               />
-              <label className={classes.inputLabel}>{t("ExpirationYear") + "*"}</label>
+              <label className={classes.inputLabel}>
+                {t("ExpirationYear") + "*"}
+              </label>
               <input
                 className={classes.inputMain}
                 onChange={formik.handleChange}
@@ -150,7 +158,9 @@ export const PaymentMethod = () => {
                 component="label"
                 className={classes.textValidation}
               />
-              <label className={classes.inputLabel}>{t("PostalCode") + "*"}</label>
+              <label className={classes.inputLabel}>
+                {t("PostalCode") + "*"}
+              </label>
               <input
                 className={classes.inputMain}
                 onChange={formik.handleChange}
