@@ -147,12 +147,14 @@ export interface IOrder {
   user?: IUser;
   item: IItemOrder[];
   status: IOrderStatus;
+  delivery_address?: IDeliveryAddress;
 }
 
 export interface IItemOrder extends IProduct {
   image: string;
   color: IColor;
   size: ISize;
+  item?: IProduct
 }
 
 export interface IOrderCreate {
