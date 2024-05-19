@@ -1,6 +1,7 @@
 export const defaultData = {
   products: [],
-  paymentMethod: "",
+  paymentMethod: "visaMasterKlarna",
+  user_id: null,
   address: {
     email: "",
     firstName: "",
@@ -10,14 +11,13 @@ export const defaultData = {
     postcode: "",
     city: "",
     streetAddress: "",
-    paymentMethod: "",
   },
   bankCard: {
     name: "",
     number: "",
-    expirationMonth: 0,
-    expirationYear: 0,
-    cvv: 0,
-    postalCode: 0,
+    expirationMonth: undefined,
+    expirationYear: undefined,
+    cvv: undefined,
+    postalCode: undefined,
   },
 };
