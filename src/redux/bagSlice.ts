@@ -45,9 +45,12 @@ export const BagSlice = createSlice({
           state.products[productIndex].quantity + quantity;
       }
     },
+    clearBag: (state) => {
+      state.products = [];
+    },
   },
 });
 
-export const { addProduct, deleteProduct, updateQuantity, addUserProducts } =
+export const { addProduct,clearBag, deleteProduct, updateQuantity, addUserProducts } =
   BagSlice.actions;
 export default BagSlice.reducer;

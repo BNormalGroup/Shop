@@ -1,15 +1,17 @@
 import { useStyles } from "./CheckoutPageStyle.ts";
 import { HeaderLogo } from "../../../assets/HeaderLogo.tsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { IOrderCreate } from "../../../utils/types.ts";
 import { Form, Formik } from "formik";
 import { defaultData } from "./default-data.ts";
 import { validationSchema } from "./validation-schema.ts";
 import { CheckoutForm } from "./CheckoutForm.tsx";
+import { CreateOrderService } from "../../../services/ordersService.ts";
+import { clearBag } from "../../../redux/bagSlice.ts";
 
 const CheckoutPage = () => {
   const classes = useStyles();
@@ -18,8 +20,21 @@ const CheckoutPage = () => {
   const totalCost = products.reduce((total, product) => {
     return total + product.product.price * product.quantity;
   }, 0);
+  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.users);
-  const handleSubmit = async (data: IOrderCreate) => {};
+  const navigate = useNavigate();
+
+  const handleSubmit = async (data: IOrderCreate) => {
+    const orderData = { ...data };
+    delete orderData.bankCard;
+    if(user.isAuth)
+      orderData.user_id = user.user.id;
+    orderData.products = products;
+    await CreateOrderService(orderData);
+    dispatch(clearBag());
+    localStorage.setItem("productsInBag", JSON.stringify([]));
+    navigate('/');
+  };
 
   return (
     <>

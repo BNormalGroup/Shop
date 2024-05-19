@@ -156,10 +156,11 @@ export interface IItemOrder extends IProduct {
 }
 
 export interface IOrderCreate {
-  products: IItemOrder[];
+  products: IProductBag[];
   paymentMethod: string;
+  user_id: number | null;
   address: IDeliveryAddress;
-  bankCard: IBankCard;
+  bankCard?: IBankCard;
 }
 
 export interface IDeliveryAddress {
@@ -171,14 +172,13 @@ export interface IDeliveryAddress {
   postcode: string;
   city: string;
   streetAddress: string;
-  paymentMethod: string;
 }
 
 export interface IBankCard {
   name: string;
   number: string;
-  expirationMonth: number;
-  expirationYear: number;
-  cvv: number;
-  postalCode: number;
+  expirationMonth?: number;
+  expirationYear?: number;
+  cvv?: number;
+  postalCode?: number;
 }
