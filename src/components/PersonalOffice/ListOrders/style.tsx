@@ -26,6 +26,10 @@ const useStyles = createUseStyles({
     lineHeight: "26.68px",
     color: "#282826",
   },
+  backgroundSecond: {
+    backgroundColor: '#282826',
+    color: '#f2f2f2'
+  }
 });
 
 export default useStyles;
