@@ -78,7 +78,7 @@ export const PaymentMethod = () => {
               <input
                 className={classes.inputFull}
                 onChange={formik.handleChange}
-                value={formik.values.bankCard.name}
+                value={formik.values.bankCard?.name}
                 name={"bankCard.name"}
               />
             </div>
@@ -96,7 +96,7 @@ export const PaymentMethod = () => {
               <input
                 className={classes.inputFull}
                 onChange={formik.handleChange}
-                value={formik.values.bankCard.number}
+                value={formik.values.bankCard?.number}
                 name={"bankCard.number"}
               />
             </div>
@@ -115,7 +115,7 @@ export const PaymentMethod = () => {
                 className={classes.inputMain}
                 onChange={formik.handleChange}
                 placeholder="MM"
-                value={formik.values.bankCard.expirationMonth}
+                value={formik.values.bankCard?.expirationMonth}
                 name={"bankCard.expirationMonth"}
               />
             </div>
@@ -132,7 +132,7 @@ export const PaymentMethod = () => {
                 className={classes.inputMain}
                 onChange={formik.handleChange}
                 placeholder="YYYY"
-                value={formik.values.bankCard.expirationYear}
+                value={formik.values.bankCard?.expirationYear}
                 name={"bankCard.expirationYear"}
               />
             </div>
@@ -148,7 +148,7 @@ export const PaymentMethod = () => {
               <input
                 className={classes.inputMain}
                 onChange={formik.handleChange}
-                value={formik.values.bankCard.cvv}
+                value={formik.values.bankCard?.cvv}
                 name={"bankCard.cvv"}
               />
             </div>
@@ -164,7 +164,7 @@ export const PaymentMethod = () => {
               <input
                 className={classes.inputMain}
                 onChange={formik.handleChange}
-                value={formik.values.bankCard.postalCode}
+                value={formik.values.bankCard?.postalCode}
                 name={"bankCard.postalCode"}
               />
             </div>
