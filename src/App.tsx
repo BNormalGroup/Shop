@@ -16,6 +16,8 @@ import ListOrders from "./pages/admin/orders/list/ListOrders.tsx";
 import SearchProduct from "./pages/default/searchProduct/SearchProduct.tsx";
 import PersonalOffice from "./pages/default/personalOffice/PersonalOffice.tsx";
 import UserOrdersList from "./components/PersonalOffice/ListOrders/ListOrders.tsx";
+import MainDetails from "./components/PersonalOffice/MainDetails/MainDetails.tsx";
+import ChangePassword from "./components/PersonalOffice/ChangePassword/ChangePassword.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
@@ -56,6 +58,8 @@ function App() {
           <Route path="review-bag" element={<ReviewBag />}></Route>
           <Route path="office" element={<PersonalOffice />}>
             <Route path="orders" element={<UserOrdersList />}></Route>
+            <Route path="details" element={<MainDetails />}></Route>
+            <Route path="change-password" element={<ChangePassword />}></Route>
           </Route>
           <Route path="checkout" element={<CheckoutPage />}></Route>
           <Route path={"*"} element={<NotFound />} />
