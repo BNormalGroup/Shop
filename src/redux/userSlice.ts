@@ -22,6 +22,9 @@ export const userSlice = createSlice({
         id: action.payload.id,
         isAdmin: action.payload.isAdmin,
         isBanned: action.payload.isBanned,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        birthday: action.payload.birthday,
         email: action.payload.email,
         password: "",
       };

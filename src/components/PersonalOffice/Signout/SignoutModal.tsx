@@ -3,12 +3,16 @@ import React from "react";
 import {GetUserOrdersService} from "../../../services/ordersService.ts";
 import {logout} from "../../../redux/userSlice.ts";
 import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {deleteLocalStorage} from "../../../utils/localStorageUtils.ts";
 
 const SignoutModal = () => {
     const classes = useStyles();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const signout = async () => {
-        logout();
+        dispatch(logout());
+        deleteLocalStorage("authToken");
         navigate('/');
     };
 

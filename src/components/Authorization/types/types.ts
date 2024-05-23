@@ -12,6 +12,9 @@ export interface IUserLogin {
   isAdmin: boolean;
   isBanned: boolean;
   password: string;
+  firstName?: string;
+  lastName?: string;
+  birthday?: string;
 }
 
 export interface IUserAuth {

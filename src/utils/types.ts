@@ -100,6 +100,18 @@ export interface ResponseTypeLogin {
   isBanned: boolean;
 }
 
+export interface ResponseTypeUpdateUser {
+  access_token: string;
+  message: string;
+}
+export interface IChangePassword {
+  current_password: string;
+  new_password: string;
+}
+export interface ResponseTypeChangePassword {
+  message: string;
+}
+
 export interface IImage {
   id: number;
   url: string;

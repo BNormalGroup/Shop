@@ -60,7 +60,13 @@ const useStyles = createUseStyles({
       backgroundColor: '#FFFFFF', // Зміна кольору фону при натисканні
     },
     textTransform: 'uppercase',
-  }
+  },
+  message: {
+    fontFamily: 'Oswald',
+    fontSize: '18px',
+    fontWeight: 200,
+    marginTop: '14px'
+  },
 });
 
 export default useStyles;

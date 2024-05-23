@@ -1,43 +1,53 @@
 import useStyles from "./style.tsx";
-import React, {useEffect, useState} from "react";
-import {IOrder} from "../../../utils/types.ts";
-import {GetUserOrdersService} from "../../../services/ordersService.ts";
-import {APP_ENV} from "../../../env";
+import React, {startTransition, useState} from "react";
+import {IChangePassword} from "../../../utils/types.ts";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../app/store.ts";
+import {ChangePasswordService} from "../../../services/authService.ts";
 
 const ChangePassword = () => {
     const classes = useStyles();
     const id = useSelector((state: RootState) => state.users.user.id);
-    const [orders, setOrders] = useState<IOrder[]>([]);
+    const [password, setPassword] = useState<IChangePassword>({current_password: '', new_password: ''});
+    const [message, setMessage] = useState<string>('');
+    async function handleSumbit(event: React.FormEvent) {
+        event.preventDefault();
+        const responseStatus = await ChangePasswordService(password, localStorage.getItem('authToken') ?? '');
+        console.log('reponseStatus: ', responseStatus);
+        if (responseStatus.status == 200) {
+            setMessage(responseStatus.data.message);
+        } else {
+            setMessage(responseStatus.data.message);
+        }
+    }
 
-    const getOrders = async () => {
-        const statusesGet = await GetUserOrdersService(id);
-        if (statusesGet)
-            setOrders(statusesGet);
-
+    const handleChange = (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+        const {name, value} = event.target;
+        startTransition(() => {
+            setPassword((prevState) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        });
     };
 
-    useEffect(() => {
-        getOrders();
-        console.log(orders);
-        console.log(orders);
-    }, []);
-
     return (
-        <div className={classes.container}>
+        <form action="" onSubmit={handleSumbit} className={classes.container}>
             <h1 className={classes.title}>Change Password</h1>
             <div className={classes.inputContainer}>
                 <label className={classes.inputLabel} htmlFor="firstName">Current Password</label>
-                <input className={classes.input} id="currentPassword" type="password"></input>
+                <input onChange={handleChange} className={classes.input} name={'current_password'} value={password.current_password} id="currentPassword" type="password"></input>
             </div>
             <div className={classes.inputContainer}>
                 <label className={classes.inputLabel} htmlFor="lastName">New Password</label>
-                <input className={classes.input} id="newPassword" type="password"></input>
+                <input onChange={handleChange} className={classes.input} name={'new_password'} value={password.new_password} id="newPassword" type="password"></input>
             </div>
 
-            <button className={classes.buttonSave}>Change the password</button>
-        </div>
+            <button type={'submit'} className={classes.buttonSave}>Change the password</button>
+            <p className={classes.message}>{message}</p>
+        </form>
 
     );
 };
