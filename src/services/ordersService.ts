@@ -60,10 +60,9 @@ export const UpdateStatusOrderService = async (
   }
 };
 
-
 export const CreateOrderService = async (orderCreate: IOrderCreate) => {
   try {
-    const response = await http.post<IOrderCreate>("/orders/",orderCreate);
+    const response = await http.post<IOrderCreate>("/orders/", orderCreate);
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {

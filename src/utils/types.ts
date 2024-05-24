@@ -166,7 +166,7 @@ export interface IItemOrder extends IProduct {
   image: string;
   color: IColor;
   size: ISize;
-  item?: IProduct
+  item?: IProduct;
 }
 
 export interface IOrderCreate {

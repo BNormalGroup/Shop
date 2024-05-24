@@ -6,13 +6,13 @@ import { Form, Formik } from "formik";
 import { defaultData } from "./default-data.ts";
 import { FormLogin } from "./Form.tsx";
 import * as Yup from "yup";
-import {IUserAuth, IUserLogin} from "../types/types.ts";
+import { IUserAuth, IUserLogin } from "../types/types.ts";
 import { SingInService } from "../../../services/authService.ts";
 import { useDispatch } from "react-redux";
-import {auth, login} from "../../../redux/userSlice.ts";
+import { auth, login } from "../../../redux/userSlice.ts";
 import { addLocalStorage } from "../../../utils/localStorageUtils.ts";
-import {store} from "../../../app/store.ts";
-import {jwtDecode} from "jwt-decode";
+import { store } from "../../../app/store.ts";
+import { jwtDecode } from "jwt-decode";
 // import { ShowUserBag } from "../../../services/bagService.ts";
 // import { addUserProducts } from "../../../redux/bagSlice.ts";
 
@@ -38,7 +38,7 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
   const handleSubmit = async (data: IUserLogin) => {
     try {
       const user = await SingInService(data);
-      console.log('user', user);
+      console.log("user", user);
       dispatch(login(data));
       if (user) {
         addLocalStorage("authToken", user?.access_token);

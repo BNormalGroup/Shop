@@ -30,7 +30,6 @@ const Product = () => {
     fetchData();
   }, [id]);
 
-  console.log(product);
   if (product.product)
     return (
       <>

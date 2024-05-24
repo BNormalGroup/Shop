@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const ReviewBag = () => {
   const classes = useStyles();
@@ -18,6 +19,10 @@ const ReviewBag = () => {
     return total + product.product.price * product.quantity;
   }, 0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("productsInBag", JSON.stringify(products));
+  }, [products]);
 
   if (products.length > 0)
     return (
@@ -36,11 +41,7 @@ const ReviewBag = () => {
 
               <div className={classes.wrapperProducts}>
                 {products.map((item, key) => {
-                  return (
-                    <div key={key}>
-                      <ProductBag product={item} canEdit={true} />
-                    </div>
-                  );
+                  return <ProductBag product={item} canEdit={true} key={key} />;
                 })}
                 <hr className={classes.line} />
               </div>

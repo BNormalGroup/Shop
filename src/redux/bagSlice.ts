@@ -51,6 +51,11 @@ export const BagSlice = createSlice({
   },
 });
 
-export const { addProduct,clearBag, deleteProduct, updateQuantity, addUserProducts } =
-  BagSlice.actions;
+export const {
+  addProduct,
+  clearBag,
+  deleteProduct,
+  updateQuantity,
+  addUserProducts,
+} = BagSlice.actions;
 export default BagSlice.reducer;

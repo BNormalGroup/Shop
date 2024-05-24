@@ -5,14 +5,16 @@ import NavBarSideAdmin from "../pages/admin/navbar/NavBarSideAdmin.tsx";
 export const AdminLayout = () => {
   return (
     <>
-      <NavBarAdmin></NavBarAdmin>
+      <div style={{ height: "90vh" }}>
+        <NavBarAdmin></NavBarAdmin>
 
-      <div style={{ display: "flex" }}>
-        {/* NavBar зліва */}
-        <NavBarSideAdmin></NavBarSideAdmin>
+        <div style={{ display: "flex", height: "100%" }}>
+          {/* NavBar зліва */}
+          <NavBarSideAdmin></NavBarSideAdmin>
 
-        <div className="tm-bg-primary-dark w-100">
-          <Outlet></Outlet>
+          <div className="tm-bg-primary-dark w-100">
+            <Outlet></Outlet>
+          </div>
         </div>
       </div>
     </>

@@ -6,6 +6,7 @@ export const useStyles = createUseStyles({
     fontSize: "18px",
     fontWeight: "400",
     lineHeight: "22.55px",
-    fontFamily: "SourceSerifPro, sans-serif",
+    backgroundColor: "transparent",
+    fontFamily: "Source Serif",
   },
 });

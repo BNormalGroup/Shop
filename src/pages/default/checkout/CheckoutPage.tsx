@@ -27,13 +27,12 @@ const CheckoutPage = () => {
   const handleSubmit = async (data: IOrderCreate) => {
     const orderData = { ...data };
     delete orderData.bankCard;
-    if(user.isAuth)
-      orderData.user_id = user.user.id;
+    if (user.isAuth) orderData.user_id = user.user.id;
     orderData.products = products;
     await CreateOrderService(orderData);
     dispatch(clearBag());
     localStorage.setItem("productsInBag", JSON.stringify([]));
-    navigate('/');
+    navigate("/");
   };
 
   return (

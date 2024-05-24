@@ -26,7 +26,7 @@ export const useStyles = createUseStyles({
   },
   gridContainer: {
     display: "grid",
-    gap: "10px",
+    gap: "20px",
     gridTemplateColumns: "repeat(3, 1fr)",
   },
 });
