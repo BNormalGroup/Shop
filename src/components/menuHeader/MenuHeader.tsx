@@ -22,7 +22,6 @@ const MenuHeader = () => {
   useEffect(() => {
     http.get<ICategoryParentItem[]>("/categories/child").then((resp) => {
       setCategory(resp.data);
-      console.log(resp.data);
     });
   }, []);
 

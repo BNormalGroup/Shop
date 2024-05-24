@@ -70,6 +70,7 @@ const useStyles = createUseStyles({
   },
   container: {
     marginBottom: 56,
+    minHeight: "100vh",
     padding: 0,
   },
   line: {

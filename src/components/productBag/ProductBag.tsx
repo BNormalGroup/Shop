@@ -4,9 +4,8 @@ import { APP_ENV } from "../../env";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteProduct, updateQuantity } from "../../redux/bagSlice.ts";
-import { RootState } from "../../app/store.ts";
 
 export const ProductBag = ({
   product,
@@ -22,19 +21,13 @@ export const ProductBag = ({
   );
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState<number>(product.quantity);
-  const productsInBag = useSelector((state: RootState) => state.bag.products);
 
   useEffect(() => {
-    console.log("useEffect");
-    localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
-  }, [productsInBag]);
-
+    setSelectedSize(product.selectedSize);
+  }, [product]);
   const deleteClicked = () => {
     if (product.product.id) dispatch(deleteProduct(product));
-    setSelectedSize(product.selectedSize);
-    console.log("selectedSize", selectedSize, product.selectedSize);
   };
-  console.log(" product.selectedSize", product.selectedSize);
 
   const sizeOption = product.sizes.map((size, key) => {
     return (
