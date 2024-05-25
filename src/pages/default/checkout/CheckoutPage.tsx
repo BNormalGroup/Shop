@@ -31,7 +31,6 @@ const CheckoutPage = () => {
     orderData.products = products;
     await CreateOrderService(orderData);
     dispatch(clearBag());
-    localStorage.setItem("productsInBag", JSON.stringify([]));
     navigate("/");
   };
 

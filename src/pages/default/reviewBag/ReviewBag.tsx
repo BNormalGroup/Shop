@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const ReviewBag = () => {
   const classes = useStyles();
@@ -20,9 +19,6 @@ const ReviewBag = () => {
   }, 0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem("productsInBag", JSON.stringify(products));
-  }, [products]);
 
   if (products.length > 0)
     return (

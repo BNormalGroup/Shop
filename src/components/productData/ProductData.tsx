@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { IProductBagPost, IProductGet } from "../../utils/types.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/bagSlice.ts";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RootState } from "../../app/store.ts";
 import { AddToBag } from "../../services/bagService.ts";
 
@@ -15,11 +15,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state: RootState) => state.users.user.id);
   const isAuth = useSelector((state: RootState) => state.users.isAuth);
-  const productsInBag = useSelector((state: RootState) => state.bag.products);
 
-  useEffect(() => {
-    localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
-  }, [productsInBag]);
 
   const sizeOption = product.sizes.map((size, key) => {
     return (
