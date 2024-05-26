@@ -38,13 +38,13 @@ const ReviewBag = () => {
     };
 
     fetchProducts();
-  }, [currentUser.isAuth,storedProducts]);
+  }, [currentUser.isAuth, storedProducts]);
 
   useEffect(() => {
     setTotalCost(
       products.reduce((total, product) => {
         return total + product.product.price * product.quantity;
-      }, 0)
+      }, 0),
     );
   }, [products]);
 

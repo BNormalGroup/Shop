@@ -17,7 +17,6 @@ const InputBirthday = ({
   useEffect(() => {
     if (!initializing && day && month && year) {
       birthdayChange(`${day}-${month}-${year}`);
-      console.log(birthday);
     }
   }, [day, month, year, initializing]);
 

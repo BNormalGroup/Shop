@@ -20,7 +20,6 @@ const ListUser = () => {
       .then((resp) => {
         startTransition(() => {
           setUsers(resp.data);
-          console.log(resp.data);
         });
       })
       .catch((error) => {

@@ -31,9 +31,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
       </option>
     );
   });
-  const [selectedSize, setSelectedSize] = useState<string>(
-    product.sizes[0],
-  );
+  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0]);
   const [selectedColor, setSelectedColor] = useState<string>(
     product.colors[0].name,
   );

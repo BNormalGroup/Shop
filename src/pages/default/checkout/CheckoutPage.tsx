@@ -11,7 +11,7 @@ import { defaultData } from "./default-data.ts";
 import { validationSchema } from "./validation-schema.ts";
 import { CheckoutForm } from "./CheckoutForm.tsx";
 import { CreateOrderService } from "../../../services/ordersService.ts";
-import { clearBag} from "../../../redux/bagSlice.ts";
+import { clearBag } from "../../../redux/bagSlice.ts";
 import { useEffect, useState } from "react";
 import { ShowUserBag } from "../../../services/bagService.ts";
 
@@ -26,7 +26,6 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const currentUser = useSelector((state: RootState) => state.users);
 
-
   useEffect(() => {
     const fetchProducts = async () => {
       if (currentUser.isAuth) {
@@ -38,13 +37,13 @@ const CheckoutPage = () => {
     };
 
     fetchProducts();
-  }, [currentUser.isAuth,storedProducts]);
+  }, [currentUser.isAuth, storedProducts]);
 
   useEffect(() => {
     setTotalCost(
       products.reduce((total, product) => {
         return total + product.product.price * product.quantity;
-      }, 0)
+      }, 0),
     );
   }, [products]);
 
@@ -99,7 +98,11 @@ const CheckoutPage = () => {
           {products.map((item, key) => {
             return (
               <div key={key}>
-                <ProductBag product={item} canEdit={false} deleteProductClick={()=>{}} />
+                <ProductBag
+                  product={item}
+                  canEdit={false}
+                  deleteProductClick={() => {}}
+                />
               </div>
             );
           })}

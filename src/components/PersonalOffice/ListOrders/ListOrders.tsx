@@ -18,8 +18,6 @@ const UserOrdersList = () => {
 
   useEffect(() => {
     getOrders();
-    console.log(orders);
-    console.log(orders);
   }, []);
 
   return (

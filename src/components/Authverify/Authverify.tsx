@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IUserAuth } from "../Authorization/types/types.ts";
 import { store } from "../../app/store.ts";
 import { auth, logout } from "../../redux/userSlice.ts";
@@ -12,20 +12,15 @@ const AuthVerifyComponent = () => {
 
   useEffect(() => {
     const checkToken = () => {
-      console.log('hi bitch');
       const token = localStorage.getItem("authToken");
       if (typeof token === "string") {
-        const { exp } = jwtDecode(token)
-        if(exp)
-        {
-          const expirationTime = (exp * 1000) - 60000;
-          if(!(Date.now() >= expirationTime))
-          {
+        const { exp } = jwtDecode(token);
+        if (exp) {
+          const expirationTime = exp * 1000 - 60000;
+          if (!(Date.now() >= expirationTime)) {
             const decoded = jwtDecode<IUserAuth>(token);
             store.dispatch(auth(decoded));
-          }
-          else
-          {
+          } else {
             store.dispatch(logout());
             deleteLocalStorage("authToken");
           }

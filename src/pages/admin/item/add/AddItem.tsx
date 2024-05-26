@@ -62,7 +62,7 @@ const AddItem = () => {
       }));
     }
   };
-  console.log(item);
+
   return (
     <>
       <div className="container tm-mt-big tm-mb-big">
