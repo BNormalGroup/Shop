@@ -19,6 +19,7 @@ export const Header = () => {
   const classes = useStyles();
   const [registerOpen, setRegisterOpen] = useState<boolean>(false);
   const isAuth = useSelector((state: RootState) => state.users.isAuth);
+  const isAdmin = useSelector((state: RootState) => state.users.user.isAdmin);
   const navigate = useNavigate();
   const { openLoginModal } = useLoginModal();
   const handleLikeClick = () => {
@@ -52,6 +53,7 @@ export const Header = () => {
             className={classes.buttonIcon}
             onClick={() => {
               if (!isAuth) setRegisterOpen(!registerOpen);
+              else if (isAdmin) navigate("/admin");
               else navigate("/office");
             }}
           >
