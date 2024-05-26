@@ -9,6 +9,8 @@ import {
   DeleteLikeService,
   LikeService,
 } from "../../services/favoriteService.ts";
+import { useLoginModal } from "../../context/LoginModalContext.ts";
+import { useNavigate } from "react-router-dom";
 
 export const LikeButton = ({
   productId,
@@ -21,6 +23,7 @@ export const LikeButton = ({
   const [likeId, setLikeId] = useState<number>(0);
   const classes = useStyles();
   const isAuth = useSelector((state: RootState) => state.users.isAuth);
+  const { openLoginModal } = useLoginModal();
 
   const likeClick = async () => {
     setIsLoading(true);
@@ -30,6 +33,8 @@ export const LikeButton = ({
           await LikeService(productId, userId);
           await checkLiked();
         }
+      } else {
+        openLoginModal();
       }
     } catch (error: any) {
       console.log(error);
