@@ -1,18 +1,20 @@
-import { IProductBag } from "../../utils/types.ts";
-import useStyles from "./ProductBagStyle.ts";
-import { APP_ENV } from "../../env";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteProduct, updateQuantity } from "../../redux/bagSlice.ts";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import useStyles from "./ProductBagStyle.ts";
+import { APP_ENV } from "../../env";
+import { updateQuantity } from "../../redux/bagSlice.ts";
+import { IProductBag } from "../../utils/types.ts";
 
 export const ProductBag = ({
   product,
   canEdit,
+  deleteProductClick,
 }: {
   product: IProductBag;
   canEdit: boolean;
+  deleteProductClick: (product: IProductBag) => void;
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -25,17 +27,16 @@ export const ProductBag = ({
   useEffect(() => {
     setSelectedSize(product.selectedSize);
   }, [product]);
-  const deleteClicked = () => {
-    if (product.product.id) dispatch(deleteProduct(product));
+
+  const deleteClicked = async () => {
+    deleteProductClick(product);
   };
 
-  const sizeOption = product.sizes.map((size, key) => {
-    return (
-      <option key={key} value={size.size}>
-        {size.size}
-      </option>
-    );
-  });
+  const sizeOption = product.sizes.map((size, key) => (
+    <option key={key} value={size}>
+      {size}
+    </option>
+  ));
 
   return (
     <>
@@ -61,9 +62,7 @@ export const ProductBag = ({
                 <select
                   className={classes.select}
                   value={selectedSize}
-                  onChange={(e) => {
-                    setSelectedSize(e.target.value);
-                  }}
+                  onChange={(e) => setSelectedSize(e.target.value)}
                 >
                   {sizeOption}
                 </select>

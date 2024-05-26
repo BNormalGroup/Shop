@@ -15,7 +15,6 @@ export const FavoriteItem = ({ product }: { product: IProductGet }) => {
     product.sizes[0].size.toString(),
   );
 
-
   const sizeOptions = product.sizes.map((size, key) => (
     <option key={key} value={size.size}>
       {size.size}

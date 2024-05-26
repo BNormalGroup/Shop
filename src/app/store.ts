@@ -17,6 +17,9 @@ store.subscribe(() => {
   const nextBagState = store.getState().bag;
   if (nextBagState !== currentBagState) {
     currentBagState = nextBagState;
-    localStorage.setItem("productsInBag", JSON.stringify(currentBagState.products));
+    localStorage.setItem(
+      "productsInBag",
+      JSON.stringify(currentBagState.products),
+    );
   }
 });
