@@ -26,3 +26,15 @@ export const ShowUserBag = async (userId: number) => {
     }
   }
 };
+
+export const DeleteProductFromBag = async (productBagId: number) => {
+  try {
+    await http.delete("/basket/" + productBagId);
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      throw error.response;
+    } else {
+      console.error("General error:", error.message);
+    }
+  }
+};

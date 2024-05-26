@@ -4,9 +4,8 @@ import { APP_ENV } from "../../env";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { addProduct } from "../../redux/bagSlice.ts";
-import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
-import { RootState } from "../../app/store.ts";
+import { useDispatch } from "react-redux";
+import React, { useState } from "react";
 
 export const FavoriteItem = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
@@ -15,11 +14,6 @@ export const FavoriteItem = ({ product }: { product: IProductGet }) => {
   const [selectedSize, setSelectedSize] = useState<string>(
     product.sizes[0].size.toString(),
   );
-  const productsInBag = useSelector((state: RootState) => state.bag.products);
-
-  useEffect(() => {
-    localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
-  }, [productsInBag]);
 
   const sizeOptions = product.sizes.map((size, key) => (
     <option key={key} value={size.size}>

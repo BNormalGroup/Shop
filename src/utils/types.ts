@@ -45,10 +45,11 @@ export interface IProduct {
 }
 
 export interface IProductBag {
+  id?: number;
   product: IProduct;
   color: string;
   quantity: number;
-  sizes: ISize[];
+  sizes: string[];
   selectedSize: string;
 }
 
@@ -86,10 +87,10 @@ export interface IProductPost {
 }
 
 export interface IProductGet {
-  product?: IProduct;
+  product: IProduct;
   images: IImage[];
   colors: IColor[];
-  sizes: ISize[];
+  sizes: string[];
 }
 
 export interface ResponseTypeLogin {

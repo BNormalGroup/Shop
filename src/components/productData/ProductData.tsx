@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { IProductBagPost, IProductGet } from "../../utils/types.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/bagSlice.ts";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RootState } from "../../app/store.ts";
 import { AddToBag } from "../../services/bagService.ts";
 
@@ -15,16 +15,11 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
   const dispatch = useDispatch();
   const userId = useSelector((state: RootState) => state.users.user.id);
   const isAuth = useSelector((state: RootState) => state.users.isAuth);
-  const productsInBag = useSelector((state: RootState) => state.bag.products);
-
-  useEffect(() => {
-    localStorage.setItem("productsInBag", JSON.stringify(productsInBag));
-  }, [productsInBag]);
 
   const sizeOption = product.sizes.map((size, key) => {
     return (
-      <option className={classes.option} key={key} value={size.size}>
-        {size.size}
+      <option className={classes.option} key={key} value={size}>
+        {size}
       </option>
     );
   });
@@ -37,14 +32,23 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
     );
   });
   const [selectedSize, setSelectedSize] = useState<string>(
-    product.sizes[0].size.toString(),
+    product.sizes[0],
   );
   const [selectedColor, setSelectedColor] = useState<string>(
     product.colors[0].name,
   );
 
   const clickAddProductToBag = async () => {
-    if (product.product) {
+    if (isAuth) {
+      const prepareData: IProductBagPost = {
+        user_id: userId,
+        item_id: product.product.id,
+        colour: selectedColor,
+        size: selectedSize,
+        quantity: 1,
+      };
+      await AddToBag(prepareData);
+    } else {
       dispatch(
         addProduct({
           product: product.product,
@@ -54,16 +58,6 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
           selectedSize: selectedSize,
         }),
       );
-      if (isAuth) {
-        const prepareData: IProductBagPost = {
-          user_id: userId,
-          item_id: product.product.id,
-          colour: selectedColor,
-          size: selectedSize,
-          quantity: 1,
-        };
-        await AddToBag(prepareData);
-      }
     }
   };
 

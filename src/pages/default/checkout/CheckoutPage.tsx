@@ -5,24 +5,48 @@ import { useTranslation } from "react-i18next";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
-import { IOrderCreate } from "../../../utils/types.ts";
+import { IOrderCreate, IProductBag } from "../../../utils/types.ts";
 import { Form, Formik } from "formik";
 import { defaultData } from "./default-data.ts";
 import { validationSchema } from "./validation-schema.ts";
 import { CheckoutForm } from "./CheckoutForm.tsx";
 import { CreateOrderService } from "../../../services/ordersService.ts";
-import { clearBag } from "../../../redux/bagSlice.ts";
+import { clearBag} from "../../../redux/bagSlice.ts";
+import { useEffect, useState } from "react";
+import { ShowUserBag } from "../../../services/bagService.ts";
 
 const CheckoutPage = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const products = useSelector((state: RootState) => state.bag.products);
-  const totalCost = products.reduce((total, product) => {
-    return total + product.product.price * product.quantity;
-  }, 0);
+  const storedProducts = useSelector((state: RootState) => state.bag.products);
+  const [totalCost, setTotalCost] = useState<number>(0);
+  const [products, setProductsState] = useState<IProductBag[]>([]);
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.users);
   const navigate = useNavigate();
+  const currentUser = useSelector((state: RootState) => state.users);
+
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (currentUser.isAuth) {
+        const response = await ShowUserBag(currentUser.user.id);
+        if (response) setProductsState(response);
+      } else {
+        setProductsState(storedProducts);
+      }
+    };
+
+    fetchProducts();
+  }, [currentUser.isAuth,storedProducts]);
+
+  useEffect(() => {
+    setTotalCost(
+      products.reduce((total, product) => {
+        return total + product.product.price * product.quantity;
+      }, 0)
+    );
+  }, [products]);
 
   const handleSubmit = async (data: IOrderCreate) => {
     const orderData = { ...data };
@@ -31,7 +55,6 @@ const CheckoutPage = () => {
     orderData.products = products;
     await CreateOrderService(orderData);
     dispatch(clearBag());
-    localStorage.setItem("productsInBag", JSON.stringify([]));
     navigate("/");
   };
 
@@ -76,7 +99,7 @@ const CheckoutPage = () => {
           {products.map((item, key) => {
             return (
               <div key={key}>
-                <ProductBag product={item} canEdit={false} />
+                <ProductBag product={item} canEdit={false} deleteProductClick={()=>{}} />
               </div>
             );
           })}

@@ -5,24 +5,62 @@ import PayPal from "../../../assets/cardsImage/payPal.png";
 import Klarna from "../../../assets/cardsImage/klarna.png";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb } from "../../../components/Breadcrumb/Breadcrumb.tsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../app/store.ts";
 import { ProductBag } from "../../../components/productBag/ProductBag.tsx";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { IProductBag } from "../../../utils/types.ts";
+import { useEffect, useState } from "react";
+import {
+  DeleteProductFromBag,
+  ShowUserBag,
+} from "../../../services/bagService.ts";
+import { deleteProduct } from "../../../redux/bagSlice.ts";
 
 const ReviewBag = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const products = useSelector((state: RootState) => state.bag.products);
-  const totalCost = products.reduce((total, product) => {
-    return total + product.product.price * product.quantity;
-  }, 0);
+  const storedProducts = useSelector((state: RootState) => state.bag.products);
+  const [totalCost, setTotalCost] = useState<number>(0);
+  const [products, setProductsState] = useState<IProductBag[]>([]);
   const navigate = useNavigate();
+  const currentUser = useSelector((state: RootState) => state.users);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    localStorage.setItem("productsInBag", JSON.stringify(products));
+    const fetchProducts = async () => {
+      if (currentUser.isAuth) {
+        const response = await ShowUserBag(currentUser.user.id);
+        if (response) setProductsState(response);
+      } else {
+        setProductsState(storedProducts);
+      }
+    };
+
+    fetchProducts();
+  }, [currentUser.isAuth,storedProducts]);
+
+  useEffect(() => {
+    setTotalCost(
+      products.reduce((total, product) => {
+        return total + product.product.price * product.quantity;
+      }, 0)
+    );
   }, [products]);
+
+  const deleteProductClicked = async (productDelete: IProductBag) => {
+    if (currentUser.isAuth) {
+      if (productDelete.id) {
+        await DeleteProductFromBag(productDelete.id);
+        setProductsState(
+          products.filter((product) => product.id !== productDelete.id),
+        );
+      }
+    } else {
+      dispatch(deleteProduct(productDelete));
+      setProductsState(storedProducts);
+    }
+  };
 
   if (products.length > 0)
     return (
@@ -41,7 +79,14 @@ const ReviewBag = () => {
 
               <div className={classes.wrapperProducts}>
                 {products.map((item, key) => {
-                  return <ProductBag product={item} canEdit={true} key={key} />;
+                  return (
+                    <ProductBag
+                      product={item}
+                      canEdit={true}
+                      key={key}
+                      deleteProductClick={deleteProductClicked}
+                    />
+                  );
                 })}
                 <hr className={classes.line} />
               </div>
