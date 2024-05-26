@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout.tsx";
 import { AdminLayout } from "./layouts/AdminLayout.tsx";
 import React, { lazy } from "react";
@@ -18,6 +18,7 @@ import PersonalOffice from "./pages/default/personalOffice/PersonalOffice.tsx";
 import UserOrdersList from "./components/PersonalOffice/ListOrders/ListOrders.tsx";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store.ts";
+import AuthVerifyComponent from "./components/Authverify/Authverify.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
@@ -45,46 +46,50 @@ function App() {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route path="/" element={<MenuPage></MenuPage>}></Route>
-          <Route path={"/woman"} element={<WomanShop />} />
-          <Route path={"/man"} element={<MenShop />} />
-          <Route path="category/:id" element={<ProductListPage />}></Route>
-          <Route path="product/:id" element={<Product />}></Route>
-          <Route
-            path="searchproduct/:keyword"
-            element={<SearchProduct />}
-          ></Route>
-          <Route path="review-bag" element={<ReviewBag />}></Route>
-          <Route path="favorite" element={<Favorite />}></Route>
-          <Route path="office" element={<PersonalOffice />}>
-            <Route path="orders" element={<UserOrdersList />}></Route>
+
+        <Routes>
+          <Route path="/" element={<DefaultLayout />}>
+            <Route path="/" element={<MenuPage></MenuPage>}></Route>
+            <Route path={"/woman"} element={<WomanShop />} />
+            <Route path={"/man"} element={<MenShop />} />
+            <Route path="category/:id" element={<ProductListPage />}></Route>
+            <Route path="product/:id" element={<Product />}></Route>
+            <Route
+              path="searchproduct/:keyword"
+              element={<SearchProduct />}
+            ></Route>
+            <Route path="review-bag" element={<ReviewBag />}></Route>
+            <Route path="favorite" element={<Favorite />}></Route>
+            <Route path="office" element={<PersonalOffice />}>
+              <Route path="orders" element={<UserOrdersList />}></Route>
+            </Route>
+            <Route path={"*"} element={<NotFound />} />
           </Route>
-          <Route path={"*"} element={<NotFound />} />
-        </Route>
-        {user.isAdmin && (
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="category">
-              <Route path="listCategory" element={<ListCategory />}></Route>
-              <Route path="addCategory" element={<AddCategory />}></Route>
-              <Route path="editCategory/:id" element={<EditCategory />}></Route>
+          {user.isAdmin && (
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="category">
+                <Route path="listCategory" element={<ListCategory />}></Route>
+                <Route path="addCategory" element={<AddCategory />}></Route>
+                <Route
+                  path="editCategory/:id"
+                  element={<EditCategory />}
+                ></Route>
+              </Route>
+              <Route path="item">
+                <Route path="list" element={<ListItem></ListItem>}></Route>
+                <Route path="add" element={<AddItem></AddItem>}></Route>
+                <Route path="edit/:id" element={<EditItem></EditItem>}></Route>
+              </Route>
+              <Route path="user">
+                <Route path="list" element={<ListUser></ListUser>}></Route>
+              </Route>
+              <Route path="order">
+                <Route path="list" element={<ListOrders></ListOrders>}></Route>
+              </Route>
             </Route>
-            <Route path="item">
-              <Route path="list" element={<ListItem></ListItem>}></Route>
-              <Route path="add" element={<AddItem></AddItem>}></Route>
-              <Route path="edit/:id" element={<EditItem></EditItem>}></Route>
-            </Route>
-            <Route path="user">
-              <Route path="list" element={<ListUser></ListUser>}></Route>
-            </Route>
-            <Route path="order">
-              <Route path="list" element={<ListOrders></ListOrders>}></Route>
-            </Route>
-          </Route>
-        )}
-        <Route path="/order/checkout" element={<CheckoutPage />}></Route>
-      </Routes>
+          )}
+          <Route path="/order/checkout" element={<CheckoutPage />}></Route>
+        </Routes>
     </>
   );
 }
