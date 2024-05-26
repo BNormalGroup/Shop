@@ -16,7 +16,6 @@ const ListItem = () => {
       .then((resp) => {
         startTransition(() => {
           setItems(resp.data);
-          console.log(resp.data);
         });
       })
       .catch((error) => {

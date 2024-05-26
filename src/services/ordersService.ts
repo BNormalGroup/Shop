@@ -5,7 +5,6 @@ import { IOrder, IOrderCreate, IOrderStatus } from "../utils/types.ts";
 export const GetOrdersService = async () => {
   try {
     const response = await http.get<IOrder[]>("/orders");
-    console.log(response);
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
@@ -18,7 +17,6 @@ export const GetOrdersService = async () => {
 export const GetUserOrdersService = async (userId: number) => {
   try {
     const response = await http.get<IOrder[]>("/orders/user/" + userId);
-    console.log(response);
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {

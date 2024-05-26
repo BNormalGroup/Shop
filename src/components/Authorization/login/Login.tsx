@@ -38,7 +38,6 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
   const handleSubmit = async (data: IUserLogin) => {
     try {
       const user = await SingInService(data);
-      console.log("user", user);
       dispatch(login(data));
       if (user) {
         addLocalStorage("authToken", user?.access_token);
@@ -46,9 +45,6 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
           const decoded = jwtDecode<IUserAuth>(user.access_token);
           store.dispatch(auth(decoded));
         }
-        // const bagProducts =  await ShowUserBag(user.user.id);
-        // if(bagProducts)
-        // dispatch(addUserProducts(bagProducts));
       }
       setClose();
     } catch (error: any) {

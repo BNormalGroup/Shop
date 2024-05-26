@@ -57,7 +57,6 @@ export const CheckLikedService = async (userId: number, productId: number) => {
     const response = await http.get<IFavoriteCheckRequest>(
       `/likes/check?user_id=${data.user_id}&item_id=${data.item_id}`,
     );
-    console.log("resp", response.data);
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {

@@ -3,9 +3,8 @@ import {
   IUserLogin,
   IUserRegister,
 } from "../components/Authorization/types/types.ts";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import {
-  ICategoryPostItem,
   IChangePassword,
   ResponseTypeChangePassword,
   ResponseTypeLogin,
@@ -67,7 +66,6 @@ export const ChangePasswordService = async (
         },
       },
     );
-    console.log("response: ", response);
     return response;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {

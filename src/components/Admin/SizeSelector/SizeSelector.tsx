@@ -36,7 +36,6 @@ class SizeSelector extends Component<SizeFormProps> {
 
     const removeSizeServer = async (index: number) => {
       if (sizesServer && setSizesServer) {
-        console.log("sizes ", index);
         const resp = await DeleteSizeService(sizesServer[index].id);
         if (resp?.status == 200 && sizesServer) {
           const newArray = sizesServer.filter((_item, i) => i !== index);

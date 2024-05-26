@@ -44,7 +44,6 @@ class ImageSelector extends Component<ImageSelectorProps> {
         const id_image = imageServer[index].id;
 
         http.delete("/items/deleteImage/" + id_image).then((r) => {
-          console.log(r.data);
           if (r.status === 200) {
             const newArray = imageServer.filter((_item, i) => i !== index);
             setImageServer(newArray);

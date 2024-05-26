@@ -53,7 +53,6 @@ const EditItem = () => {
           setSizes(resp.data.sizes);
           setColors(resp.data.colors);
           setImage(resp.data.images);
-          console.log(resp.data);
         });
       })
       .catch((error) => {

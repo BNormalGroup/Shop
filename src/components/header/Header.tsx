@@ -12,13 +12,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../Authorization/login/Login.tsx";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store.ts";
+import { useLoginModal } from "../../context/LoginModalContext.ts";
 
 export const Header = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [registerOpen, setRegisterOpen] = useState<boolean>(false);
   const isAuth = useSelector((state: RootState) => state.users.isAuth);
+  const isAdmin = useSelector((state: RootState) => state.users.user.isAdmin);
   const navigate = useNavigate();
+  const { openLoginModal } = useLoginModal();
+  const handleLikeClick = () => {
+    if (!isAuth) openLoginModal();
+    else navigate("/favorite");
+  };
 
   return (
     <>
@@ -46,14 +53,15 @@ export const Header = () => {
             className={classes.buttonIcon}
             onClick={() => {
               if (!isAuth) setRegisterOpen(!registerOpen);
+              else if (isAdmin) navigate("/admin");
               else navigate("/office");
             }}
           >
             <img src={accountIcon} className={classes.icon} />
           </button>
-          <Link to="/favorite">
+          <button className={classes.buttonIcon} onClick={handleLikeClick}>
             <img src={likeIcon} className={classes.icon} />
-          </Link>
+          </button>
           <Link to={"/review-bag"}>
             <img src={bagIcon} className={classes.icon} />
           </Link>

@@ -19,7 +19,6 @@ const ChangePassword = () => {
       password,
       localStorage.getItem("authToken") ?? "",
     );
-    console.log("reponseStatus: ", responseStatus);
     if (responseStatus.status == 200) {
       setMessage(responseStatus.data.message);
     } else {

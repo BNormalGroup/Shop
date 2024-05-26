@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout.tsx";
 import { AdminLayout } from "./layouts/AdminLayout.tsx";
-import React, { lazy } from "react";
+import React, { lazy, useState } from "react";
 import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -18,6 +18,8 @@ import PersonalOffice from "./pages/default/personalOffice/PersonalOffice.tsx";
 import UserOrdersList from "./components/PersonalOffice/ListOrders/ListOrders.tsx";
 import { useSelector } from "react-redux";
 import { RootState } from "./app/store.ts";
+import { LoginModalContext } from "./context/LoginModalContext.ts";
+import { Login } from "./components/Authorization/login/Login.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
@@ -41,50 +43,69 @@ const CheckoutPage = lazy(
 );
 
 function App() {
-  const user = useSelector((state: RootState) => state.users.user);
+  const { isAuth, user } = useSelector((state: RootState) => state.users);
+  const [isLoginOpen, setLoginOpen] = useState<boolean>(false);
+
+  const openLoginModal = () => {
+    setLoginOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setLoginOpen(false);
+  };
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<DefaultLayout />}>
-          <Route path="/" element={<MenuPage></MenuPage>}></Route>
-          <Route path={"/woman"} element={<WomanShop />} />
-          <Route path={"/man"} element={<MenShop />} />
-          <Route path="category/:id" element={<ProductListPage />}></Route>
-          <Route path="product/:id" element={<Product />}></Route>
-          <Route
-            path="searchproduct/:keyword"
-            element={<SearchProduct />}
-          ></Route>
-          <Route path="review-bag" element={<ReviewBag />}></Route>
-          <Route path="favorite" element={<Favorite />}></Route>
-          <Route path="office" element={<PersonalOffice />}>
-            <Route path="orders" element={<UserOrdersList />}></Route>
+      <LoginModalContext.Provider value={{ openLoginModal }}>
+        <Routes>
+          <Route path="/" element={<DefaultLayout />}>
+            <Route path="/" element={<MenuPage></MenuPage>}></Route>
+            <Route path={"/woman"} element={<WomanShop />} />
+            <Route path={"/man"} element={<MenShop />} />
+            <Route path="category/:id" element={<ProductListPage />}></Route>
+            <Route path="product/:id" element={<Product />}></Route>
+            <Route
+              path="searchproduct/:keyword"
+              element={<SearchProduct />}
+            ></Route>
+            <Route path="review-bag" element={<ReviewBag />}></Route>
+            {isAuth && (
+              <>
+                <Route path="favorite" element={<Favorite />}></Route>
+                <Route path="office" element={<PersonalOffice />}>
+                  <Route path="orders" element={<UserOrdersList />}></Route>
+                </Route>
+              </>
+            )}
+            <Route path={"*"} element={<NotFound />} />
           </Route>
-          <Route path={"*"} element={<NotFound />} />
-        </Route>
-        {user.isAdmin && (
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="category">
-              <Route path="listCategory" element={<ListCategory />}></Route>
-              <Route path="addCategory" element={<AddCategory />}></Route>
-              <Route path="editCategory/:id" element={<EditCategory />}></Route>
+          {user.isAdmin && (
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="category">
+                <Route path="listCategory" element={<ListCategory />}></Route>
+                <Route path="addCategory" element={<AddCategory />}></Route>
+                <Route
+                  path="editCategory/:id"
+                  element={<EditCategory />}
+                ></Route>
+              </Route>
+              <Route path="item">
+                <Route path="list" element={<ListItem></ListItem>}></Route>
+                <Route path="add" element={<AddItem></AddItem>}></Route>
+                <Route path="edit/:id" element={<EditItem></EditItem>}></Route>
+              </Route>
+              <Route path="user">
+                <Route path="list" element={<ListUser></ListUser>}></Route>
+              </Route>
+              <Route path="order">
+                <Route path="list" element={<ListOrders></ListOrders>}></Route>
+              </Route>
             </Route>
-            <Route path="item">
-              <Route path="list" element={<ListItem></ListItem>}></Route>
-              <Route path="add" element={<AddItem></AddItem>}></Route>
-              <Route path="edit/:id" element={<EditItem></EditItem>}></Route>
-            </Route>
-            <Route path="user">
-              <Route path="list" element={<ListUser></ListUser>}></Route>
-            </Route>
-            <Route path="order">
-              <Route path="list" element={<ListOrders></ListOrders>}></Route>
-            </Route>
-          </Route>
-        )}
-        <Route path="/order/checkout" element={<CheckoutPage />}></Route>
-      </Routes>
+          )}
+          <Route path="/order/checkout" element={<CheckoutPage />}></Route>
+        </Routes>
+        {isLoginOpen && <Login setClose={closeLoginModal} />}
+      </LoginModalContext.Provider>
     </>
   );
 }

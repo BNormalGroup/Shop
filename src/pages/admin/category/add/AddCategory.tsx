@@ -2,7 +2,6 @@ import React, { startTransition, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
 import { ICategoryPostItem } from "../../../../utils/types.ts";
-import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
 import { AddCategoryService } from "../../../../services/categoryService.ts";
 import CategorySelect from "../../../../components/Admin/CategorySelect/CategorySelect.tsx";
@@ -17,9 +16,8 @@ const AddCategory = () => {
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
-  async function handleSumbit(event: React.FormEvent) {
+  async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    console.log(category);
     const responseStatus = await AddCategoryService(category);
     if (responseStatus.status == 200) {
       navigate("/admin/category/listCategory");
@@ -58,7 +56,7 @@ const AddCategory = () => {
                   <form
                     action=""
                     className="tm-edit-product-form"
-                    onSubmit={handleSumbit}
+                    onSubmit={handleSubmit}
                   >
                     <div className="form-group mb-3">
                       <label htmlFor="name">Name</label>

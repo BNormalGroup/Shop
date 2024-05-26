@@ -36,12 +36,10 @@ const MainDetails = () => {
   };
 
   const birthdayChange = (birthday: string) => {
-    console.log(birthday);
     setUser((prevState) => ({
       ...prevState,
       birthday: birthday,
     }));
-    console.log(user);
   };
 
   async function handleSumbit(event: React.FormEvent) {
