@@ -1,35 +1,32 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import { IProduct } from "../../../../utils/types.ts";
+import {IProduct, IProductGet} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
+import {GetItemsService} from "../../../../services/productService.ts";
 
 const ListItem = () => {
-  const [Items, setItems] = useState<IProduct[]>([]);
+  const [Items, setItems] = useState<IProductGet[]>([]);
   const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    http
-      .get<IProduct[]>("/items/")
-      .then((resp) => {
-        startTransition(() => {
-          setItems(resp.data);
-        });
-      })
-      .catch((error) => {
-        startTransition(() => {
-          setError(error);
-        });
-      });
+    GetItems();
   }, []);
+
+  async function GetItems(){
+    const resp = await GetItemsService();
+    console.log(resp);
+    if(resp)
+    setItems(resp);
+  }
 
   async function handleDeleteClick(id: number | undefined) {
     if (id !== undefined) {
       await http.delete("/items/" + id);
       startTransition(() => {
-        setItems(Items.filter((a) => a.id !== id));
+        setItems(Items.filter((a) => a.product.id !== id));
       });
     }
   }
@@ -51,23 +48,23 @@ const ListItem = () => {
               </tr>
             </thead>
             <tbody>
-              {Items.map((item: IProduct) => (
-                <tr key={item.id}>
+              {Items.map((item: IProductGet) => (
+                <tr key={item.product.id}>
                   <th scope="row">
-                    <a>{item.id}</a>
+                    <a>{item.product.id}</a>
                   </th>
-                  <td className="tm-product-name">{item.name}</td>
+                  <td className="tm-product-name">{item.product.name}</td>
                   <td>
-                    {item.description.length > 100
-                      ? item.description.slice(0, 270) + "..."
-                      : item.description}
+                    {item.product.description.length > 100
+                      ? item.product.description.slice(0, 270) + "..."
+                      : item.product.description}
                   </td>
-                  <td className="tm-product-name">{item.category_id}</td>
-                  <td className="tm-product-name">{item.sex}</td>
+                  <td className="tm-product-name">{item.product.category_id}</td>
+                  <td className="tm-product-name">{item.product.sex}</td>
                   <td>
                     <button
                       className="btn p-0"
-                      onClick={() => handleDeleteClick(item.id)}
+                      onClick={() => handleDeleteClick(item.product.id)}
                     >
                       <i className="bi bi-trash"></i>
                     </button>
@@ -76,7 +73,7 @@ const ListItem = () => {
                     <button
                       className="btn p-0"
                       onClick={() => {
-                        navigate("/admin/item/edit/" + item.id);
+                        navigate("/admin/item/edit/" + item.product.id);
                       }}
                     >
                       <i className="bi bi-pencil"></i>

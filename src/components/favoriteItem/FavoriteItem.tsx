@@ -5,7 +5,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { addProduct } from "../../redux/bagSlice.ts";
 import { useDispatch } from "react-redux";
-import React, { useState } from "react";
+import React, {useState} from "react";
+import {LikeButton} from "../LikeButton/LikeButton.tsx";
 
 export const FavoriteItem = ({ product }: { product: IProductGet }) => {
   const classes = useStyles();
@@ -20,12 +21,14 @@ export const FavoriteItem = ({ product }: { product: IProductGet }) => {
       {size.size}
     </option>
   ));
+
+
   const clickAddProductToBag = () => {
     if (product.product) {
       dispatch(
         addProduct({
           product: product.product,
-          sizes: product.sizes,
+          sizes: product.sizes.map(size => size.size.toString()),
           quantity: 1,
           color: product.colors[0].name,
           selectedSize: selectedSize,
@@ -37,10 +40,14 @@ export const FavoriteItem = ({ product }: { product: IProductGet }) => {
   return (
     <>
       <div className={classes.wrapper}>
-        <img
-          className={classes.image}
-          src={APP_ENV.UPLOADS_URL + product.images[0].url}
-        />
+        <div className={classes.imageContainer}>
+          <img
+              className={classes.image}
+              src={APP_ENV.UPLOADS_URL + product.images[0].url}
+          />
+          <LikeButton productId={product.product?.id}></LikeButton>
+        </div>
+
         <Link
           to={"/product/" + product.product?.id}
           className={classes.textName}

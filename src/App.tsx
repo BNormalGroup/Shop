@@ -20,6 +20,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "./app/store.ts";
 import { LoginModalContext } from "./context/LoginModalContext.ts";
 import { Login } from "./components/Authorization/login/Login.tsx";
+import MainDetails from "./components/PersonalOffice/MainDetails/MainDetails.tsx";
+import ChangePassword from "./components/PersonalOffice/ChangePassword/ChangePassword.tsx";
 
 const ListCategory = lazy(
   () => import("./pages/admin/category/list/ListCategory"),
@@ -74,6 +76,8 @@ function App() {
                 <Route path="favorite" element={<Favorite />}></Route>
                 <Route path="office" element={<PersonalOffice />}>
                   <Route path="orders" element={<UserOrdersList />}></Route>
+                  <Route path="details" element={<MainDetails />}></Route>
+                  <Route path="change-password" element={<ChangePassword />}></Route>
                 </Route>
               </>
             )}

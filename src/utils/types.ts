@@ -90,7 +90,7 @@ export interface IProductGet {
   product: IProduct;
   images: IImage[];
   colors: IColor[];
-  sizes: string[];
+  sizes: ISize[];
 }
 
 export interface ResponseTypeLogin {

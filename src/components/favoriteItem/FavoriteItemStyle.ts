@@ -73,4 +73,7 @@ export const useStyles = createUseStyles({
     height: "40px",
     border: 0,
   },
+  imageContainer: {
+    position: "relative",
+  },
 });

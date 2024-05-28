@@ -12,7 +12,9 @@ const UserOrdersList = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
 
   const getOrders = async () => {
+
     const statusesGet = await GetUserOrdersService(id);
+    console.log(statusesGet);
     if (statusesGet) setOrders(statusesGet);
   };
 
@@ -91,7 +93,7 @@ const UserOrdersList = () => {
                         <td className={classes.td}>
                           <img
                             className="img-fluid"
-                            src={APP_ENV.UPLOADS_URL + product.image}
+                            src={APP_ENV.UPLOADS_URL + product.item?.image}
                             alt="Product Image"
                             style={{ width: "50px" }}
                           />

@@ -83,5 +83,10 @@
   "Invalid CVV": "Недійсний CVV",
   "Invalid postal code": "Недійсний поштовий індекс",
   "Invalid phone number": "Неправильний номер телефону",
-  "Invalid postcode": "Недійсний поштовий індекс"
+  "Invalid postcode": "Недійсний поштовий індекс",
+  "Main orders": "Мої замовлення",
+  "Main details": "Мої дані",
+  "Change password": "Змінити пароль",
+  "Signout": "Вийти",
+  "Personal office": "Особистий кабінет"
 }

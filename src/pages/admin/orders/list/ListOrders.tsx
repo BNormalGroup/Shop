@@ -30,10 +30,6 @@ const ListOrders = () => {
                 <th scope="col">ID</th>
                 <th scope="col">User ID</th>
                 <th scope="col">User Name</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Item Img</th>
-                <th scope="col">Color</th>
-                <th scope="col">Size</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
@@ -54,7 +50,7 @@ const ListOrders = () => {
                       </th>
                     </tr>
                     <tr>
-                      <td colSpan={6}>
+                      <td colSpan={4}>
                         <table>
                           <thead>
                             <tr>

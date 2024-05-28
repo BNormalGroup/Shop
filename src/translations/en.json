@@ -85,5 +85,10 @@
   "Invalid CVV": "Invalid CVV",
   "Invalid postal code": "Invalid postal code",
   "Invalid phone number": "Invalid phone number",
-  "Invalid postcode": "Invalid postcode"
+  "Invalid postcode": "Invalid postcode",
+  "Main orders": "My orders",
+  "Main details": "My details",
+  "Change password": "Change password",
+  "Signout": "Sign-out",
+  "Personal office": "Presonal Office"
 }

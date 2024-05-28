@@ -13,7 +13,15 @@ const Product = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [product, setProduct] = useState<IProductGet>({
-    product: undefined,
+    product: {
+      id: 0,
+      image: "",
+      name: "",
+      description: "",
+      texture: "",
+      price: 0,
+      sex: ""
+    },
     images: [],
     sizes: [],
     colors: [],
@@ -24,13 +32,14 @@ const Product = () => {
     const fetchData = async () => {
       let resp;
       if (id) resp = await GetItemService(id);
+      console.log(resp);
       if (resp) setProduct(resp);
     };
 
     fetchData();
   }, [id]);
 
-  if (product.product)
+  if (product.product.id != 0)
     return (
       <>
         <MenuHeader />

@@ -18,8 +18,8 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
 
   const sizeOption = product.sizes.map((size, key) => {
     return (
-      <option className={classes.option} key={key} value={size}>
-        {size}
+      <option className={classes.option} key={key} value={size.size}>
+        {size.size}
       </option>
     );
   });
@@ -31,7 +31,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
       </option>
     );
   });
-  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0]);
+  const [selectedSize, setSelectedSize] = useState<string>(product.sizes[0].size.toString());
   const [selectedColor, setSelectedColor] = useState<string>(
     product.colors[0].name,
   );
@@ -50,7 +50,7 @@ export const ProductData = ({ product }: { product: IProductGet }) => {
       dispatch(
         addProduct({
           product: product.product,
-          sizes: product.sizes,
+          sizes: product.sizes.map(size => size.size.toString()),
           quantity: 1,
           color: selectedColor,
           selectedSize: selectedSize,

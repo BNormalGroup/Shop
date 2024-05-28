@@ -91,3 +91,19 @@ export const SearchItemListService = async (
     }
   }
 };
+export const GetItemsService = async (): Promise<IProductGet[]> => {
+  try {
+    const response = await http.get<IProductGet[]>("/items/");
+    // Повертаємо масив продуктів
+    console.log(response);
+    return response.data;
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error:", error.response); // або throw error.response;
+      throw error.response; // Якщо потрібно перехопити на вищому рівні
+    } else {
+      console.error("General error:", error.message);
+      throw error; // Перекидання помилки, якщо не Axios
+    }
+  }
+};

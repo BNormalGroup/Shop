@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import useStyles from "./style.tsx";
+import React from "react";
 import HeaderPersonalOffice from "../../../components/PersonalOffice/Header/HeaderPersonalOffice.tsx";
 import { MenuPersonalOffice } from "../../../components/PersonalOffice/Menu/MenuPersonalOffice.tsx";
 import { Outlet } from "react-router-dom";
 
 const PersonalOffice = () => {
-  const classes = useStyles();
-  const [page, setPage] = useState(1);
 
   return (
     <>

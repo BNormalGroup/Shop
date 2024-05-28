@@ -42,6 +42,7 @@ const EditItem = () => {
       .get<IProductGet>("/items/show/" + params.id)
       .then((resp) => {
         startTransition(() => {
+          console.log(resp);
           if (resp.data && resp.data.product)
             setItem({
               ...resp.data.product,

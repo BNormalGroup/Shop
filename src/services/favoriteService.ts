@@ -25,6 +25,7 @@ export const LikeService = async (productId: number, userId: number) => {
 export const GetLikesService = async (userId: number) => {
   try {
     const response = await http.get<IProductGet[]>("/likes/show/" + userId);
+    console.log(response);
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
