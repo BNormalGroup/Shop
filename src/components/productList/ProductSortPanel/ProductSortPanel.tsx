@@ -24,39 +24,39 @@ export const ProductSortPanel = ({
 
   return (
     <div className={classes.container}>
-      <select
-        style={{ float: "left" }}
-        value={"default"}
-        className={classes.select}
-        onChange={handleSelectChange}
-      >
-        <option value={"default"} hidden>
-          Size
-        </option>
-        <option className={classes.option} value={0}>
-          41
-        </option>
-        <option className={classes.option} value={1}>
-          42
-        </option>
-      </select>
+      {/*<select*/}
+      {/*  style={{ float: "left" }}*/}
+      {/*  value={"default"}*/}
+      {/*  className={classes.select}*/}
+      {/*  onChange={handleSelectChange}*/}
+      {/*>*/}
+      {/*  <option value={"default"} hidden>*/}
+      {/*    Size*/}
+      {/*  </option>*/}
+      {/*  <option className={classes.option} value={0}>*/}
+      {/*    41*/}
+      {/*  </option>*/}
+      {/*  <option className={classes.option} value={1}>*/}
+      {/*    42*/}
+      {/*  </option>*/}
+      {/*</select>*/}
 
-      <select
-        style={{ float: "left" }}
-        value={"default"}
-        className={classes.select}
-        onChange={handleSelectChange}
-      >
-        <option value={"default"} hidden>
-          Color
-        </option>
-        <option className={classes.option} value={0}>
-          White
-        </option>
-        <option className={classes.option} value={1}>
-          Black
-        </option>
-      </select>
+      {/*<select*/}
+      {/*  style={{ float: "left" }}*/}
+      {/*  value={"default"}*/}
+      {/*  className={classes.select}*/}
+      {/*  onChange={handleSelectChange}*/}
+      {/*>*/}
+      {/*  <option value={"default"} hidden>*/}
+      {/*    Color*/}
+      {/*  </option>*/}
+      {/*  <option className={classes.option} value={0}>*/}
+      {/*    White*/}
+      {/*  </option>*/}
+      {/*  <option className={classes.option} value={1}>*/}
+      {/*    Black*/}
+      {/*  </option>*/}
+      {/*</select>*/}
 
       <select
         style={{ float: "right" }}

@@ -5,11 +5,11 @@ const useStyles = createUseStyles({
     width: "100%",
     position: "flex",
     flexDirection: "column",
+
   },
   imageContainer: {
     position: "relative",
-    height: "619px",
-    width: "423px",
+    cursor: 'pointer'
   },
   image: {
     height: "100%",

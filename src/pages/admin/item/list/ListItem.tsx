@@ -4,7 +4,7 @@ import "../../css/fontawesome.min.css";
 import {IProduct, IProductGet} from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
-import {GetItemsService} from "../../../../services/productService.ts";
+import {DeleteItemService, GetItemsService} from "../../../../services/productService.ts";
 
 const ListItem = () => {
   const [Items, setItems] = useState<IProductGet[]>([]);
@@ -24,10 +24,12 @@ const ListItem = () => {
 
   async function handleDeleteClick(id: number | undefined) {
     if (id !== undefined) {
-      await http.delete("/items/" + id);
-      startTransition(() => {
-        setItems(Items.filter((a) => a.product.id !== id));
-      });
+      const response = await DeleteItemService(id);
+      if(response?.status == 200) {
+        startTransition(() => {
+          setItems(Items.filter((a) => a.product.id !== id));
+        });
+      }
     }
   }
 

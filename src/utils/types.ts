@@ -197,3 +197,12 @@ export interface IBankCard {
   cvv?: number;
   postalCode?: number;
 }
+
+
+export interface IProductListPagination{
+  data: IProductGet[];
+  pagination: {
+    current_page: number;
+    last_page: number;
+  }
+}

@@ -1,6 +1,6 @@
 import http from "../http.ts";
 import axios from "axios";
-import { IProduct, IProductGet, IProductPost } from "../utils/types.ts";
+import {IProduct, IProductGet, IProductListPagination, IProductPost} from "../utils/types.ts";
 
 export const AddProductService = async (
   item: IProductPost,
@@ -44,20 +44,21 @@ export const GetItemListService = async (
   page: number,
   sortField: string,
   sortDirection: string,
-): Promise<IProductGet[]> => {
+  per_page: number
+): Promise<IProductListPagination> => {
   try {
-    const response = await http.get("/items/list", {
+    const response = await http.get<IProductListPagination>("/items/list", {
       params: {
         sort_field: sortField,
         sort_direction: sortDirection,
-        per_page: 10,
+        per_page: per_page,
         id_category: categoryId,
         page,
       },
     });
 
     // Повертаємо масив продуктів
-    return response.data.data;
+    return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
       console.error("Axios error:", error.response); // або throw error.response;
@@ -101,6 +102,19 @@ export const GetItemsService = async (): Promise<IProductGet[]> => {
     if (axios.isAxiosError(error)) {
       console.error("Axios error:", error.response); // або throw error.response;
       throw error.response; // Якщо потрібно перехопити на вищому рівні
+    } else {
+      console.error("General error:", error.message);
+      throw error; // Перекидання помилки, якщо не Axios
+    }
+  }
+};
+
+export const DeleteItemService = async (id : number) => {
+  try {
+    return await http.delete("/items/" + id);
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      console.error("Axios error:", error.response); // або throw error.response;
     } else {
       console.error("General error:", error.message);
       throw error; // Перекидання помилки, якщо не Axios

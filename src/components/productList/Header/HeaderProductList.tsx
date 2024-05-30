@@ -11,10 +11,12 @@ export const HeaderProductList = ({
   title,
   description,
   category_id,
+  nameCategory,
 }: {
   description: string;
   title: string;
   category_id: string | number | undefined;
+  nameCategory: string;
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -36,7 +38,7 @@ export const HeaderProductList = ({
               titles={[
                 { name: `${t("Home")}`, url: "/" },
                 { name: "Women", url: "/men" },
-                { name: "Dresses", url: "/men/dresses" },
+                { name: nameCategory, url: "" },
               ]}
             ></Breadcrumb>
           </div>
