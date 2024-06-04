@@ -20,7 +20,7 @@ const Product = () => {
       description: "",
       texture: "",
       price: 0,
-      sex: ""
+      sex: "",
     },
     images: [],
     sizes: [],

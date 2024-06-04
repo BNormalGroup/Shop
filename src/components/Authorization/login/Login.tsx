@@ -32,9 +32,6 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
       .min(6, t("PasswordIsShort")),
   });
 
-  /**
-   @todo: navigate to cabinet
-   **/
   const handleSubmit = async (data: IUserLogin) => {
     try {
       const user = await SingInService(data);
@@ -48,7 +45,13 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
       }
       setClose();
     } catch (error: any) {
-      setError(error.data);
+      if (error && error.data) {
+        if (error.data.error === "Unauthorized")
+          setError(t("UnauthorizedError"));
+        else setError(error.data.error || t("UnknownError"));
+      } else {
+        setError(t("UnknownError"));
+      }
     }
   };
 
@@ -77,7 +80,9 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
                   >
                     {t("CreateAnAccount")}
                   </button>
-                  <label className={classes.textValidation}>{error}</label>
+                  {error && (
+                    <div className={classes.textValidation}>{error}</div>
+                  )}
                 </div>
               </Form>
             </Formik>

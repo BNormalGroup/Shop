@@ -88,5 +88,6 @@
   "Main details": "Мої дані",
   "Change password": "Змінити пароль",
   "Signout": "Вийти",
-  "Personal office": "Особистий кабінет"
+  "Personal office": "Особистий кабінет",
+  "UnauthorizedError": "Login or password is incorrect"
 }
