@@ -2,9 +2,18 @@ import useStyles from "./styles.tsx";
 import xIcon from "../../assets/xIcon.png";
 import fIcon from "../../assets/fIcon.png";
 import iIcon from "../../assets/InstagramIcon.png";
+import { useLoginModal } from "../../context/LoginModalContext.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store.ts";
 
 const Footer = () => {
   const classes = useStyles();
+  const { openLoginModal } = useLoginModal();
+  const isAuth = useSelector((state: RootState) => state.users.isAuth);
+  const SubscribeClick = () => {
+    if (!isAuth) openLoginModal();
+  };
+
   return (
     <footer className={classes.footer}>
       <div className={`${classes.titleBottom}`}>
@@ -12,7 +21,7 @@ const Footer = () => {
           className={`row ${classes.bottomLinkContainer}`}
           style={{ marginLeft: 65 }}
         >
-          <a href="#" className={classes.bottomLink}>
+          <a href="tel:+6494461709" className={classes.bottomLink}>
             Contact Us
           </a>
           <a href="#" className={classes.bottomLink}>
@@ -39,35 +48,35 @@ const Footer = () => {
           style={{ marginLeft: 170 }}
         >
           <a href="#" className={classes.bottomLink}>
-            Contact Us
+            About ModaMingle
           </a>
           <a href="#" className={classes.bottomLink}>
-            Delivery Information
+            Student Discount
           </a>
           <a href="#" className={classes.bottomLink}>
-            Returns & Refunds
+            Sustainability
           </a>
           <a href="#" className={classes.bottomLink}>
-            Customer Service
+            Suppliers List
           </a>
           <a href="#" className={classes.bottomLink}>
-            Payment
+            ModaMingle Resell
           </a>
           <a href="#" className={classes.bottomLink}>
-            Size Guide
+            Product Care
           </a>
           <a href="#" className={classes.bottomLink}>
-            FAQs
+            Careers
           </a>
         </div>
         <div className={classes.iconContainer}>
-          <a href="#">
+          <a href="https://www.facebook.com/">
             <img alt="" className={classes.iconSocial} src={fIcon} />
           </a>
-          <a style={{ marginLeft: 20, marginRight: 21 }} href="#">
+          <a style={{ marginLeft: 20, marginRight: 21 }} href="https://x.com/">
             <img alt="" className={classes.iconSocial} src={xIcon} />
           </a>
-          <a href="#">
+          <a href="https://www.instagram.com/">
             <img alt="" className={classes.iconSocial} src={iIcon} />
           </a>
         </div>
@@ -83,7 +92,12 @@ const Footer = () => {
             type="text"
             placeholder="Enter email adress"
           />
-          <button className={classes.bottomEmailButton}>Sign up</button>
+          <button
+            className={classes.bottomEmailButton}
+            onClick={SubscribeClick}
+          >
+            Sign up
+          </button>
         </div>
       </div>
     </footer>

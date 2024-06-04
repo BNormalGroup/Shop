@@ -89,5 +89,6 @@
   "Change password": "Змінити пароль",
   "Signout": "Вийти",
   "Personal office": "Особистий кабінет",
+  "BannedError": "Ви заблоковані",
   "UnauthorizedError": "Login or password is incorrect"
 }

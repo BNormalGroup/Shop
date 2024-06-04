@@ -4,7 +4,6 @@ export const useStyles = createUseStyles({
   Container: {
     marginBottom: 56,
     padding: 0,
-    minHeight: 1000,
   },
   BreadcrumbWrapper: {
     float: "left",

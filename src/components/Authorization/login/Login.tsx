@@ -48,6 +48,7 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
       if (error && error.data) {
         if (error.data.error === "Unauthorized")
           setError(t("UnauthorizedError"));
+        else if (error.data.banned === "true") setError(t("BannedError"));
         else setError(error.data.error || t("UnknownError"));
       } else {
         setError(t("UnknownError"));
@@ -96,6 +97,7 @@ export const Login = ({ setClose }: { setClose: () => void }) => {
         setClose={setClose}
         backLogin={() => {
           setIsRegister(false);
+          setError("");
         }}
       />
     );

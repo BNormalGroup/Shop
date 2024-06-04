@@ -1,7 +1,10 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import useStyles from "./style.tsx";
 import SignoutModal from "../Signout/SignoutModal.tsx";
 import { useTranslation } from "react-i18next";
+import { logout } from "../../../redux/userSlice.ts";
+import { deleteLocalStorage } from "../../../utils/localStorageUtils.ts";
+import { useDispatch } from "react-redux";
 
 export const MenuPersonalOffice = () => {
   const classes = useStyles();

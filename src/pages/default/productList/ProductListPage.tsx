@@ -29,7 +29,7 @@ const ProductListPage = () => {
         sortDirection,
         itemPerPage,
       );
-      console.log(newProducts);
+
       setPage(newProducts.pagination.current_page);
       setLastPage(newProducts.pagination.last_page);
       if (type == "page")
@@ -86,7 +86,6 @@ const ProductListPage = () => {
         style={{
           marginBottom: 56,
           padding: 0,
-          minHeight: 1000,
           display: "flex",
           flexDirection: "column",
         }}

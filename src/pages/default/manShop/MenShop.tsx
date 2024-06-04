@@ -15,9 +15,20 @@ import SocksImage from "../../../assets/itemCategoryMen/socks.png";
 import AccessoriesImage from "../../../assets/itemCategoryMen/accessories.png";
 import { SexCategoryItems } from "../../../utils/types.ts";
 import { useTranslation } from "react-i18next";
+import { createUseStyles } from "react-jss";
+
+export const useStyles = createUseStyles({
+  wrapper: {
+    backgroundColor: "#282826",
+  },
+  text: {
+    color: "#D4D2B4",
+  },
+});
 
 const MenShop = () => {
   const { t } = useTranslation();
+  const classes = useStyles();
   const categories: SexCategoryItems[] = [
     { image: JeansImage, name: t("JeansMen") },
     { image: TShirtsImage, name: t("t-shirtsMen") },
@@ -33,6 +44,8 @@ const MenShop = () => {
       <div className="container" style={{ marginBottom: 56, padding: 0 }}>
         <SexImage image={MenImage} isButtonBlack={true} />
         <ShopNowBlock
+          wrapperClassName={classes.wrapper}
+          textClassName={classes.text}
           images={[
             ChainImage,
             TrousersImage,
