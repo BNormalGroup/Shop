@@ -1,5 +1,5 @@
 import useStyles from "./style.tsx";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const MenuHeader = () => {
   const classes = useStyles();
@@ -11,7 +11,7 @@ const MenuHeader = () => {
         id="panelMenuContainer"
         className={`container ${classes.headerWrapper}`}
       >
-          {t('Personal office')}
+        {t("Personal office")}
       </div>
     </div>
   );

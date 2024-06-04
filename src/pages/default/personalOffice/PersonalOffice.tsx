@@ -4,7 +4,6 @@ import { MenuPersonalOffice } from "../../../components/PersonalOffice/Menu/Menu
 import { Outlet } from "react-router-dom";
 
 const PersonalOffice = () => {
-
   return (
     <>
       <HeaderPersonalOffice></HeaderPersonalOffice>

@@ -4,7 +4,7 @@ import { IProductGet } from "../../../utils/types.ts";
 import { APP_ENV } from "../../../env";
 import NotFoundImage from "../../../assets/notFoundImage.jpg";
 import { LikeButton } from "../../LikeButton/LikeButton.tsx";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const ProductItem = ({ item }: { item: IProductGet }) => {
   const classes = useStyles();
@@ -20,9 +20,9 @@ export const ProductItem = ({ item }: { item: IProductGet }) => {
     setSrc(NotFoundImage);
   };
 
-  const goToItem=()=>{
+  const goToItem = () => {
     navigate("/product/" + item?.product?.id);
-  }
+  };
 
   useEffect(() => {
     // Оновлення зображення, якщо об'єкт item змінився
@@ -34,9 +34,9 @@ export const ProductItem = ({ item }: { item: IProductGet }) => {
   }, [item]);
 
   return (
-    <div  className={classes.container}>
+    <div className={classes.container}>
       <>
-        <div  className={classes.imageContainer}>
+        <div className={classes.imageContainer}>
           <img
             className={classes.image}
             src={src}
