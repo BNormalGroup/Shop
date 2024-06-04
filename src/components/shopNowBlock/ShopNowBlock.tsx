@@ -8,18 +8,22 @@ import { SexCategoryItems } from "../../utils/types.ts";
 export const ShopNowBlock = ({
   images,
   categories,
+  wrapperClassName = '',
+  textClassName = ''
 }: {
   images: string[];
   categories: SexCategoryItems[];
+  wrapperClassName?: string;
+  textClassName?: string;
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   return (
     <>
-      <div className={classes.container}>
+      <div className={`${classes.container} ${wrapperClassName}`}>
         <div className={classes.carouselWrapper}>
-          <a className={classes.text}>{t("shopNow")}</a>
+          <a className={`${classes.text} ${textClassName}`}>{t("shopNow")}</a>
         </div>
         <RoundaboutClothing images={images} />
       </div>
