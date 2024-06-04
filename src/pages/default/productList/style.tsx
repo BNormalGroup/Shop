@@ -3,9 +3,9 @@ import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles({
   itemsContainer: {
     display: "grid",
-    gridTemplateColumns: "repeat(3,1fr)",
+    gridTemplateColumns: "repeat(auto-fill, 423px)",
     columnGap: "20px",
-    padding: "20px 65px",
+    padding: "20px 5px",
     rowGap: "20px",
   },
   btnLoadMore: {

@@ -9,6 +9,7 @@ export const useStyles = createUseStyles({
   images: {
     width: "91px",
     height: "119px",
+    objectFit: 'contain',
     cursor: "pointer",
   },
   imageMain: {

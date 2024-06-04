@@ -11,8 +11,8 @@ const useStyles = createUseStyles({
     cursor: "pointer",
   },
   image: {
-    height: "100%",
-    width: "100%",
+    height: "619px",
+    width: "423px",
   },
   title: {
     margin: 0,

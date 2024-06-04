@@ -13,8 +13,7 @@ const SexSelect = () => {
           <img className={classes.image} src={womanImage} />
           <button className={classes.button} style={{ right: 15 }}>
             <Link className={classes.textSelectSex} to={"/woman"}>
-              {" "}
-              {t("sexSelectWomen")}{" "}
+              {t("sexSelectWomen")}
             </Link>
           </button>
         </div>
@@ -22,8 +21,7 @@ const SexSelect = () => {
           <img className={classes.image} src={manImage} />
           <button className={classes.button} style={{ left: 15 }}>
             <Link className={classes.textSelectSex} to={"/man"}>
-              {" "}
-              {t("sexSelectMen")}{" "}
+              {t("sexSelectMen")}
             </Link>
           </button>
         </div>
