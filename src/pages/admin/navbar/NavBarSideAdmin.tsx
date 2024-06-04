@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/userSlice.ts";
+import { deleteLocalStorage } from "../../../utils/localStorageUtils.ts";
 
 const NavBarSideAdmin = () => {
+  const dispatch  = useDispatch();
+  const navigate = useNavigate();
+
+  const singout = async () => {
+    dispatch(logout());
+    deleteLocalStorage("authToken");
+    navigate("/");
+  };
+
   return (
     <div className="navbar-expand-lg">
       <div className="collapse navbar-collapse" id="navBarSideContent">
@@ -52,6 +64,14 @@ const NavBarSideAdmin = () => {
                   <i className="fs-4 bi-bar-chart-steps"></i>
                   <span className="ms-1 d-none d-sm-inline">Orders</span>
                 </Link>
+              </li>
+              <li>
+                <button
+                  onClick={singout}
+                  className="nav-link px-0 align-middle w-100"
+                >
+                  <span className="ms-1 d-none d-sm-inline">Sing Out</span>
+                </button>
               </li>
             </ul>
           </div>
