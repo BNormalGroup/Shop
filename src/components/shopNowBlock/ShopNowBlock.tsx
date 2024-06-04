@@ -8,8 +8,8 @@ import { SexCategoryItems } from "../../utils/types.ts";
 export const ShopNowBlock = ({
   images,
   categories,
-  wrapperClassName = '',
-  textClassName = ''
+  wrapperClassName = "",
+  textClassName = "",
 }: {
   images: string[];
   categories: SexCategoryItems[];

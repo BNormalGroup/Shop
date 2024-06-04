@@ -5,8 +5,18 @@ const http = axios.create({
   baseURL: APP_ENV.BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("authToken")}`,
   },
 });
+
+http.interceptors.request.use(
+  function (config) {
+    config.headers["Authorization"] =
+      `Bearer ${localStorage.getItem("authToken")}`;
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  },
+);
 
 export default http;

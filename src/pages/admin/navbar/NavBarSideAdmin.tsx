@@ -4,7 +4,7 @@ import { logout } from "../../../redux/userSlice.ts";
 import { deleteLocalStorage } from "../../../utils/localStorageUtils.ts";
 
 const NavBarSideAdmin = () => {
-  const dispatch  = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const singout = async () => {

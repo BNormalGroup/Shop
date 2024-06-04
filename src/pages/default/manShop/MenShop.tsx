@@ -19,11 +19,11 @@ import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
   wrapper: {
-    backgroundColor: '#282826'
+    backgroundColor: "#282826",
   },
   text: {
-    color: '#D4D2B4'
-  }
+    color: "#D4D2B4",
+  },
 });
 
 const MenShop = () => {
@@ -62,5 +62,3 @@ const MenShop = () => {
 };
 
 export default MenShop;
-
-

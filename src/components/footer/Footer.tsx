@@ -10,9 +10,9 @@ const Footer = () => {
   const classes = useStyles();
   const { openLoginModal } = useLoginModal();
   const isAuth = useSelector((state: RootState) => state.users.isAuth);
-  const SubscribeClick = ()=>{
+  const SubscribeClick = () => {
     if (!isAuth) openLoginModal();
-  }
+  };
 
   return (
     <footer className={classes.footer}>
@@ -92,7 +92,12 @@ const Footer = () => {
             type="text"
             placeholder="Enter email adress"
           />
-          <button className={classes.bottomEmailButton} onClick={SubscribeClick}>Sign up</button>
+          <button
+            className={classes.bottomEmailButton}
+            onClick={SubscribeClick}
+          >
+            Sign up
+          </button>
         </div>
       </div>
     </footer>
