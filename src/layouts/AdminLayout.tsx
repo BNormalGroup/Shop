@@ -5,10 +5,10 @@ import NavBarSideAdmin from "../pages/admin/navbar/NavBarSideAdmin.tsx";
 export const AdminLayout = () => {
   return (
     <>
-      <div style={{ height: "90vh" }}>
+      <div style={{ minHeight: "90vh" }}>
         <NavBarAdmin></NavBarAdmin>
 
-        <div style={{ display: "flex", height: "100%" }}>
+        <div style={{ display: "flex", minHeight: "90vh" }}>
           {/* NavBar зліва */}
           <NavBarSideAdmin></NavBarSideAdmin>
 

@@ -65,7 +65,7 @@ const ColorSelector: React.FC<ColorSelectorProps> = ({
       >
         Add Color
       </button>
-      <div className="row">
+      <div style={{marginTop: '20px', paddingLeft: '10px'}} className="row">
         {colors.map((color, index) => (
           <div className={`col-md-3 ${classes.item}`} key={index}>
             <p className={classes.label}>{color.name}</p>
