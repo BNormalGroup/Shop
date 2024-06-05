@@ -22,16 +22,18 @@ const InputBirthday = ({
 
   useEffect(() => {
     const parts = birthday?.split("-");
-    if (parts)
+    if (parts) {
       if (parts.length === 3) {
         setDay(parts[0]);
         setMonth(parts[1]);
         setYear(parts[2]);
-        setInitializing(false);
       }
+    }
+    setInitializing(false);
   }, []);
 
   const handleDayChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(`${day}-${month}-${year}`);
     setDay(e.target.value);
   };
 
