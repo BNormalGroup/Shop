@@ -1,6 +1,11 @@
 import http from "../http.ts";
 import axios from "axios";
-import {IProduct, IProductGet, IProductListPagination, IProductPost} from "../utils/types.ts";
+import {
+  IProduct,
+  IProductGet,
+  IProductListPagination,
+  IProductPost,
+} from "../utils/types.ts";
 
 export const AddProductService = async (
   item: IProductPost,
@@ -44,7 +49,7 @@ export const GetItemListService = async (
   page: number,
   sortField: string,
   sortDirection: string,
-  per_page: number
+  per_page: number,
 ): Promise<IProductListPagination> => {
   try {
     const response = await http.get<IProductListPagination>("/items/list", {
@@ -109,7 +114,7 @@ export const GetItemsService = async (): Promise<IProductGet[]> => {
   }
 };
 
-export const DeleteItemService = async (id : number) => {
+export const DeleteItemService = async (id: number) => {
   try {
     return await http.delete("/items/" + id);
   } catch (error: any) {

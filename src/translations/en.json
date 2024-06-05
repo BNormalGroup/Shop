@@ -90,5 +90,7 @@
   "Main details": "My details",
   "Change password": "Change password",
   "Signout": "Sign-out",
-  "Personal office": "Presonal Office"
+  "Personal office": "Presonal Office",
+  "BannedError": "You are banned",
+  "UnauthorizedError": "Login or password is incorrect"
 }

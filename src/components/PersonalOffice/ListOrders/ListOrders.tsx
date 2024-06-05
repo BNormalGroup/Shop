@@ -12,7 +12,6 @@ const UserOrdersList = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
 
   const getOrders = async () => {
-
     const statusesGet = await GetUserOrdersService(id);
     console.log(statusesGet);
     if (statusesGet) setOrders(statusesGet);

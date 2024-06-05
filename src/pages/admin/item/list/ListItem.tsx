@@ -1,10 +1,13 @@
 import React, { startTransition, useEffect, useState } from "react";
 import "../../css/templatemo-style.css";
 import "../../css/fontawesome.min.css";
-import {IProduct, IProductGet} from "../../../../utils/types.ts";
+import { IProduct, IProductGet } from "../../../../utils/types.ts";
 import http from "../../../../http.ts";
 import { useNavigate } from "react-router-dom";
-import {DeleteItemService, GetItemsService} from "../../../../services/productService.ts";
+import {
+  DeleteItemService,
+  GetItemsService,
+} from "../../../../services/productService.ts";
 
 const ListItem = () => {
   const [Items, setItems] = useState<IProductGet[]>([]);
@@ -15,17 +18,16 @@ const ListItem = () => {
     GetItems();
   }, []);
 
-  async function GetItems(){
+  async function GetItems() {
     const resp = await GetItemsService();
     console.log(resp);
-    if(resp)
-    setItems(resp);
+    if (resp) setItems(resp);
   }
 
   async function handleDeleteClick(id: number | undefined) {
     if (id !== undefined) {
       const response = await DeleteItemService(id);
-      if(response?.status == 200) {
+      if (response?.status == 200) {
         startTransition(() => {
           setItems(Items.filter((a) => a.product.id !== id));
         });
@@ -61,7 +63,9 @@ const ListItem = () => {
                       ? item.product.description.slice(0, 270) + "..."
                       : item.product.description}
                   </td>
-                  <td className="tm-product-name">{item.product.category_id}</td>
+                  <td className="tm-product-name">
+                    {item.product.category_id}
+                  </td>
                   <td className="tm-product-name">{item.product.sex}</td>
                   <td>
                     <button

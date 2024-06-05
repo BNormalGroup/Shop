@@ -48,6 +48,7 @@ const CheckoutPage = () => {
   }, [products]);
 
   const handleSubmit = async (data: IOrderCreate) => {
+    console.log('dddd');
     const orderData = { ...data };
     delete orderData.bankCard;
     if (user.isAuth) orderData.user_id = user.user.id;

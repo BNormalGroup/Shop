@@ -77,7 +77,10 @@ function App() {
                 <Route path="office" element={<PersonalOffice />}>
                   <Route path="orders" element={<UserOrdersList />}></Route>
                   <Route path="details" element={<MainDetails />}></Route>
-                  <Route path="change-password" element={<ChangePassword />}></Route>
+                  <Route
+                    path="change-password"
+                    element={<ChangePassword />}
+                  ></Route>
                 </Route>
               </>
             )}
