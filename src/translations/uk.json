@@ -90,5 +90,7 @@
   "Signout": "Вийти",
   "Personal office": "Особистий кабінет",
   "BannedError": "Ви заблоковані",
-  "UnauthorizedError": "Login or password is incorrect"
+  "UnauthorizedError": "Login or password is incorrect",
+  "PriceHighToLow" : "Від дорогих до дешевих",
+  "PriceLowToHigh" : "Від дешевих до дорогих"
 }

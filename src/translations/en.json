@@ -92,5 +92,7 @@
   "Signout": "Sign-out",
   "Personal office": "Presonal Office",
   "BannedError": "You are banned",
-  "UnauthorizedError": "Login or password is incorrect"
+  "UnauthorizedError": "Login or password is incorrect",
+  "PriceHighToLow" : "Price high to low",
+  "PriceLowToHigh" : "Price low to high"
 }

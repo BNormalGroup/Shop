@@ -23,7 +23,7 @@ export const HeaderProductList = ({
   const [childes, setChildes] = useState<ICategoryItem[]>([]);
   useEffect(() => {
     getChild();
-  }, []);
+  }, [category_id]);
 
   const getChild = async () => {
     if (category_id) setChildes(await GetChildesCategoryService(category_id));

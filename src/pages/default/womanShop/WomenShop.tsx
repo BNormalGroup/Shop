@@ -19,9 +19,9 @@ import TopsImage from "../../../assets/itemCategoryWoman/Tops.png";
 const WomenShop = () => {
   const { t } = useTranslation();
   const categories: SexCategoryItems[] = [
-    { image: DressesImage, name: t("Dresses") },
-    { image: TopsImage, name: t("Tops") },
-    { image: ShoeImage, name: t("Shoe") },
+    { image: DressesImage, name: t("Dresses"), link: '/category/7' },
+    { image: TopsImage, name: t("Tops"), link: '/category/19' },
+    { image: ShoeImage, name: t("Shoe"), link: '/category/15' },
     { image: HandbagsImage, name: t("Handbags") },
     { image: SwimImage, name: t("Swim") },
     { image: AccessoriesImage, name: t("Accessories") },

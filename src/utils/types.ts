@@ -147,6 +147,7 @@ export interface IBan {
 export type SexCategoryItems = {
   image: string;
   name: string;
+  link?: string;
 };
 
 export interface IOrderStatus {

@@ -31,7 +31,7 @@ export const ShopNowBlock = ({
         <div className={classes.gridContainer}>
           {categories.map((item, key) => {
             return (
-              <ItemCategory image={item.image} text={item.name} key={key} />
+              <ItemCategory link={item.link} image={item.image} text={item.name} key={key} />
             );
           })}
         </div>

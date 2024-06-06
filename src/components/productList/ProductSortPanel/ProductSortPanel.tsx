@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useStyles from "./style.tsx";
+import {useTranslation} from "react-i18next";
 
 export const ProductSortPanel = ({
   setSortField,
@@ -9,6 +10,8 @@ export const ProductSortPanel = ({
   setSortDirection: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   const [sort, setSort] = useState([
     { id: 0, sortField: "price", sortDirection: "asc" },
     { id: 1, sortField: "price", sortDirection: "desc" },
@@ -68,10 +71,10 @@ export const ProductSortPanel = ({
           Sort by
         </option>
         <option className={classes.option} value={0}>
-          Від дешевих до дорогих
+          {t("PriceLowToHigh")}
         </option>
         <option className={classes.option} value={1}>
-          Від дорогих до дешевих
+          {t("PriceHighToLow")}
         </option>
       </select>
     </div>

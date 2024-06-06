@@ -85,6 +85,7 @@ const ProductListPage = () => {
         className="container"
         style={{
           marginBottom: 56,
+          minHeight: '30vh',
           padding: 0,
           display: "flex",
           flexDirection: "column",
